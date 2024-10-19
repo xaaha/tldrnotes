@@ -4,6 +4,8 @@ To connect and authorize multiple GitHub accounts from the same computer, you ca
 
 ### Steps
 
+I am using mac but the process is mostly similar to most systems. Please visit [github's steps](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate ssh keys if you use another system.
+
 1. Generate a New SSH Key for Each GitHub Accounts
 
 For each GitHub account, generate a new SSH key. You’ll have different keys associated with each account.
@@ -53,6 +55,17 @@ ssh-add ~/.ssh/id_ed25519_work
 # For the personal account:
 ssh-add ~/.ssh/id_ed25519_personal
 ```
+
+If you use passphrase for any key you generated above, and you use mac, run
+
+```bash
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519_personal
+## OR
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519_work
+
+```
+
+It will ask to enter your respective passphrase, and keychain will save it for you. Now, you don't have to enter it again. Or you can enter the passphrase on every pull or push.
 
 3. Add SSH Keys to GitHub
 
@@ -112,7 +125,7 @@ After you’ve cloned the repositories using the correct custom hostname, Git wi
 
 7. Optional But Recommended: Configuring Git User Information Per Repository
 
-You may also want to set different Git user information (name and email) for each account. You can do this on a per-repository basis by navigating to the repository and setting the user details:
+You may also want to set different Git user information (name and email) for each account. This tells github, which account pushed to the repo. You can do this on a per-repository basis by navigating to the repository and setting the user details:
 
 ```bash
 cd path/to/repo
