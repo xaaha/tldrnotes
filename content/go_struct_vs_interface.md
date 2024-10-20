@@ -22,7 +22,7 @@ This is similar to a TypeScript class where you define a class with properties a
 
 Equivalent TypeScript class:
 
-```ts
+```typescript
 class Employee {
   name: string;
   age: number;
@@ -71,7 +71,7 @@ Here, Employee satisfies the Worker interface because it has the Work method. Th
 
 Equivalent TypeScript interface
 
-```ts
+```typescript
 interface Worker {
   work(): string;
 }
