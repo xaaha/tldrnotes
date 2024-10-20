@@ -1,0 +1,17 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "id": "datetime",
+    "Created": "datetime",
+    "Status": "multitext",
+    "IN-PROGRESS": "checkbox",
+    "DONE": "checkbox",
+    "Deadline": "date",
+    "Published": "checkbox",
+    "Project": "text",
+    "Project Name": "multitext",
+    "Url": "text"
+  }
+}
