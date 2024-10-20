@@ -4,7 +4,7 @@ To connect and authorize multiple GitHub accounts from the same computer, you ca
 
 ### Steps
 
-I am using mac but the process is mostly similar to most systems. Please visit [github's steps](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate ssh keys if you use another system.
+I am using mac but the process is mostly similar between Linux and Mac. If you are using Windows, Please visit [github's steps](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate ssh keys if you use another system.
 
 1. Generate a New SSH Key for Each GitHub Accounts
 
@@ -65,7 +65,7 @@ ssh-add --apple-use-keychain ~/.ssh/id_ed25519_work
 
 ```
 
-It will ask to enter your respective passphrase, and keychain will save it for you. Now, you don't have to enter it again. Or you can enter the passphrase on every pull or push.
+It will ask to enter your respective passphrase, and keychain will save it for you. Now, you don't have to enter it again. If you don't enter this, you might have to enter the passphrase on every pull or push.
 
 3. Add SSH Keys to GitHub
 
