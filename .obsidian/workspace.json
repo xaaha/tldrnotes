@@ -16,7 +16,9 @@
                 "file": "README.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +68,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Articles/✅ I cancelled my ChatGPT Subscription after 19 months.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +101,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for ✅ I cancelled my ChatGPT Subscription after 19 months"
             }
           },
           {
@@ -102,10 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Articles/✅ I cancelled my ChatGPT Subscription after 19 months.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from ✅ I cancelled my ChatGPT Subscription after 19 months"
             }
           },
           {
@@ -116,7 +128,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -126,7 +140,9 @@
               "type": "outline",
               "state": {
                 "file": "README.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README"
             }
           },
           {
@@ -134,7 +150,9 @@
             "type": "leaf",
             "state": {
               "type": "calendar",
-              "state": {}
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -146,7 +164,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ],
@@ -154,8 +174,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 434.5,
-    "collapsed": true
+    "width": 434.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -172,9 +191,11 @@
   },
   "active": "d7fd69bd13c607fb",
   "lastOpenFiles": [
-    "content/go_union_types.md",
-    "README.md",
     "content/run_cypress_in_parallel.md",
+    "README.md",
+    "content/connect_multiple_gh.md",
+    "content/go_union_types.md",
+    "content/go_struct_vs_interface.md",
     "Articles/✅ I cancelled my ChatGPT Subscription after 19 months.md",
     "🌟 Publish/Go Struct vs interface for typescript dev.md",
     "🌟 Publish/index.md",
@@ -198,8 +219,6 @@
     "Articles/Best Laptop I ever used was 11 year old Macbook with Arch Linux on it.md",
     "Arch Command.md",
     "Articles/✅ Get out of subscription hell with these 4 ideas.md",
-    "Articles/I have never drank Alcohol and here are the social side effects.md",
-    "copilot-conversations/what_happens_when_I_export_a_variable_in_shell_like@2024_09_11_22_11_02.md",
     "copilot-conversations",
     "Data Structures and Algorithms/BruteForce",
     "Articles/MacOs_Apps_2",
