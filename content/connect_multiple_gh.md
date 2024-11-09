@@ -146,6 +146,36 @@ git config user.email "work_email@example.com"
 
 This ensures that commits made in each repository will use the appropriate email address for the respective GitHub account.
 
+### For your old repos on your computer...
+
+If you have repos on your computer cloned before the change, you might get an error that you don't have repository access.
+
+```bash
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+To fix it, change the remote repository url of the repo that's having issues.
+
+```bash
+git remote set-url origin git@xaaha:username/repository.git # or git@work_email
+```
+
+Verify the change with
+
+```bash
+git remote -v
+```
+
+and finally git pull should work
+
+```bash
+git pull
+```
+
 ## Summary of the Setup:
 
 1. Generate separate SSH keys for each account.
@@ -155,4 +185,3 @@ This ensures that commits made in each repository will use the appropriate email
 5. Optionally, set Git user information for each repository.
 
 This setup will allow you to seamlessly manage and authorize multiple GitHub accounts from the same machine without conflicts.
-
