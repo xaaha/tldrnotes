@@ -14,3 +14,4 @@ To the point tech notes
 ## Other 🦦
 
 - [Connect to multiple github account](./content/connect_multiple_gh.md)
+- [Ruby Speedrun](./content/ruby_speedrun.md)
