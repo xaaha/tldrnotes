@@ -11,6 +11,7 @@ To the point tech notes
 - [Go Struct vs Interface for TS dev](./content/go_struct_vs_interface.md)
 - [A Way to Create Union Types in Go](./content/go_union_types.md)
 - [Working with Flags in Go](./content/go_flags.md)
+- [Checking type of value in Go](./content/checking_types_in_go.md)
 
 ## Other 🦦
 
