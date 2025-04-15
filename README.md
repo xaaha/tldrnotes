@@ -17,4 +17,4 @@ To the point tech notes
 
 - [Connect to multiple github account](./content/connect_multiple_gh.md)
 - [Ruby Speedrun](./content/ruby_speedrun.md)
-- [Postgres with Podman](./content/postgres_with_podman.md)
+- [Postgres with Podman](./content/postgresql_with_podman.md)
