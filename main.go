@@ -20,16 +20,16 @@ type FileReader struct{}
 
 // Read opens a file with the given slug and reads its content
 func (*FileReader) Read(slug string) (string, error) {
-	f, err := os.Open(slug + ".md")
+	file, err := os.Open("posts/" + slug + ".md")
 	if err != nil {
 		return "", err
 	}
-	defer f.Close()
-	b, err := io.ReadAll(f)
+	defer file.Close()
+	fileByte, err := io.ReadAll(file)
 	if err != nil {
 		return "", err
 	}
-	return string(b), nil
+	return string(fileByte), nil
 }
 
 // SlugReader interface defines the ability to read content based on a slug
