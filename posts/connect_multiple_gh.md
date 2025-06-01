@@ -1,5 +1,9 @@
 ---
-title: Connect Multiple GitHub Accounts to your Machine
+title: Connect Multiple Github SSH Accounts on a single Computer
+slug: multiple-gh-acc
+author:
+name: xaaha
+email: xaaha@tldrnotes.net
 ---
 
 # Connect to Multiple Github Accounts With SSH from One Computer

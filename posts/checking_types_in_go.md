@@ -1,6 +1,9 @@
 ---
 title: Checking Types in Go
-date: 2024-03-01
+slug: checking-types-in-go
+author:
+  name: xaaha
+  email: xaaha@tldrnotes.net
 ---
 
 # How to check types of value in Go?

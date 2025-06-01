@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 
 	frontmatter "github.com/adrg/frontmatter"
@@ -20,7 +21,7 @@ type FileReader struct{}
 
 // Read opens a file with the given slug and reads its content
 func (*FileReader) Read(slug string) (string, error) {
-	file, err := os.Open("posts/" + slug + ".md")
+	file, err := os.Open(filepath.Join("posts", slug, ".md"))
 	if err != nil {
 		return "", err
 	}
@@ -61,15 +62,20 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 		postMarkdown, err := sl.Read(post.Slug)
 		if err != nil {
 			http.Error(w, "Post not found", http.StatusNotFound)
+			log.Printf("File not found for slug: %s, error: %v", post.Slug, err)
 			return
 		}
 
 		// Parse the frontmatter and extract the remaining markdown content
 		rest, err := frontmatter.Parse(strings.NewReader(postMarkdown), &post)
 		if err != nil {
-			http.Error(w, "Error parsing frontmatter", http.StatusInternalServerError)
-			log.Printf("Frontmatter parse error: %v", err)
-			return
+			// Log the error and proceed with default values for frontmatter
+			log.Printf("Frontmatter parse error for slug: %s, error: %v", post.Slug, err)
+			post.Title = "Untitled" // Set default title
+			post.Author = Author{Name: "Unknown", Email: ""}
+			rest = []byte(
+				postMarkdown,
+			) // Use the entire content as markdown if frontmatter is invalid
 		}
 
 		// Convert the markdown to HTML using goldmark
@@ -83,7 +89,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 		)
 		if err := mdRenderer.Convert(rest, &buf); err != nil {
 			http.Error(w, "Error converting markdown", http.StatusInternalServerError)
-			log.Printf("Markdown conversion error: %v", err)
+			log.Printf("Markdown conversion error for slug: %s, error: %v", post.Slug, err)
 			return
 		}
 
@@ -104,7 +110,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 		// Execute the template and write the response
 		if err := tpl.Execute(w, post); err != nil {
 			http.Error(w, "Error rendering template", http.StatusInternalServerError)
-			log.Printf("Template execution error: %v", err)
+			log.Printf("Template execution error for slug: %s, error: %v", post.Slug, err)
 			return
 		}
 	}

@@ -1,5 +1,9 @@
 ---
-title: Using CLI Flags in Go
+title: Go Flags Cheat Sheet
+slug: go-flag
+author:
+  name: xaaha
+  email: xaaha@tldrnotes.net
 ---
 
 # Working with flags in Go
