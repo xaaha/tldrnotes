@@ -39,16 +39,16 @@ type SlugReader interface {
 
 // Post contains blog post frontmatter data
 type Post struct {
-	Title   string        `toml:"title"`
-	Slug    string        `toml:"slug"`
+	Title   string        `yaml:"title"`
+	Slug    string        `yaml:"slug"`
 	Content template.HTML // Rendered HTML content
-	Author  Author        `toml:"author"`
+	Author  Author        `yaml:"author"`
 }
 
 // Author represents the author of the blog post
 type Author struct {
-	Name  string `toml:"name"`
-	Email string `toml:"email"`
+	Name  string `yaml:"name"`
+	Email string `yaml:"email"`
 }
 
 // PostHandler handles requests for /posts/{slug}
