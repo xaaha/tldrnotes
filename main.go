@@ -12,7 +12,7 @@ import (
 // FileReader can read files with several possible extensions
 type FileReader struct{}
 
-func (fsr FileReader) Read(slug string) (string, error) {
+func (*FileReader) Read(slug string) (string, error) {
 	f, err := os.Open(slug + ".md")
 	if err != nil {
 		return "", err
@@ -47,7 +47,7 @@ func PostHandler(sl SlugReader) http.HandlerFunc {
 func main() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("GET /posts/{slug}", PostHandler(FileReader{}))
+	mux.HandleFunc("GET /posts/{slug}", PostHandler(&FileReader{}))
 
 	err := http.ListenAndServe(":3030", mux)
 	if err != nil {
