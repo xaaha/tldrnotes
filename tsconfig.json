@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"plugins": [
+			{
+				"name": "@astrojs/ts-plugin"
+			}
+		],
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@layouts/*": ["src/layouts/*"]
+		},
+		"verbatimModuleSyntax": true,
+		"strict": true,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"target": "ES2020",
+		"sourceMap": true,
+		"strictNullChecks": true,
+		"outDir": "dist",
+		"esModuleInterop": true,
+		"declaration": true, // generate .d.ts files
+		"declarationDir": "dist/types" // location for declaration files
+	},
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"],
+	"extends": "astro/tsconfigs/base"
+}
