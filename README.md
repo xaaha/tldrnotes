@@ -1,3 +1,8 @@
+## Inspiration:
+
+- https://github.com/evadecker/eva.town
+- https://github.com/silent1mezzo/mckerlie.com
+
 ## TLDR Notes
 
 To the point tech notes
