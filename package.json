@@ -1,0 +1,25 @@
+{
+  "name": "tldrnotes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "exec prettier . --write",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "dependencies": {
+    "@astrojs/ts-plugin": "^1.10.4",
+    "astro": "^5.8.1"
+  },
+  "devDependencies": {
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1",
+    "typescript": "^5.8.3"
+  }
+}
