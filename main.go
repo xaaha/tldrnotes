@@ -2,11 +2,15 @@
 package main
 
 import (
-	"fmt"
+	"bytes"
+	"html/template"
 	"io"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/yuin/goldmark"
+	highlighting "github.com/yuin/goldmark-highlighting/v2"
 )
 
 // FileReader can read files with several possible extensions
@@ -30,17 +34,50 @@ type SlugReader interface {
 	Read(slug string) (string, error)
 }
 
+// PostData contains blogposts fontmatter data
+type PostData struct {
+	Title   string
+	Content template.HTML
+	Author  string
+}
+
 // PostHandler handles requests for /posts/{slug}
 func PostHandler(sl SlugReader) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		slug := r.PathValue("slug")
 		postMarkdown, err := sl.Read(slug)
 		if err != nil {
-			// TODO: Handle different errors in the future
 			http.Error(w, "Post not found", http.StatusNotFound)
 			return
 		}
-		fmt.Fprint(w, postMarkdown)
+
+		mdRenderer := goldmark.New(
+			goldmark.WithExtensions(
+				highlighting.NewHighlighting(
+					highlighting.WithStyle("tokyonight-moon"),
+				),
+			),
+		)
+
+		var buf bytes.Buffer
+		if err = mdRenderer.Convert([]byte(postMarkdown), &buf); err != nil {
+			http.Error(w, "Error converting markdown", http.StatusInternalServerError)
+			return
+		}
+
+		tpl, err := template.ParseFiles("layout.html")
+		if err != nil {
+			http.Error(w, "Error parsing template", http.StatusInternalServerError)
+			return
+		}
+		err = tpl.Execute(w, PostData{
+			Title:   "My First Post",
+			Content: template.HTML(buf.String()),
+			Author:  "xaaha",
+		})
+
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		_, _ = io.Copy(w, &buf)
 	}
 }
 
