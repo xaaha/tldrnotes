@@ -1,4 +1,3 @@
-// Package main is the main stuff
 package main
 
 import (
@@ -7,52 +6,65 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
-// following: https://www.calhoun.io/building-a-blog-part-1/
-
-// FileReader has the ability to read files
-type FileReader struct{}
-
-// Read takes in the file slug and file extension like (.md) to return
-func (*FileReader) Read(slug string, extension string) (string, error) {
-	file, err := os.Open(slug + extension)
-	if err != nil {
-		return "", err
-	}
-	defer file.Close()
-	fileByte, err := io.ReadAll(file)
-	if err != nil {
-		return "", err
-	}
-	return string(fileByte), nil
+// FileReader can read files with several possible extensions
+type FileReader struct {
+	Extensions []string
 }
 
-// SlugReader reads the blogs
+// Read tries each extension in order and returns the content of the first found file
+func (fr *FileReader) Read(slug string) (string, string, error) {
+	for _, ext := range fr.Extensions {
+		filename := slug + ext
+		if _, err := os.Stat(filename); err == nil {
+			f, err := os.Open(filename)
+			if err != nil {
+				return "", "", err
+			}
+			defer f.Close()
+			b, err := io.ReadAll(f)
+			if err != nil {
+				return "", "", err
+			}
+			return string(b), ext, nil
+		}
+	}
+	return "", "", os.ErrNotExist
+}
+
+// SlugReader interface
 type SlugReader interface {
-	Read(slug string) (string, error)
+	Read(slug string) (string, string, error)
 }
 
-// PostHandler handles the mux handler
+// PostHandler handles requests for /posts/{slug}
 func PostHandler(sl SlugReader) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		slug := r.PathValue("slug")
-		postMarkdown, err := sl.Read(slug)
+		content, ext, err := sl.Read(slug)
 		if err != nil {
-			// TODO: Handle different errors in the future http.Error(w, "Post not found", http.StatusNotFound)
+			http.Error(w, "Post not found", http.StatusNotFound)
 			return
 		}
-		fmt.Fprint(w, postMarkdown)
+		// Set Content-Type based on extension
+		switch strings.ToLower(ext) {
+		case ".html":
+			w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		case ".md", ".mdx":
+			w.Header().Set("Content-Type", "text/markdown; charset=utf-8")
+		default:
+			w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		}
+		fmt.Fprint(w, content)
 	}
 }
 
 func main() {
 	mux := http.NewServeMux()
-
-	mux.HandleFunc("GET /posts/{slug}", PostHandler(FileReader{}))
-
-	err := http.ListenAndServe(":3030", mux)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// You can add/remove extensions as you wish
+	reader := &FileReader{Extensions: []string{".md", ".mdx", ".html"}}
+	mux.HandleFunc("GET /posts/{slug}", PostHandler(reader))
+	log.Fatal(http.ListenAndServe(":3030", mux))
 }
