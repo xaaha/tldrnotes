@@ -1,3 +1,7 @@
+---
+title: Go Union Types
+---
+
 Go does not support union types. But, I found a unique way to do somewhat similar things
 
 ```go

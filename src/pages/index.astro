@@ -1,20 +1,17 @@
 ---
-// Welcome to Astro! Everything between these triple-dash code fences
-// is your "component frontmatter". It never runs in the browser.
-console.log("This runs in your terminal, not the browser!");
+import BaseLayout from "../layouts/BaseLayout.astro";
+const posts = await Astro.glob("../blog/*.md");
 ---
 
-<!-- Below is your "component template." It's just HTML, but with
-    some magic sprinkled in to help you build great templates. -->
-<html>
-  <body>
-    <h1>Hello xaaha</h1>
-    Read more <a href="about">about me</a>.
-    <a> </a>
-  </body>
-  <style>
-    h1 {
-      color: orange;
+<BaseLayout title="Home | tldrnotes">
+  <h1>All Blog Posts</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title ?? post.file}</a>
+        </li>
+      ))
     }
-  </style>
-</html>
+  </ul>
+</BaseLayout>

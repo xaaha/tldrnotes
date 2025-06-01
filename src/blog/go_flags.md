@@ -1,3 +1,7 @@
+---
+title: Using CLI Flags in Go
+---
+
 # Working with flags in Go
 
 ```go

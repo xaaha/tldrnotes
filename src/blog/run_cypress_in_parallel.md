@@ -1,3 +1,7 @@
+---
+title: Run Cypress in Parallel
+---
+
 Recently, I was looking for a way to run all my cypress tests in parallel in GitHub actions. The tests were running one after the other and it was taking too long.
 
 So, here is what I did.

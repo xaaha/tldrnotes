@@ -1,0 +1,22 @@
+---
+// src/layouts/BaseLayout.astro
+const { title = "tldrnotes" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">tldrnotes</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

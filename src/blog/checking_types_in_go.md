@@ -1,3 +1,8 @@
+---
+title: Checking Types in Go
+date: 2024-03-01
+---
+
 # How to check types of value in Go?
 
 Simple ways to check types in golang. The last one with swtich statement is the most useful for complex types.

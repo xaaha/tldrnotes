@@ -1,3 +1,7 @@
+---
+title: Connect Multiple GitHub Accounts to your Machine
+---
+
 # Connect to Multiple Github Accounts With SSH from One Computer
 
 To connect and authorize multiple GitHub accounts from the same computer, you can set up SSH configurations for each account. By doing so, you can associate different SSH keys with different GitHub accounts, making it easy to push or pull code from multiple repositories without conflicts. Here’s how to manage multiple GitHub accounts using SSH on the same machine:

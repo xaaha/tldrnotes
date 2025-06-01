@@ -1,3 +1,7 @@
+---
+title: Ruby Cheetsheet
+---
+
 # Ruby
 
 Ruby cheatsheet for someone with programming knowledge

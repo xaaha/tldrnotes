@@ -1,3 +1,7 @@
+---
+title: Struct and Interfaces in Go
+---
+
 ## Go Structs
 
 A Go struct is similar to a TypeScript class in terms of representing data with fields and methods. It’s used to define concrete types that hold data.
