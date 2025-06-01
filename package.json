@@ -15,5 +15,8 @@
   "dependencies": {
     "@astrojs/ts-plugin": "^1.10.4",
     "astro": "^5.8.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
