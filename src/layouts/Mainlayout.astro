@@ -2,13 +2,18 @@
 // import component
 import MainHead from "./MainHead.astro";
 
+interface Props {
+  title?: string;
+  description?: string;
+}
+
 const { title = "Tldr Notes", description = "To the point tech notes" } =
-  Astro.props;
+  Astro.props as Props;
 ---
 
 <html lang="en">
   <MainHead {title} {description} />
   <body>
-    <slot>Welcome to Tldr Notes</slot>
+    <slot>Welcome to Tldr Notes!</slot>
   </body>
 </html>
