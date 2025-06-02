@@ -1,17 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const posts = await Astro.glob("../blog/*.md");
+import Mainlayout from "@layouts/Mainlayout.astro";
 ---
 
-<BaseLayout title="Home | tldrnotes">
-  <h1>All Blog Posts</h1>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <a href={post.url}>{post.frontmatter.title ?? post.file}</a>
-        </li>
-      ))
-    }
-  </ul>
-</BaseLayout>
+<Mainlayout />
+
+<!-- <html> -->
+<!--   <body> -->
+<!--     <h1>Index Page</h1> -->
+<!--   </body> -->
+<!-- </html> -->
+<!-- <style> -->
+<!--   h1 { -->
+<!--     color: orange; -->
+<!--   } -->
+<!-- </style> -->

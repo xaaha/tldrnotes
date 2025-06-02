@@ -1,0 +1,14 @@
+---
+// import component
+import MainHead from "./MainHead.astro";
+
+const { title = "Tldr Notes", description = "To the point tech notes" } =
+  Astro.props;
+---
+
+<html lang="en">
+  <MainHead {title} {description} />
+  <body>
+    <slot>Welcome to Tldr Notes</slot>
+  </body>
+</html>

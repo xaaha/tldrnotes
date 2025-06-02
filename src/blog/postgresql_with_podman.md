@@ -1,32 +1,36 @@
 # Comprehensive Guide: PostgreSQL with Podman
 
 ## 1. Basic Podman Commands
+
 First, essential Podman commands you'll need:
 
-| **Command**                             | **Description**                                                              |
-| --------------------------------------- | ---------------------------------------------------------------------------- |
-| `podman ps`                             | List all running containers                                                  |
-| `podman ps -a`                          | List all containers (including stopped ones)                                 |
-| `podman start <container-name>`         | Start an existing container                                                 |
-| `podman stop <container-name>`          | Stop a running container                                                    |
-| `podman rm <container-name>`            | Remove a stopped container                                                  |
-| `podman logs <container-name>`          | View container logs                                                         |
-| `podman exec -it <container-name> bash` | Access container's shell                                                    |
-| `podman inspect <container-name>`       | View detailed container information                                         |
+| **Command**                             | **Description**                              |
+| --------------------------------------- | -------------------------------------------- |
+| `podman ps`                             | List all running containers                  |
+| `podman ps -a`                          | List all containers (including stopped ones) |
+| `podman start <container-name>`         | Start an existing container                  |
+| `podman stop <container-name>`          | Stop a running container                     |
+| `podman rm <container-name>`            | Remove a stopped container                   |
+| `podman logs <container-name>`          | View container logs                          |
+| `podman exec -it <container-name> bash` | Access container's shell                     |
+| `podman inspect <container-name>`       | View detailed container information          |
 
 ## 2. Setting Up PostgreSQL Container
 
 ### 2.1. Pull the PostgreSQL Image
+
 ```bash
 podman pull postgres:17.4
 ```
 
 ### 2.2. Create a Volume for Data Persistence
+
 ```bash
 podman volume create postgres_data
 ```
 
 ### 2.3. Run PostgreSQL with Volume
+
 ```bash
 podman run --name postgresql \
   -e POSTGRES_USER=root \
@@ -35,12 +39,14 @@ podman run --name postgresql \
   -p 5432:5432 \
   docker.io/library/postgres:17.4
 ```
- 
+
 > [!Note]
-> If you don't provide the `--name postgresql` podman will assign a random name, which confused me. 
+> If you don't provide the `--name postgresql` podman will assign a random name, which confused me.
+
 ## 3. Managing Your PostgreSQL Container
 
 ### 3.1. Basic Container Operations
+
 ```bash
 # Start container
 podman start postgresql
@@ -55,7 +61,7 @@ podman rm postgresql
 ### 3.2. Accessing PostgreSQL
 
 > [!Important]
-> How to get to postgres cli 
+> How to get to postgres cli
 
 ```bash
 # Access psql terminal
@@ -63,7 +69,9 @@ podman exec -it postgresql psql -U root
 ```
 
 ### 3.3. Basic Database Operations
+
 Once in psql terminal:
+
 ```sql
 -- List databases
 \l
@@ -85,6 +93,7 @@ CREATE TABLE test_table (
 ## 4. Volume Management
 
 ### 4.1. Volume Commands
+
 ```bash
 # List volumes
 podman volume ls
@@ -94,6 +103,7 @@ podman volume inspect postgres_data
 ```
 
 ### 4.2. Verify Volume Mounting
+
 ```bash
 # Check volume mounting
 podman inspect postgresql
@@ -102,6 +112,7 @@ podman inspect postgresql
 ## 5. Backup and Restore
 
 ### 5.1. Creating Database Backup
+
 ```bash
 # Access container
 podman exec -it postgresql bash
@@ -117,6 +128,7 @@ podman cp postgresql:/tmp/my_database_backup.sql ./my_database_backup.sql
 ```
 
 ### 5.2. Restoring from Backup
+
 ```bash
 # Copy backup to container
 podman cp ./my_database_backup.sql postgresql:/tmp/my_database_backup.sql
@@ -129,6 +141,7 @@ psql -U root -d my_database < /tmp/my_database_backup.sql
 ## 6. Automation and Advanced Setup
 
 ### 6.1. Auto-restart Configuration
+
 ```bash
 podman run --name postgresql \
   --restart=always \
@@ -140,15 +153,18 @@ podman run --name postgresql \
 ```
 
 ### 6.2. Using Same Volume on Different Machines
+
 To use the same volume on different machines:
 
 1. **Back up the volume content**:
+
    ```bash
    # Create a tar archive of the volume
    podman volume export postgres_data > postgres_data.tar
    ```
 
 2. **On the target machine**:
+
    ```bash
    # Create a new volume
    podman volume create postgres_data
@@ -162,19 +178,21 @@ To use the same volume on different machines:
 ## 7. Troubleshooting Tips
 
 1. **Connection Issues**:
+
    ```bash
    # Check port mapping
    podman port postgresql
    ```
 
 2. **Password Reset**:
+
    ```bash
    # Access container shell
    podman exec -it postgresql bash
-   
+
    # Access psql
    psql -U root
-   
+
    # Reset password
    ALTER USER root WITH PASSWORD 'new_password';
    ```
