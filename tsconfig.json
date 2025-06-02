@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
       }
     ],
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ]
     },
     "verbatimModuleSyntax": true,
     "strict": true,
@@ -21,7 +26,12 @@
     "declaration": true,
     "declarationDir": "dist/types"
   },
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "extends": "astro/tsconfigs/base"
 }
