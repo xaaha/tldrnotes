@@ -1,6 +1,9 @@
 {
   "name": "tldrnotes",
   "version": "1.0.0",
+  "browserslist": [
+    "defaults"
+  ],
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,7 +18,9 @@
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@astrojs/ts-plugin": "^1.10.4",
-    "astro": "^5.8.1"
+    "astro": "^5.8.1",
+    "postcss": "^8.5.4",
+    "postcss-preset-env": "^10.2.0"
   },
   "devDependencies": {
     "prettier": "3.5.3",
