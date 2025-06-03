@@ -1,6 +1,8 @@
 ---
 // import component
+import Footer from "@components/Footer.astro";
 import MainHead from "./MainHead.astro";
+import Nav from "@components/Nav.astro";
 
 // style import
 import "src/styles/global.css";
@@ -17,6 +19,8 @@ const { title = "Tldr Notes", description = "To the point tech notes" } =
 <html lang="en">
   <MainHead {title} {description} />
   <body>
+    <Nav />
     <slot>Welcome to Tldr Notes!</slot>
+    <Footer />
   </body>
 </html>

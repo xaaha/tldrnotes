@@ -16,7 +16,7 @@
     },
     "verbatimModuleSyntax": true,
     "strict": true,
-    "module": "NodeNext",
+    "module": "esnext",
     "moduleResolution": "NodeNext",
     "target": "ES2020",
     "sourceMap": true,
