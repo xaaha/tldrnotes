@@ -20,7 +20,9 @@ const { title = "Tldr Notes", description = "To the point tech notes" } =
   <MainHead {title} {description} />
   <body>
     <Nav />
-    <slot>Welcome to Tldr Notes!</slot>
+    <main>
+      <slot>Welcome to Tldr Notes!</slot>
+    </main>
     <Footer />
   </body>
 </html>

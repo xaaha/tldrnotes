@@ -1,10 +1,29 @@
-<html>
-  <body>
-    <h1>I am xaaha and I build tools for developers</h1>
-  </body>
-</html>
-<style>
-  h1 {
-    color: orange;
-  }
-</style>
+---
+import Mainlayout from "@layouts/Mainlayout.astro";
+import Link from "@components/Link.astro";
+---
+
+<Mainlayout>
+  <section class="container about" aria-label="About Me">
+    <img
+      src="../../public/images/hi.jpg"
+      alt="Animated Hi"
+      width="200"
+      height="330"
+    />
+    <div>
+      <h1 class="h1">About Me</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
+        voluptatem illo. Reprehenderit at voluptatem reiciendis vitae molestias
+        rem labore, debitis maxime architecto quos eligendi ipsam laboriosam
+        expedita quasi. Nobis, explicabo.
+      </p>
+    </div>
+    <Link
+      href="mailto:pratik@tldrnotes.net"
+      style="primary"
+      text="Contact Me"
+    />
+  </section>
+</Mainlayout>
