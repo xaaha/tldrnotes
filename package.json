@@ -18,7 +18,7 @@
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@astrojs/ts-plugin": "^1.10.4",
-    "astro": "^5.8.1",
+    "astro": "^5.9.1",
     "astro-icon": "^1.1.5",
     "postcss": "^8.5.4",
     "postcss-preset-env": "^10.2.0"
