@@ -5,19 +5,28 @@ import Link from "@components/Link.astro";
 
 <Mainlayout>
   <section class="container about" aria-label="About Me">
-    <img src="../../images/hi.jpg" alt="Animated Hi" width="200" height="330" />
-    <div>
+    <div class="center-contact">
+      <img
+        src="../../images/hi.jpg"
+        alt="Animated Hi"
+        width="200"
+        height="330"
+      />
+    </div>
+    <div class="about-content">
       <h1 class="h1">About Me</h1>
       <p>
-        Hi, I'm Xaaha. I enjoy learning and building software and I'm constantly
-        learning about new technologies, and as I do, I take concise, focused
-        notes in my Obsidian Vault. This blog features those notes.
+        Hi, I'm Xaaha. I enjoy learning and building software. I'm constantly
+        learning new technologies, and as I do, I take concise, focused notes in
+        my Obsidian Vault. This blog features those notes.
       </p>
     </div>
-    <Link
-      href="mailto:pratik@tldrnotes.net"
-      style="primary"
-      text="Contact Me"
-    />
+    <div class="center-contact">
+      <Link
+        href="mailto:pratik@tldrnotes.net"
+        style="primary"
+        text="Contact Me"
+      />
+    </div>
   </section>
 </Mainlayout>
