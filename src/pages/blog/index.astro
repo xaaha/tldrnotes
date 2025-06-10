@@ -1,11 +1,37 @@
 ---
 import Mainlayout from "@layouts/Mainlayout.astro";
+import type { MarkdownInstance } from "astro";
+
+const blogPosts = import.meta.glob<MarkdownInstance<Frontmatter>>("./*.md", {
+  eager: true,
+});
+
+// 2. Extract and format the data
+const posts = Object.entries(blogPosts).map(([filepath, post]) => {
+  return {
+    title:
+      post.frontmatter.title ||
+      filepath.split("/").pop()?.replace(".md", "") ||
+      "Untitled",
+    url: filepath.replace(".md", ""),
+    date: post.frontmatter.date ? new Date(post.frontmatter.date) : undefined,
+  };
+});
+
+// Optional: Sort by date (newest first)
+const sortedPosts = posts.sort(
+  (a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0),
+);
 ---
 
 <Mainlayout>
   <ul>
-    <li>
-      <a href="./checking-types-in-go"> Checking Types in Go </a>
-    </li>
+    {
+      sortedPosts.map((post) => (
+        <li>
+          <a href={post.url}>{post.title}</a>
+        </li>
+      ))
+    }
   </ul>
 </Mainlayout>
