@@ -38,14 +38,17 @@ const sortedPosts = posts.sort((a, b) => {
 ---
 
 <Mainlayout>
-  <ul>
-    {
-      sortedPosts.map((post) => (
-        <li>
-          <a href={post.url}>{post.title}</a>
-          {post.date && <span> ({post.date.toLocaleDateString()})</span>}
-        </li>
-      ))
-    }
-  </ul>
+  <section class="container" aria-label="New Blog Post">
+    <h1 class="h1">New Blog Posts</h1>
+    <div class="post-container">
+      {
+        sortedPosts.map((post) => (
+          <li>
+            <a href={post.url}>{post.title}</a>
+            {post.date && <span> ({post.date.toLocaleDateString()})</span>}
+          </li>
+        ))
+      }
+    </div>
+  </section>
 </Mainlayout>
