@@ -1,6 +1,7 @@
 import { promisify } from "node:util";
 import { exec } from "node:child_process";
 
+// Make string url friendly
 export function slugify(text: string): string {
   return text
     .toString()
@@ -12,7 +13,11 @@ export function slugify(text: string): string {
     .replace(/-+$/, "");
 }
 
-export function formatDate(date: string) {
+export function formatDate(date: string | null) {
+  if (date === null) {
+    throw new Error("Blog post must contain date frontmatter");
+  }
+
   return new Date(date).toLocaleDateString("en-US", { timeZone: "UTC" });
 }
 
