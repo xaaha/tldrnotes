@@ -1,27 +1,40 @@
 ---
 import Mainlayout from "@layouts/Mainlayout.astro";
 import type { MarkdownInstance } from "astro";
+import { getLastGitDate } from "@scripts/utils.ts";
 
-const blogPosts = import.meta.glob<MarkdownInstance<Frontmatter>>("./*.md", {
-  eager: true,
-});
+const blogPosts = import.meta.glob<MarkdownInstance<Frontmatter>>(
+  "./*.{md,mdx}",
+  {
+    eager: true,
+  },
+);
 
 // 2. Extract and format the data
-const posts = Object.entries(blogPosts).map(([filepath, post]) => {
-  return {
-    title:
-      post.frontmatter.title ||
-      filepath.split("/").pop()?.replace(".md", "") ||
-      "Untitled",
-    url: filepath.replace(".md", ""),
-    date: post.frontmatter.date ? new Date(post.frontmatter.date) : undefined,
-  };
-});
-
-// Optional: Sort by date (newest first)
-const sortedPosts = posts.sort(
-  (a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0),
+const posts = await Promise.all(
+  Object.entries(blogPosts).map(async ([filepath, post]) => {
+    return {
+      title:
+        post.frontmatter.title ||
+        filepath
+          .split("/")
+          .pop()
+          ?.replace(/\.(md|mdx)$/, "") ||
+        "Untitled",
+      url: filepath.replace(/\.(md|mdx)$/, ""),
+      date: post.frontmatter.date
+        ? new Date(post.frontmatter.date)
+        : await getLastGitDate(filepath),
+    };
+  }),
 );
+
+// sort post newest first
+const sortedPosts = posts.sort((a, b) => {
+  const timeA = a.date ? new Date(a.date).setHours(12, 0, 0, 0) : 0;
+  const timeB = b.date ? new Date(b.date).setHours(12, 0, 0, 0) : 0;
+  return timeB - timeA;
+});
 ---
 
 <Mainlayout>
@@ -30,6 +43,7 @@ const sortedPosts = posts.sort(
       sortedPosts.map((post) => (
         <li>
           <a href={post.url}>{post.title}</a>
+          {post.date && <span> ({post.date.toLocaleDateString()})</span>}
         </li>
       ))
     }

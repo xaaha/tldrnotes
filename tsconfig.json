@@ -12,12 +12,15 @@
       ],
       "@layouts/*": [
         "src/layouts/*"
+      ],
+      "@scripts/*": [
+        "src/scripts/*"
       ]
     },
     "verbatimModuleSyntax": true,
     "strict": true,
     "module": "esnext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node16",
     "target": "ES2020",
     "sourceMap": true,
     "strictNullChecks": true,
