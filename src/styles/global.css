@@ -483,6 +483,7 @@ button {
 
 /* cards */
 .card {
+  position: relative; /* Key to making the stretched link work*/
   display: grid;
   background-color: hsl(var(--muted));
   padding: var(--space-md);
@@ -511,6 +512,29 @@ button {
     display: grid;
     gap: var(--space-xs);
   }
+}
+
+/* Make other links/buttons clickable on top of the stretched link  
+ * for blog post card*/
+.card .badge,
+.card .content small a {
+  position: relative;
+  z-index: 1;
+}
+
+/* This is the main link inside the card's title */
+.card .content .h3 a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.card .badge {
+  --accent: var(--txt);
 }
 
 /* posts */

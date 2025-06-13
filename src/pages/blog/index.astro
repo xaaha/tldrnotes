@@ -1,54 +1,55 @@
 ---
+// src/pages/blog/index.astro
+
 import Mainlayout from "@layouts/Mainlayout.astro";
 import type { MarkdownInstance } from "astro";
 import { getLastGitDate } from "@scripts/utils.ts";
-// import PostCard from "@components/PostCard.astro";
+import PostCard from "@components/PostCard.astro"; // <-- Uncomment this
 
-const blogPosts = import.meta.glob<MarkdownInstance<Frontmatter>>(
+const allPosts = import.meta.glob<MarkdownInstance<Frontmatter>>(
   "./*.{md,mdx}",
   {
     eager: true,
   },
 );
 
+// 1. Filter out draft posts
+const blogPosts = Object.values(allPosts).filter(
+  (post) => !post.frontmatter.draft,
+);
+
 // 2. Extract and format the data
 const posts = await Promise.all(
-  Object.entries(blogPosts).map(async ([filepath, post]) => {
+  blogPosts.map(async (post) => {
+    // The date logic remains the same
+    const lastModifiedDate = await getLastGitDate(post.file);
+    const date = post.frontmatter.date
+      ? new Date(post.frontmatter.date)
+      : lastModifiedDate;
+
     return {
-      title:
-        post.frontmatter.title ||
-        filepath
-          .split("/")
-          .pop()
-          ?.replace(/\.(md|mdx)$/, "") ||
-        "Untitled",
-      url: filepath.replace(/\.(md|mdx)$/, ""),
-      date: post.frontmatter.date
-        ? new Date(post.frontmatter.date)
-        : await getLastGitDate(filepath),
+      frontmatter: post.frontmatter,
+      url: post.url,
+      date: date, // for sorting
     };
   }),
 );
 
-// sort post newest first
-const sortedPosts = posts.sort((a, b) => {
-  const timeA = a.date ? new Date(a.date).setHours(12, 0, 0, 0) : 0;
-  const timeB = b.date ? new Date(b.date).setHours(12, 0, 0, 0) : 0;
-  return timeB - timeA;
-});
+// 3. Sort posts newest first
+const sortedPosts = posts.sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
 <Mainlayout>
-  <section class="container" aria-label="New Blog Post">
-    <h1 class="h1">Recents</h1>
+  <section class="container" aria-label="New Blog Posts">
+    <h1 class="h1">Recent Posts</h1>
     <div class="post-container">
       {
         sortedPosts.map((post) => (
-          <li>
-            <a href={post.url}>{post.title}</a>
-            {post.date && <span> ({post.date.toLocaleDateString()})</span>}
-          </li>
-          <!-- <PostCard frontmatter={post.url} url={post.url} tagType="h2" /> -->
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h2"
+          />
         ))
       }
     </div>

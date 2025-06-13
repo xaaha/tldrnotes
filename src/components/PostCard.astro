@@ -1,51 +1,89 @@
 ---
+// src/components/PostCard.astro
+
 import { Image } from "astro:assets";
 import { slugify, formatDate } from "@scripts/utils";
-import Link from "@components/Link.astro";
-const { frontmatter, url, tagType } = Astro.props;
+
+// The props remain the same
+const { frontmatter, url, tagType = "h2" } = Astro.props;
+
 const Tag = tagType;
+
 const {
-  category = "tech",
-  image,
-  author = "xaaha",
   title,
   date,
   description,
-} = frontmatter as Frontmatter;
+  image,
+  category,
+  author = "xaaha",
+} = frontmatter;
 ---
 
 <article class="card">
-  <small>
-    <a href={`/category/${slugify(category)}`} class="badge"></a>
-  </small>
-  <a href={url} aria-hidden="true" tabindex="-1">
-    {
-      image?.src && image?.alt && (
+  {
+    category && (
+      <small>
+        <a href={`/category/${slugify(category)}`} class="badge">
+          {category}
+        </a>
+      </small>
+    )
+  }
+
+  {
+    image?.src && (
+      <div aria-hidden="true">
         <Image
           src={image.src}
-          alt={image.alt}
+          alt={image.alt ?? ""}
           width="400"
           height="250"
           format="webp"
           fit="cover"
           quality={80}
-          aspectRatio="4:1"
+          aspectRatio="16:9"
         />
-      )
-    }
-  </a>
+      </div>
+    )
+  }
+
   <div class="content">
     <div>
       <Tag class="h3">
         <a href={url}>{title}</a>
       </Tag>
       <small>
-        by <a href={`/author/${slugify(author)}/`}>{author}</a> • {
-          formatDate(date)
-        }
+        by <a href={`/author/${slugify(author)}/`}>{author}</a>
+        {date && ` • ${formatDate(date)}`}
       </small>
     </div>
     <p>{description}</p>
-    <Link href={url} text="Read Post" style="secondary" />
   </div>
 </article>
+
+<style>
+  /* Scoped styles for the postcard */
+  .card {
+    /* If there's no image, the content will stack nicely because of the grid layout */
+    gap: var(--space-sm);
+  }
+
+  /* This container for the image ensures it has proper spacing when it exists */
+  .card > [aria-hidden="true"] {
+    margin-inline: calc(var(--space-md) * -1);
+    margin-block-start: calc(var(--space-sm) * -1);
+  }
+
+  /* When an image is present, this gives it a nice rounded top effect */
+  .card > [aria-hidden="true"] img {
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    object-fit: cover;
+  }
+
+  /* When NO image is present, the badge should have some top margin */
+  .card:not(:has(div[aria-hidden="true"])) .badge {
+    margin-block-start: 0;
+  }
+</style>
