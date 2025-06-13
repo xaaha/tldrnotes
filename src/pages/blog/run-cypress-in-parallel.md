@@ -2,7 +2,6 @@
 title: Run Cypress in Parallel
 date: 2025-02-01
 author: xaaha
-image: { src: "image/gopher.svg", alt: "Gopher on a hike" }
 description: Running Cypress in Parallel without paying for Cypress Cloud
 draft: false
 category: Reference Docs

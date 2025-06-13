@@ -2,7 +2,11 @@
 title: Using PostgreSQL with Podman
 date: 2025-05-01
 author: xaaha
-image: { src: "image/gopher.svg", alt: "Gopher on a hike" }
+image:
+  {
+    src: "/images/using_postgresql_with_podman.jpg",
+    alt: "Using PostgreSQL with Podman",
+  }
 description: Comprehensive guide to using podman container for PostgreSQL
 draft: false
 category: Reference Docs

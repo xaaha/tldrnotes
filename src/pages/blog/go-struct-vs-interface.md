@@ -2,7 +2,6 @@
 title: Struct and Interfaces in Go
 date: 2024-06-01
 author: xaaha
-image: { src: "image/gopher.svg", alt: "Gopher on a hike" }
 description: Struct vs Interface in Go
 draft: false
 category: Reference Docs

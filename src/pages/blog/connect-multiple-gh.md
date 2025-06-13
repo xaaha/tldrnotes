@@ -2,7 +2,7 @@
 title: Connect Multiple GitHub Accounts to your Machine
 date: 2024-04-01
 author: xaaha
-image: { src: "image/gopher.svg", alt: "Gopher on a hike" }
+image: { src: "/images/GitHub_Logo.png", alt: "Github" }
 description: How to connect multiple GitHub Accounts in your machine
 draft: false
 category: Reference Docs

@@ -2,7 +2,7 @@
 title: Go Union Types
 date: 2024-07-01
 author: xaaha
-image: { src: "image/gopher.svg", alt: "Gopher on a hike" }
+image: { src: "/images/gopher.png", alt: "Go ABC" }
 description: A way to implement Union Type in Go
 draft: false
 category: Reference Docs

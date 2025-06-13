@@ -2,7 +2,6 @@
 title: Checking Types in Go
 date: 2024-03-01
 author: xaaha
-image: { src: "image/gopher.svg", alt: "Gopher on a hike" }
 description: A simple way to check types in golang.
 draft: false
 category: Reference Docs
