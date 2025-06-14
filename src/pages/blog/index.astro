@@ -34,7 +34,9 @@ const posts = await Promise.all(
 );
 
 // Sort posts newest first
-const sortedPosts = posts.sort((a, b) => b.date?.getTime() - a.date?.getTime());
+const sortedPosts = posts.sort(
+  (a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0),
+);
 ---
 
 <Mainlayout>
