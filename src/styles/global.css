@@ -442,21 +442,11 @@ button {
   }
 }
 
-/* posts */
-
+/* POST CONTAINER - Make it a single column */
 .post-container {
   margin-block: var(--space-md);
   display: grid;
-  gap: var(--space-md);
-  align-items: start;
-
-  @media (--md) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media (--lg) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  gap: var(--space-lg);
 }
 
 .badge {
@@ -483,7 +473,6 @@ button {
 
 /* cards */
 .card {
-  position: relative; /* Key to making the stretched link work*/
   display: grid;
   background-color: hsl(var(--muted));
   padding: var(--space-md);
