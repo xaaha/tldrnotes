@@ -7,11 +7,9 @@ import { slugify, formatDate } from "@scripts/utils";
 export interface Props {
   frontmatter: Frontmatter;
   url: string | undefined;
-  // It's good practice to make optional props explicit with `?`
   tagType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-// Now `Astro.props` is fully typed according to the `Props` interface.
 const { frontmatter, url, tagType = "h2" } = Astro.props;
 
 const Tag = tagType;
