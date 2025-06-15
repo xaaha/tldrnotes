@@ -6,7 +6,6 @@ interface Frontmatter {
   title: string;
   date: string | null;
   description: string;
-  author?: string;
   image?: { src: string; alt: string };
   draft?: boolean;
   category?: string;

@@ -3,7 +3,6 @@ import Mainlayout from "@layouts/Mainlayout.astro";
 import PostHeader from "@components/PostHeader.astro";
 
 const {
-  author = "xaaha",
   category = "tech",
   date,
   description,
@@ -13,7 +12,7 @@ const {
 ---
 
 <Mainlayout {title} {description}>
-  <PostHeader {title} {description} {date} {category} {image} {author} />
+  <PostHeader {title} {description} {date} {category} {image} />
   <div class="post-content">
     <div class="content">
       <slot />

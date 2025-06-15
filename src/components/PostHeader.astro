@@ -2,13 +2,7 @@
 import { Image } from "astro:assets";
 import { formatDate, slugify } from "@scripts/utils";
 
-const {
-  category = "tech",
-  title,
-  author = "xaaha",
-  date,
-  image,
-} = Astro.props as Frontmatter;
+const { category = "tech", title, date, image } = Astro.props as Frontmatter;
 ---
 
 <header>
@@ -18,7 +12,6 @@ const {
     </small>
     <h1 class="h2">{title}</h1>
     <p>
-      by <a href={`/author/${slugify(author)}`}>{author}</a>
       on {formatDate(date)}
     </p>
   </div>

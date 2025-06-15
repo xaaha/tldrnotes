@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { slugify, formatDate } from "@scripts/utils";
+import { Icon } from "astro-icon/components";
 
 // Define the shape of the component's props object.
 // Astro automatically associates this `Props` export with `Astro.props`.
@@ -14,14 +15,7 @@ const { frontmatter, url, tagType = "h2" } = Astro.props;
 
 const Tag = tagType;
 
-const {
-  title,
-  date,
-  description,
-  image,
-  category,
-  author = "xaaha",
-} = frontmatter;
+const { title, date, description, image, category } = frontmatter;
 ---
 
 <article class="card">
@@ -58,8 +52,14 @@ const {
         <a href={url}>{title}</a>
       </Tag>
       <small>
-        by <a href={`/author/${slugify(author)}/`}>{author}</a>
-        {date && ` • ${formatDate(date)}`}
+        {
+          date && (
+            <span class="date-info">
+              <Icon name="tabler:calendar-week" class="date-icon" />
+              {formatDate(date)}
+            </span>
+          )
+        }
       </small>
     </div>
     <p>{description}</p>
@@ -67,7 +67,17 @@ const {
 </article>
 
 <style>
-  /* Scoped styles for the postcard */
+  .date-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  .date-icon {
+    /* a tiny vertical adjustment for perfect alignment */
+    transform: translateY(-1px);
+  }
+
   .card {
     /* If there's no image, the content will stack nicely because of the grid layout */
     gap: var(--space-sm);
