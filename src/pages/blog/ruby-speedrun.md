@@ -5,7 +5,7 @@ author: xaaha
 image: { src: "/images/ruby.png", alt: "Ruby programming language" }
 description: Ruby for experienced dev
 draft: false
-category: Reference Docs
+category: Ruby
 ---
 
 # Ruby

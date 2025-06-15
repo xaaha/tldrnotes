@@ -4,7 +4,7 @@ date: 2024-05-01
 author: xaaha
 description: Go Flags Basics
 draft: false
-category: Reference Docs
+category: go
 ---
 
 # Working with flags in Go

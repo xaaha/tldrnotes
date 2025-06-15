@@ -4,7 +4,7 @@ date: 2025-02-01
 author: xaaha
 description: Running Cypress in Parallel without paying for Cypress Cloud
 draft: false
-category: Reference Docs
+category: Cypress Testing
 ---
 
 Recently, I was looking for a way to run all my cypress tests in parallel in GitHub actions. The tests were running one after the other and it was taking too long.

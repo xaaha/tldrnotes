@@ -9,7 +9,7 @@ image:
   }
 description: Comprehensive guide to using podman container for PostgreSQL
 draft: false
-category: Reference Docs
+category: PostgreSQL Podman
 ---
 
 # Comprehensive Guide: PostgreSQL with Podman

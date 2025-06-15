@@ -4,7 +4,7 @@ date: 2024-06-01
 author: xaaha
 description: Struct vs Interface in Go
 draft: false
-category: Reference Docs
+category: go
 ---
 
 ## Go Structs

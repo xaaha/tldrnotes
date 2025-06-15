@@ -4,7 +4,7 @@ date: 2024-03-01
 author: xaaha
 description: A simple way to check types in golang.
 draft: false
-category: Reference Docs
+category: go
 ---
 
 # How to check types of value in Go?

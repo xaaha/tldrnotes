@@ -5,7 +5,7 @@ author: xaaha
 image: { src: "/images/gopher.png", alt: "Go ABC" }
 description: A way to implement Union Type in Go
 draft: false
-category: Reference Docs
+category: go
 ---
 
 Go does not support union types. But, I found a unique way to do somewhat similar things
