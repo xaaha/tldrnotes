@@ -5,7 +5,7 @@ author: xaaha
 # image: { src: "/images/GitHub_Logo.png", alt: "Github" }
 description: How to connect multiple GitHub Accounts in your machine
 draft: false
-category: How To
+category: GitHub CI/CD
 ---
 
 # Connect to Multiple Github Accounts With SSH from One Computer
