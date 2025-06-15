@@ -1,9 +1,9 @@
 ---
+// src/components/PostCard.astro
 import { Image } from "astro:assets";
-import { slugify, formatDate } from "@scripts/utils";
 import { Icon } from "astro-icon/components";
+import { slugify, formatDate } from "@scripts/utils";
 
-// Define the shape of the component's props object.
 // Astro automatically associates this `Props` export with `Astro.props`.
 export interface Props {
   frontmatter: Frontmatter;
@@ -11,94 +11,206 @@ export interface Props {
   tagType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
+// Set default values and destructure props.
 const { frontmatter, url, tagType = "h2" } = Astro.props;
-
-const Tag = tagType;
+const HeadingTag = tagType;
 
 const { title, date, description, image, category } = frontmatter;
+
+// Splits a string like "React TypeScript" into an array of individual tags.
+// This is robust and handles extra spaces.
+const tags = category
+  ? category.split(" ").filter((tag) => tag.trim() !== "")
+  : [];
 ---
 
-<article class="card">
-  {
-    category && (
-      <small>
-        <a href={`/category/${slugify(category)}`} class="badge">
-          {category}
-        </a>
-      </small>
-    )
-  }
-
+<article class="postcard">
+  <!-- Optional Image Thumbnail -->
   {
     image?.src && (
-      <div aria-hidden="true">
+      <a
+        href={url}
+        class="postcard__image-link"
+        aria-hidden="true"
+        tabindex="-1"
+      >
         <Image
           src={image.src}
-          alt={image.alt ?? ""}
-          width="400"
-          height="250"
+          alt={image.alt ?? `Thumbnail for ${title}`}
+          width="130"
+          height="130"
           format="webp"
           fit="cover"
           quality={80}
-          aspectRatio="16:9"
+          aspectRatio="1:1"
         />
-      </div>
+      </a>
     )
   }
 
-  <div class="content">
-    <div>
-      <Tag class="h3">
-        <a href={url}>{title}</a>
-      </Tag>
-      <small>
-        {
-          date && (
-            <span class="date-info">
-              <Icon name="tabler:calendar-week" class="date-icon" />
-              {formatDate(date)}
-            </span>
-          )
-        }
-      </small>
+  <!-- Main Content Area -->
+  <div class="postcard__content">
+    <HeadingTag class="postcard__title">
+      <a href={url}>{title}</a>
+    </HeadingTag>
+
+    <div class="postcard__metadata">
+      {
+        date && (
+          <>
+            <Icon name="tabler:calendar-week" class="postcard__icon" />
+            <time datetime={date}>{formatDate(date)}</time>
+          </>
+        )
+      }
     </div>
-    <p>{description}</p>
+
+    <p class="postcard__description">{description}</p>
+
+    <!-- Tags Container -->
+    {
+      tags.length > 0 && (
+        <div class="postcard__tags">
+          {tags.map((tag) => (
+            <a href={`/tags/${slugify(tag)}`} class="postcard__tag-badge">
+              {tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
   </div>
 </article>
 
 <style>
-  .date-info {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4em;
+  /* Base styles for the postcard container */
+  .postcard {
+    /* Use flexbox for a horizontal layout by default */
+    display: flex;
+    align-items: flex-start; /* Align items to the top of the container */
+    gap: 1.75rem; /* Space between image and content */
+    padding-block: 2.5rem; /* Vertical padding */
+    border-bottom: 1px solid #e5e7eb; /* Subtle separator */
+    text-decoration: none;
+    color: #111827; /* Dark gray text color for high contrast */
   }
 
-  .date-icon {
-    /* a tiny vertical adjustment for perfect alignment */
-    transform: translateY(-1px);
+  /* Transition for a subtle fade-in effect on hover (optional) */
+  .postcard:hover {
+    background-color: #f9fafb; /* Very light gray on hover */
   }
 
-  .card {
-    /* If there's no image, the content will stack nicely because of the grid layout */
-    gap: var(--space-sm);
+  /* Responsive layout for mobile: stack vertically */
+  @media (max-width: 640px) {
+    .postcard {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
   }
 
-  /* This container for the image ensures it has proper spacing when it exists */
-  .card > [aria-hidden="true"] {
-    margin-inline: calc(var(--space-md) * -1);
-    margin-block-start: calc(var(--space-sm) * -1);
+  /* THUMBNAIL IMAGE STYLES */
+  .postcard__image-link {
+    display: block;
+    flex-shrink: 0; /* Prevents image from shrinking */
   }
 
-  /* When an image is present, this gives it a nice rounded top effect */
-  .card > [aria-hidden="true"] img {
-    border-top-left-radius: var(--radius-md);
-    border-top-right-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+  .postcard__image-link :global(img) {
+    /* Target the generated <img> tag */
+    width: 130px;
+    height: 130px;
     object-fit: cover;
+    border-radius: 0.5rem; /* Soft rounded corners */
+    background-color: #f3f4f6; /* Placeholder color if image is loading */
+    transition: transform 0.3s ease;
   }
 
-  /* When NO image is present, the badge should have some top margin */
-  .card:not(:has(div[aria-hidden="true"])) .badge {
-    margin-block-start: 0;
+  .postcard:hover .postcard__image-link :global(img) {
+    transform: scale(1.03); /* Slight zoom on hover */
+  }
+
+  @media (max-width: 640px) {
+    .postcard__image-link :global(img) {
+      width: 100%;
+      height: 180px; /* Make image taller when stacked */
+    }
+  }
+
+  /* CONTENT STYLES */
+  .postcard__content {
+    flex-grow: 1; /* Allow content to fill remaining space */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Title Styles */
+  .postcard__title {
+    font-size: 1.375rem; /* Prominent but not overpowering */
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .postcard__title a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from postcard */
+    background-image: linear-gradient(
+      #818cf8,
+      #818cf8
+    ); /* A nice accent color */
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: 0% 100%;
+    transition: background-size 0.3s ease;
+  }
+
+  .postcard__title a:hover {
+    background-size: 100% 2px;
+  }
+
+  /* Metadata (Date) Styles */
+  .postcard__metadata {
+    font-size: 0.875rem;
+    color: #6b7280; /* Lighter text for metadata */
+    margin-block: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .postcard__icon {
+    transform: translateY(-1px); /* Pixel-perfect icon alignment */
+    font-size: 1.1em;
+  }
+
+  /* Description Styles */
+  .postcard__description {
+    margin: 0;
+    color: #4b5563; /* Slightly darker than metadata */
+    line-height: 1.6;
+  }
+
+  /* TAGS STYLES */
+  .postcard__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .postcard__tag-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25em 0.75em;
+    background-color: #e5e7eb; /* Neutral background */
+    border-radius: 9999px; /* Pill shape */
+    text-decoration: none;
+    color: #374151;
+    transition: all 0.2s ease;
+  }
+
+  .postcard__tag-badge:hover {
+    background-color: #d1d5db; /* Slightly darker on hover */
+    color: #111827;
   }
 </style>
