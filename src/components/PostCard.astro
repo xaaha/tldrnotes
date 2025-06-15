@@ -1,5 +1,4 @@
 ---
-// src/components/PostCard.astro
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { slugify, formatDate } from "@scripts/utils";
@@ -85,15 +84,12 @@ const tags = category
     align-items: flex-start;
     gap: 1.75rem;
     padding-block: 2.5rem;
-    /* Use the --muted variable for the border */
     border-bottom: 1px solid hsl(var(--muted));
     text-decoration: none;
-    /* Use the --txt variable for the main text color */
     color: hsl(var(--txt));
     transition: background-color 0.2s ease;
   }
 
-  /* Very subtle hover effect using the --muted variable */
   .postcard:hover {
     background-color: hsl(var(--muted) / 0.5);
   }
@@ -117,7 +113,6 @@ const tags = category
     height: 130px;
     object-fit: cover;
     border-radius: 0.5rem;
-    /* Use the --muted variable for the placeholder background */
     background-color: hsl(var(--muted));
     transition: transform 0.3s ease;
   }
@@ -151,7 +146,6 @@ const tags = category
   .postcard__title a {
     text-decoration: none;
     color: inherit;
-    /* Use the --accent variable for the underline */
     background-image: linear-gradient(hsl(var(--accent)), hsl(var(--accent)));
     background-repeat: no-repeat;
     background-size: 0% 2px;
@@ -166,7 +160,6 @@ const tags = category
   /* Metadata (Date) Styles */
   .postcard__metadata {
     font-size: 0.875rem;
-    /* Use the main text color with reduced opacity for a lighter shade */
     color: hsl(var(--txt) / 0.7);
     margin-block: 0.5rem 1rem;
     display: flex;
@@ -200,17 +193,14 @@ const tags = category
     font-size: 0.75rem;
     font-weight: 500;
     padding: 0.25em 0.75em;
-    /* Use the --muted variable for the background */
     background-color: hsl(var(--muted));
     border-radius: 9999px;
     text-decoration: none;
-    /* Use main text color with opacity for tag text */
     color: hsl(var(--txt) / 0.8);
     transition: all 0.2s ease;
   }
 
   .postcard__tag-badge:hover {
-    /* Use the accent color with opacity for the hover state */
     background-color: hsl(var(--accent) / 0.2);
     color: hsl(var(--txt));
   }
