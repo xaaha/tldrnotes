@@ -4,21 +4,17 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { slugify, formatDate } from "@scripts/utils";
 
-// Astro automatically associates this `Props` export with `Astro.props`.
 export interface Props {
   frontmatter: Frontmatter;
   url: string | undefined;
   tagType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-// Set default values and destructure props.
 const { frontmatter, url, tagType = "h2" } = Astro.props;
 const HeadingTag = tagType;
 
 const { title, date, description, image, category } = frontmatter;
 
-// Splits a string like "React TypeScript" into an array of individual tags.
-// This is robust and handles extra spaces.
 const tags = category
   ? category.split(" ").filter((tag) => tag.trim() !== "")
   : [];
@@ -85,19 +81,21 @@ const tags = category
 <style>
   /* Base styles for the postcard container */
   .postcard {
-    /* Use flexbox for a horizontal layout by default */
     display: flex;
-    align-items: flex-start; /* Align items to the top of the container */
-    gap: 1.75rem; /* Space between image and content */
-    padding-block: 2.5rem; /* Vertical padding */
-    border-bottom: 1px solid #e5e7eb; /* Subtle separator */
+    align-items: flex-start;
+    gap: 1.75rem;
+    padding-block: 2.5rem;
+    /* Use the --muted variable for the border */
+    border-bottom: 1px solid hsl(var(--muted));
     text-decoration: none;
-    color: #111827; /* Dark gray text color for high contrast */
+    /* Use the --txt variable for the main text color */
+    color: hsl(var(--txt));
+    transition: background-color 0.2s ease;
   }
 
-  /* Transition for a subtle fade-in effect on hover (optional) */
+  /* Very subtle hover effect using the --muted variable */
   .postcard:hover {
-    background-color: #f9fafb; /* Very light gray on hover */
+    background-color: hsl(var(--muted) / 0.5);
   }
 
   /* Responsive layout for mobile: stack vertically */
@@ -111,40 +109,40 @@ const tags = category
   /* THUMBNAIL IMAGE STYLES */
   .postcard__image-link {
     display: block;
-    flex-shrink: 0; /* Prevents image from shrinking */
+    flex-shrink: 0;
   }
 
   .postcard__image-link :global(img) {
-    /* Target the generated <img> tag */
     width: 130px;
     height: 130px;
     object-fit: cover;
-    border-radius: 0.5rem; /* Soft rounded corners */
-    background-color: #f3f4f6; /* Placeholder color if image is loading */
+    border-radius: 0.5rem;
+    /* Use the --muted variable for the placeholder background */
+    background-color: hsl(var(--muted));
     transition: transform 0.3s ease;
   }
 
   .postcard:hover .postcard__image-link :global(img) {
-    transform: scale(1.03); /* Slight zoom on hover */
+    transform: scale(1.03);
   }
 
   @media (max-width: 640px) {
     .postcard__image-link :global(img) {
       width: 100%;
-      height: 180px; /* Make image taller when stacked */
+      height: 180px;
     }
   }
 
   /* CONTENT STYLES */
   .postcard__content {
-    flex-grow: 1; /* Allow content to fill remaining space */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
 
   /* Title Styles */
   .postcard__title {
-    font-size: 1.375rem; /* Prominent but not overpowering */
+    font-size: 1.375rem;
     font-weight: 600;
     line-height: 1.2;
     margin: 0;
@@ -152,11 +150,9 @@ const tags = category
 
   .postcard__title a {
     text-decoration: none;
-    color: inherit; /* Inherit color from postcard */
-    background-image: linear-gradient(
-      #818cf8,
-      #818cf8
-    ); /* A nice accent color */
+    color: inherit;
+    /* Use the --accent variable for the underline */
+    background-image: linear-gradient(hsl(var(--accent)), hsl(var(--accent)));
     background-repeat: no-repeat;
     background-size: 0% 2px;
     background-position: 0% 100%;
@@ -170,7 +166,8 @@ const tags = category
   /* Metadata (Date) Styles */
   .postcard__metadata {
     font-size: 0.875rem;
-    color: #6b7280; /* Lighter text for metadata */
+    /* Use the main text color with reduced opacity for a lighter shade */
+    color: hsl(var(--txt) / 0.7);
     margin-block: 0.5rem 1rem;
     display: flex;
     align-items: center;
@@ -178,14 +175,15 @@ const tags = category
   }
 
   .postcard__icon {
-    transform: translateY(-1px); /* Pixel-perfect icon alignment */
+    transform: translateY(-1px);
     font-size: 1.1em;
   }
 
   /* Description Styles */
   .postcard__description {
     margin: 0;
-    color: #4b5563; /* Slightly darker than metadata */
+    /* Use the main text color with slightly less reduced opacity */
+    color: hsl(var(--txt) / 0.85);
     line-height: 1.6;
   }
 
@@ -202,15 +200,18 @@ const tags = category
     font-size: 0.75rem;
     font-weight: 500;
     padding: 0.25em 0.75em;
-    background-color: #e5e7eb; /* Neutral background */
-    border-radius: 9999px; /* Pill shape */
+    /* Use the --muted variable for the background */
+    background-color: hsl(var(--muted));
+    border-radius: 9999px;
     text-decoration: none;
-    color: #374151;
+    /* Use main text color with opacity for tag text */
+    color: hsl(var(--txt) / 0.8);
     transition: all 0.2s ease;
   }
 
   .postcard__tag-badge:hover {
-    background-color: #d1d5db; /* Slightly darker on hover */
-    color: #111827;
+    /* Use the accent color with opacity for the hover state */
+    background-color: hsl(var(--accent) / 0.2);
+    color: hsl(var(--txt));
   }
 </style>
