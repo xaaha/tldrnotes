@@ -2,17 +2,13 @@
 import Mainlayout from "@layouts/Mainlayout.astro";
 import PostHeader from "@components/PostHeader.astro";
 
-const {
-  category = "tech",
-  date,
-  description,
-  image,
-  title,
-} = Astro.props as Frontmatter;
+const { frontmatter } = Astro.props;
+const { category, date, description, image, title } =
+  frontmatter as Frontmatter;
 ---
 
 <Mainlayout {title} {description}>
-  <PostHeader {title} {description} {date} {category} {image} />
+  <PostHeader {title} {date} {category} {image} />
   <div class="post-content">
     <div class="content">
       <slot />

@@ -2,14 +2,22 @@
 import { Image } from "astro:assets";
 import { formatDate, slugify } from "@scripts/utils";
 
-const { category = "tech", title, date, image } = Astro.props as Frontmatter;
+const { category, title, date, image } = Astro.props as Frontmatter;
 ---
 
 <header>
+  <!-- TODO: Replace this with PostCard.astro tags -->
   <div class="container">
-    <small>
-      <a href={`/category/${slugify(category)}`} class="badge">{category}</a>
-    </small>
+    {
+      category && (
+        <small>
+          <a href={`/category/${slugify(category)}`} class="badge">
+            {category}
+          </a>
+        </small>
+      )
+    }
+
     <h1 class="h2">{title}</h1>
     <p>
       on {formatDate(date)}

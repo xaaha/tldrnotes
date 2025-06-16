@@ -1,4 +1,4 @@
-declare var myString: string;
+declare let myString: string;
 declare function myFunction(): boolean;
 
 // blog's frontmatter

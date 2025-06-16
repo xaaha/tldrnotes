@@ -1,4 +1,5 @@
 ---
+layout: "../../layouts/BlogPostLayout.astro"
 title: Using PostgreSQL with Podman
 date: 2025-05-01
 author: xaaha
