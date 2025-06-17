@@ -1,9 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { formatDate } from "@scripts/utils";
-import Tags from "@components/Tags.astro";
 
-const { category, title, date, image } = Astro.props as Frontmatter;
+const { title, date, image } = Astro.props as Frontmatter;
 ---
 
 <header>
@@ -12,7 +11,6 @@ const { category, title, date, image } = Astro.props as Frontmatter;
     <p>
       on {formatDate(date)}
     </p>
-    <!-- <Tags {category} /> -->
   </div>
   {
     image?.src && image?.alt && (
@@ -26,6 +24,7 @@ const { category, title, date, image } = Astro.props as Frontmatter;
         quality={80}
         aspectRatio="5:2"
         class="hero-image"
+        loading="eager"
       />
     )
   }
