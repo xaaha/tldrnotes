@@ -8,23 +8,26 @@ const tags = category
   : [];
 ---
 
-<footer>
-  <div class="container">
-    {
-      tags.length > 0 && (
-        <div class="postcard__tags">
-          {tags.map((tag) => (
-            <a href={`/tags/${slugify(tag)}`} class="postcard__tag-badge">
-              {tag}
-            </a>
-          ))}
-        </div>
-      )
-    }
-  </div>
-</footer>
+{
+  tags.length > 0 && (
+    <div class="postcard__tags">
+      {tags.map((tag) => (
+        <a href={`/tags/${slugify(tag)}`} class="postcard__tag-badge">
+          {tag}
+        </a>
+      ))}
+    </div>
+  )
+}
 
 <style>
+  .postcard__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
   .postcard__tag-badge {
     display: inline-block;
     font-size: 0.75rem;

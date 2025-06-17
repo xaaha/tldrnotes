@@ -1,12 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import { formatDate, slugify } from "@scripts/utils";
+import { formatDate } from "@scripts/utils";
+import Tags from "@components/Tags.astro";
 
 const { category, title, date, image } = Astro.props as Frontmatter;
-
-const tags = category
-  ? category.split(" ").filter((tag) => tag.trim() !== "")
-  : [];
 ---
 
 <header>
@@ -15,17 +12,7 @@ const tags = category
     <p>
       on {formatDate(date)}
     </p>
-    {
-      tags.length > 0 && (
-        <div class="postcard__tags">
-          {tags.map((tag) => (
-            <a href={`/tags/${slugify(tag)}`} class="postcard__tag-badge">
-              {tag}
-            </a>
-          ))}
-        </div>
-      )
-    }
+    <!-- <Tags {category} /> -->
   </div>
   {
     image?.src && image?.alt && (
@@ -43,22 +30,3 @@ const tags = category
     )
   }
 </header>
-
-<style>
-  .postcard__tag-badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.25em 0.75em;
-    background-color: hsl(var(--txt) / 0.07);
-    border-radius: 9999px;
-    text-decoration: none;
-    color: hsl(var(--txt) / 0.8);
-    transition: all 0.2s ease;
-  }
-
-  .postcard__tag-badge:hover {
-    background-color: hsl(var(--accent) / 0.2);
-    color: hsl(var(--txt));
-  }
-</style>

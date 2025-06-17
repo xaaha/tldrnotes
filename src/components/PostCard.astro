@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { slugify, formatDate } from "@scripts/utils";
+import Tags from "@components/Tags.astro";
+import { formatDate } from "@scripts/utils";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -13,10 +14,6 @@ const { frontmatter, url, tagType = "h2" } = Astro.props;
 const HeadingTag = tagType;
 
 const { title, date, description, image, category } = frontmatter;
-
-const tags = category
-  ? category.split(" ").filter((tag) => tag.trim() !== "")
-  : [];
 ---
 
 <article class="postcard">
@@ -62,18 +59,7 @@ const tags = category
 
     <p class="postcard__description">{description}</p>
 
-    <!-- Tags Container -->
-    {
-      tags.length > 0 && (
-        <div class="postcard__tags">
-          {tags.map((tag) => (
-            <a href={`/tags/${slugify(tag)}`} class="postcard__tag-badge">
-              {tag}
-            </a>
-          ))}
-        </div>
-      )
-    }
+    <Tags {category} />
   </div>
 </article>
 
@@ -179,30 +165,5 @@ const tags = category
     color: hsl(var(--txt) / 0.85);
     line-height: 1.6;
     font-size: 1.145rem;
-  }
-
-  /* TAGS STYLES */
-  .postcard__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.25rem;
-  }
-
-  .postcard__tag-badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.25em 0.75em;
-    background-color: hsl(var(--txt) / 0.07);
-    border-radius: 9999px;
-    text-decoration: none;
-    color: hsl(var(--txt) / 0.8);
-    transition: all 0.2s ease;
-  }
-
-  .postcard__tag-badge:hover {
-    background-color: hsl(var(--accent) / 0.2);
-    color: hsl(var(--txt));
   }
 </style>
