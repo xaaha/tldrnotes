@@ -1,7 +1,6 @@
 ---
 title: Ruby Cheetsheet
 date: 2024-08-01
-author: xaaha
 image: { src: "/images/ruby.png", alt: "Ruby programming language" }
 description: Ruby for experienced dev
 draft: false

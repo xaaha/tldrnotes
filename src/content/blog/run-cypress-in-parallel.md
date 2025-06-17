@@ -1,8 +1,6 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
 title: Run Cypress in Parallel
 date: 2025-02-01
-author: xaaha
 description: Running Cypress in Parallel without paying for Cypress Cloud
 draft: false
 category: Cypress Testing

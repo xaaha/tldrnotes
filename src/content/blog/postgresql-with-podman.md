@@ -1,8 +1,6 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
 title: Using PostgreSQL with Podman
 date: 2025-05-01
-author: xaaha
 image:
   {
     src: "/images/using_postgresql_with_podman.jpg",

@@ -1,41 +1,16 @@
 ---
+import { getCollection } from "astro:content";
 import Mainlayout from "@layouts/Mainlayout.astro";
-import type { MarkdownInstance } from "astro";
-import { getLastGitDate } from "@scripts/utils.ts";
 import PostCard from "@components/PostCard.astro";
 
-const allPosts = import.meta.glob<MarkdownInstance<Frontmatter>>(
-  "./*.{md,mdx}",
-  {
-    eager: true,
-  },
-);
+// get blog posts from the collection.
+const allPosts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
 
-// Filter out draft posts
-const blogPosts = Object.values(allPosts).filter(
-  (post) => !post.frontmatter.draft,
-);
-
-// Extract and format the data
-const posts = await Promise.all(
-  blogPosts.map(async (post: MarkdownInstance<Frontmatter>) => {
-    // get last git date
-    const lastModifiedDate = await getLastGitDate(post.file);
-    const date = post.frontmatter.date
-      ? new Date(post.frontmatter.date)
-      : lastModifiedDate;
-
-    return {
-      frontmatter: post.frontmatter,
-      url: post.url,
-      date: date, // for sorting
-    };
-  }),
-);
-
-// Sort posts newest first
-const sortedPosts = posts.sort(
-  (a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0),
+// 2. Sort the posts by date, newest first.
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 ---
 
@@ -46,8 +21,8 @@ const sortedPosts = posts.sort(
       {
         sortedPosts.map((post) => (
           <PostCard
-            frontmatter={post.frontmatter}
-            url={post.url}
+            frontmatter={post.data}
+            url={`/blog/${post.slug}`}
             tagType="h2"
           />
         ))

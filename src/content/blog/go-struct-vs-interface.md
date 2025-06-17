@@ -1,7 +1,6 @@
 ---
 title: Struct and Interfaces in Go
 date: 2024-06-01
-author: xaaha
 description: Struct vs Interface in Go
 draft: false
 category: go

@@ -1,7 +1,6 @@
 ---
 title: Checking Types in Go
 date: 2024-03-01
-author: xaaha
 description: A simple way to check types in golang.
 draft: false
 category: go
