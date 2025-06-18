@@ -4,7 +4,7 @@ declare function myFunction(): boolean;
 // blog's frontmatter
 interface Frontmatter {
   title: string;
-  date: string | null;
+  date: Date | null
   description: string;
   image?: { src: string; alt: string };
   draft?: boolean;

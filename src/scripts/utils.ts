@@ -13,7 +13,7 @@ export function slugify(text: string): string {
     .replace(/-+$/, "");
 }
 
-export function formatDate(date: string | null) {
+export function formatDate(date: Date | null) {
   if (date === null) {
     throw new Error("Blog post must contain date frontmatter");
   }
