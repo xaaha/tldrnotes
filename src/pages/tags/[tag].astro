@@ -1,0 +1,67 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { slugify } from "@scripts/utils";
+import Mainlayout from "@layouts/Mainlayout.astro";
+import PostCard from "@components/PostCard.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog", ({ data }) => {
+    // filter out draft and posts with missing categories
+    return data.draft !== true && data.category;
+  });
+
+  // A map for each tag and the list of posts associated with it
+  const allTags = new Map<string, CollectionEntry<"blog">[]>();
+
+  for (const post of allPosts) {
+    const postTags = post.data
+      .category!.split(" ")
+      .filter((tag) => tag.trim() !== "");
+    for (const tag of postTags) {
+      // If the map doesn't have the tag yet, add it with this post
+      if (!allTags.has(tag)) {
+        allTags.set(tag, [post]);
+      } else {
+        // If the tag already exists, push this post to its array
+        allTags.get(tag)!.push(post);
+      }
+    }
+  }
+
+  // Convert the map into the format getStaticPaths expects
+  return Array.from(allTags.entries()).map(([tag, posts]) => {
+    return {
+      params: { tag: slugify(tag) },
+      props: { originalTag: tag, posts },
+    };
+  });
+}
+
+// Get the props for the current page from getStaticPaths
+const { originalTag, posts } = Astro.props;
+
+// Sort the posts for this specific tag page by date
+const sortedPosts = posts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Mainlayout title={`Posts tagged with "${originalTag}"`}>
+  <section class="container" aria-label={`Posts tagged with ${originalTag}`}>
+    <h1 class="h1">
+      Tag: <span>{originalTag}</span>
+    </h1>
+
+    <div class="post-container">
+      {
+        sortedPosts.map((post) => (
+          <PostCard
+            frontmatter={post.data}
+            url={`/blog/${post.id}`}
+            tagType="h2"
+          />
+        ))
+      }
+    </div>
+  </section>
+</Mainlayout>
