@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import BlogPostLayout from "@layouts/BlogPostLayout.astro";
 
@@ -10,7 +11,7 @@ export async function getStaticPaths() {
   });
 
   return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -21,12 +22,11 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <!-- 
-  This is where the magic happens. We pass the post's frontmatter 
-  (entry.data) to the layout, and then we render the post's actual 
+  We pass the post's frontmatter (entry.data) to the layout, and then we render the post's actual 
   Markdown content using the <Content /> component.
 -->
 <BlogPostLayout frontmatter={entry.data}>

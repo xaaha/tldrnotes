@@ -22,7 +22,7 @@ const sortedPosts = allPosts.sort(
         sortedPosts.map((post) => (
           <PostCard
             frontmatter={post.data}
-            url={`/blog/${post.slug}`}
+            url={`/blog/${post.id}`}
             tagType="h2"
           />
         ))
