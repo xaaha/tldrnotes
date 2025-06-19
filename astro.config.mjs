@@ -7,8 +7,7 @@ export default defineConfig({
   integrations: [icon(), mdx()],
   markdown: {
     shikiConfig: {
-      theme: "tokyo-night",
+      theme: "one-dark-pro",
     },
   },
 });
-

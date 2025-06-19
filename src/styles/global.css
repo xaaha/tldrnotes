@@ -655,3 +655,9 @@ header {
 .sidebar [aria-label="Blog categories"] {
   margin-block: 0;
 }
+
+/* code block in markdown file */
+.astro-code,
+.astro-code span {
+  padding: 0.5rem;
+}
