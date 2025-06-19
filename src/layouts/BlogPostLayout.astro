@@ -18,3 +18,28 @@ const { category, date, description, image, title } =
   </div>
   <PostFooter {category} />
 </Mainlayout>
+
+<style>
+  :global(table) {
+    border-collapse: collapse;
+    width: 100%; /* take up full width of its container */
+    margin-block: 1.5em; /* space above and below the table */
+  }
+
+  :global(table caption) {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-block-end: 1em;
+  }
+
+  :global(table td),
+  :global(table th) {
+    border: 1px solid hsl(var(--txt) / 0.85);
+    padding: 0.5em 1em;
+    text-align: left;
+  }
+
+  :global(table th) {
+    background-color: hsl(var(--muted) / 0.5);
+  }
+</style>

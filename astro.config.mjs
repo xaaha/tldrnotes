@@ -5,4 +5,10 @@ import mdx from "@astrojs/mdx";
 
 export default defineConfig({
   integrations: [icon(), mdx()],
+  markdown: {
+    shikiConfig: {
+      theme: "tokyo-night",
+    },
+  },
 });
+
