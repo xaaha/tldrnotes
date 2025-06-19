@@ -69,10 +69,9 @@ h6 {
 
   /* dynamic font sizes adapted from utopia.fyi */
   --fs-sm: clamp(0.78rem, calc(0.75rem + 0.17vw), 0.88rem);
-  --fs-md: clamp(1.13rem, calc(1.04rem + 0.43vw), 1.38rem);
+  --fs-md: clamp(1.125rem, calc(1.0625rem + 0.26vw), 1.25rem); /*desktop font*/
   --fs-lg: clamp(1.35rem, calc(1.22rem + 0.64vw), 1.72rem);
-  --fs-xl: clamp(1.94rem, calc(1.69rem + 1.29vw), 2.69rem);
-  /* --fs-2xl: clamp(2.8rem, calc(2.31rem + 2.43vw), 4.2rem); */ /*larger font size ~60px*/
+  --fs-xl: clamp(1.75rem, calc(1.6rem + 0.75vw), 2rem);
   --fs-2xl: clamp(2rem, calc(2.8rem + 1.2vw), 2.4rem);
 
   /* line heights */
@@ -658,6 +657,6 @@ header {
 
 /* code block in markdown file */
 .astro-code,
-.astro-code span {
+.astro-code {
   padding: 0.5rem;
 }
