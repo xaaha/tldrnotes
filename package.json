@@ -20,6 +20,7 @@
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@iconify-json/tabler": "^1.2.19",
+    "@r4ai/remark-callout": "^0.6.2",
     "astro": "^5.9.1",
     "astro-icon": "^1.1.5",
     "postcss": "^8.5.4",
