@@ -1,7 +1,7 @@
 ## Inspiration:
 
-- https://github.com/evadecker/eva.town
 - https://github.com/silent1mezzo/mckerlie.com
+- https://timneubauer.dev/#hello
 
 ## TLDR Notes
 

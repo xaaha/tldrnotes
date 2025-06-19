@@ -762,28 +762,20 @@ header {
 /* CORRECTED COPY CODE BUTTON STYLES */
 .copy-code-button {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  /* Increase padding for larger button size */
-  padding: 0.5em 1rem;
+  /* Use space variables for positioning */
+  top: var(--space-2xs);
+  right: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-sm);
   background-color: hsl(var(--muted));
   color: hsl(var(--txt) / 0.8);
   border: 1px solid hsl(var(--txt) / 0.1);
   border-radius: var(--radius-sm);
-  /* Increase font size */
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   font-family: inherit;
-  /* Add min-width to ensure button doesn't get too small */
-  min-width: 80px;
+  min-width: 5rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-}
-
-@media (prefers-color-scheme: dark) {
-  .copy-code-button {
-    /* This color matches your one-dark-pro theme's background */
-    background-color: #282c34;
-  }
+  background-color: hsl(var(--accent--dark));
 }
 
 .copy-code-button:hover {
