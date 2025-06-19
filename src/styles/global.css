@@ -699,7 +699,7 @@ header {
   border-left: 4px solid;
   border-radius: var(--radius-md);
   padding: var(--space-md);
-  margin-block: 2em;
+  /* margin-block: 2em; */ /* add spce around the callouts */
 
   /* local variables to generate theme-aware colors */
   background-color: hsl(
@@ -728,7 +728,7 @@ header {
 
 /* Style the callout body to manage paragraph spacing */
 .content [data-callout-body] > :first-child {
-  margin-top: 0.5em;
+  margin-top: 0em;
 }
 
 .content [data-callout-body] > :last-child {
@@ -752,4 +752,48 @@ header {
 /* ERROR */
 .content [data-callout-type="error"] {
   --callout-color-hue: 0; /* Red */
+}
+
+/* IMPORTANT */
+.content [data-callout-type="important"] {
+  --callout-color-hue: 145; /* Green */
+}
+
+/* CORRECTED COPY CODE BUTTON STYLES */
+.copy-code-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  /* Increase padding for larger button size */
+  padding: 0.5em 1rem;
+  background-color: hsl(var(--muted));
+  color: hsl(var(--txt) / 0.8);
+  border: 1px solid hsl(var(--txt) / 0.1);
+  border-radius: var(--radius-sm);
+  /* Increase font size */
+  font-size: 0.9rem;
+  font-family: inherit;
+  /* Add min-width to ensure button doesn't get too small */
+  min-width: 80px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  .copy-code-button {
+    /* This color matches your one-dark-pro theme's background */
+    background-color: #282c34;
+  }
+}
+
+.copy-code-button:hover {
+  background-color: hsl(var(--accent) / 0.2);
+  color: hsl(var(--txt));
+  border-color: hsl(var(--accent) / 0.5);
+}
+
+/* Visual feedback after clicking */
+.copy-code-button.copied {
+  background-color: hsl(var(--accent) / 0.8);
+  color: hsl(var(--bkg));
 }
