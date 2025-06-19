@@ -205,6 +205,11 @@ h1 span {
   color: hsl(var(--accent));
 }
 
+.content h1 {
+  font-size: var(--fs-2xl); /* Use the same variable as your main h1 */
+  max-width: var(--content-sm); /* Or adjust as needed */
+}
+
 .h2,
 .content h2 {
   font-size: var(--fs-xl);

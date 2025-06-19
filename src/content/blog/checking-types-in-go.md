@@ -6,7 +6,7 @@ draft: false
 category: go
 ---
 
-# How to check types of value in Go?
+## How to check types of value in Go?
 
 Simple ways to check types in golang. The last one with swtich statement is the most useful for complex types.
 
