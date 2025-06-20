@@ -760,33 +760,55 @@ header {
 }
 
 /* COPY CODE */
+.code-block-wrapper {
+  position: relative;
+}
+
+/* Base styles for the new icon button */
 .copy-code-button {
   position: absolute;
-  top: var(--space-2xs);
-  right: var(--space-2xs);
-  padding: var(--space-2xs) var(--space-sm);
-  color: hsl(var(--txt) / 0.8);
+  top: var(--space-sm);
+  right: var(--space-sm);
+  display: grid;
+  place-items: center;
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
+  padding: 0;
+  border-radius: var(--radius-md);
+
+  background-color: hsl(var(--muted));
+  color: hsl(var(--txt));
   border: 1px solid hsl(var(--txt) / 0.1);
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-sm);
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: min-content;
+
   cursor: pointer;
-  transition: var(--transition-ease-fast);
-  background-color: hsl(var(--accent--dark));
+  transition: all 0.2s ease-in-out;
+
+  /* Initially hidden, appears on hover of the parent */
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.code-block-wrapper:hover .copy-code-button {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .copy-code-button:hover {
   background-color: hsl(var(--accent) / 0.2);
-  color: hsl(var(--txt));
   border-color: hsl(var(--accent) / 0.5);
 }
 
-/* Visual feedback after clicking */
+/* Styling for the SVG icon inside the button */
+.copy-code-button svg {
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
+  stroke: currentColor; /* Inherits the button's color */
+  stroke-width: 2;
+}
+
+/* Style for the visual feedback after clicking */
 .copy-code-button.copied {
-  background-color: hsl(var(--accent) / 0.8);
-  color: hsl(var(--bkg));
+  /* Use a success green color */
+  background-color: hsl(145 63% 42% / 0.8);
+  color: #fff;
 }
