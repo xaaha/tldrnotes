@@ -44,16 +44,13 @@ const { category, date, description, image, title } =
                 const textToCopy = codeElement.innerText;
                 try {
                   await navigator.clipboard.writeText(textToCopy);
-
-                  // Visual feedback
                   copyButton.textContent = "Copied!";
                   copyButton.classList.add("copied");
-
-                  // Reset button after 2 seconds
+                  // Reset button after clicking
                   setTimeout(() => {
                     copyButton.textContent = copyButtonLabel;
                     copyButton.classList.remove("copied");
-                  }, 2000);
+                  }, 700);
                 } catch (err) {
                   console.error("Failed to copy text: ", err);
                   copyButton.textContent = "Error";

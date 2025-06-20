@@ -765,7 +765,6 @@ header {
   top: var(--space-2xs);
   right: var(--space-2xs);
   padding: var(--space-2xs) var(--space-sm);
-  background-color: hsl(var(--muted));
   color: hsl(var(--txt) / 0.8);
   border: 1px solid hsl(var(--txt) / 0.1);
   border-radius: var(--radius-sm);
