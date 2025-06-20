@@ -60,15 +60,14 @@ process.stdout.write(`${JSON.stringify(specs)}\n`);
 ```
 
 > [!NOTE]
-> Pleaes note: You can't use .ts file extension here even if you are using typescript for your cypress because we need to run this file directly with node.
+> You can't use .ts file extension here even if you are using typescript for your cypress because we need to run this file directly with node.
 
 Inside the `getAllFiles()` I have put cypress/e2e path where all my tests are located. Modify this as needed.
 
 If you run this file with the command node locateCypressSpecsToRun.js you should see,
 
-//pretty version
-
 ```js
+//pretty version
 specs = [
   "cypress/e2e/test1.cy.ts",
   "cypress/e2e/test2.cy.ts",

@@ -668,7 +668,31 @@ header {
   margin-bottom: 0;
 }
 
-/* 3. Specific Callout Types
+/* Style for <strong> tags inside post content */
+.content strong {
+  font-weight: 700;
+  color: hsl(var(--accent));
+  /* color: hsl(var(--_hue), 50%, 75%); */
+}
+
+/* Darkmode override for the strong element */
+@media (prefers-color-scheme: dark) {
+  .content strong {
+    color: hsl(var(--_hue), 50%, 75%);
+  }
+}
+
+/* Style for <em> tags inside post content */
+.content em {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.content hr {
+  border: 1px solid hsl(var(--txt) / 0.15);
+}
+
+/* Specific Callout Types
 /* Override the --callout-color-hue for each type.
 /* ================================================================== */
 
