@@ -65,7 +65,7 @@ h6 {
   --content-xs: 20ch;
   --content-sm: 30ch;
   --content-md: 45ch;
-  --content-lg: 65ch;
+  --content-lg: 88ch;
 
   /* dynamic font sizes adapted from utopia.fyi */
   --fs-sm: clamp(0.78rem, calc(0.75rem + 0.17vw), 0.88rem);
@@ -205,21 +205,26 @@ h1 span {
   color: hsl(var(--accent));
 }
 
+.content {
+  max-width: var(--content-lg);
+  margin-inline: auto;
+}
+
 .content h1 {
-  font-size: var(--fs-2xl); /* Use the same variable as your main h1 */
-  max-width: var(--content-sm); /* Or adjust as needed */
+  font-size: var(--fs-2xl);
+  /* max-width: var(--content-sm); */
 }
 
 .h2,
 .content h2 {
   font-size: var(--fs-xl);
-  max-width: var(--content-sm);
+  /* max-width: var(--content-sm); */
 }
 
 .h3,
 .content h3 {
   font-size: var(--fs-lg);
-  max-width: var(--content-md);
+  /* max-width: var(--content-md); */
 }
 
 .h4,
@@ -588,19 +593,10 @@ header {
   margin-block-end: var(--space-lg);
 }
 
-/* code block in markdown file */
-.astro-code {
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-}
-
 /* ================================================================== */
 /* STYLES FOR BLOCKQUOTES & DATA-DRIVEN CALLOUTS                      */
 /* ================================================================== */
-
 /* 1. Standard Blockquote Styling
-/* Targets "> text" block.
 /* ================================================================== */
 
 .content blockquote {
@@ -617,7 +613,7 @@ header {
 }
 
 /* 2. Base Callout Styling
-/* This targets the main <div data-callout> container.
+/* for <div data-callout> 
 /* ================================================================== */
 
 .content [data-callout] {
@@ -688,15 +684,18 @@ header {
   --callout-color-hue: 145; /* Green */
 }
 
-/* COPY CODE */
 .code-block-wrapper {
-  position: relative; /* for stacking context if needed */
+  position: relative;
   display: grid;
+  max-width: var(--content-lg);
 }
 
-/* The code block itself is placed in the grid */
 .code-block-wrapper > pre.astro-code {
   grid-area: 1 / 1 / 2 / 2;
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 /* The button is placed in the SAME grid cell and aligned */

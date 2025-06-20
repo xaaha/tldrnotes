@@ -11,6 +11,8 @@ draft: false
 category: PostgreSQL Podman
 ---
 
+Recently I needed to use different version of `PostgreSQL` on the same machine. While I found several way to version control PostgreSQL, they weren't an elegent solution. So, I decided to use container (podman) to use different version of PostgreSQL.
+
 # Comprehensive Guide: PostgreSQL with Podman
 
 ## 1. Basic Podman Commands
@@ -74,7 +76,7 @@ podman rm postgresql
 ### 3.2. Accessing PostgreSQL
 
 > [!Important]
-> How to get to postgres cli
+> This is how you get to postgres CLI.
 
 ```bash
 # Access psql terminal

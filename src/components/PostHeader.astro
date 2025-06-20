@@ -9,7 +9,7 @@ const { title, date, image } = Astro.props as Frontmatter;
   <div class="container">
     <h1 class="h1">{title}</h1>
     <p>
-      on {formatDate(date)}
+      {formatDate(date)}
     </p>
   </div>
   {
