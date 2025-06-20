@@ -761,33 +761,39 @@ header {
 
 /* COPY CODE */
 .code-block-wrapper {
-  position: relative;
+  position: relative; /* for stacking context if needed */
+  display: grid;
 }
 
-/* Base styles for the new icon button */
+/* The code block itself is placed in the grid */
+.code-block-wrapper > pre.astro-code {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+/* The button is placed in the SAME grid cell and aligned */
 .copy-code-button {
-  position: absolute;
-  top: var(--space-sm);
-  right: var(--space-sm);
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: end;
+  align-self: start;
+  margin: var(--space-sm);
   display: grid;
   place-items: center;
   width: 2.5rem; /* 40px */
   height: 2.5rem; /* 40px */
   padding: 0;
   border-radius: var(--radius-md);
-
   background-color: hsl(var(--muted));
   color: hsl(var(--txt));
   border: 1px solid hsl(var(--txt) / 0.1);
-
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
   /* Initially hidden */
   opacity: 0;
   transform: scale(0.9);
+  z-index: 10;
 }
 
+/* Make the button visible on hover of the parent wrapper */
 .code-block-wrapper:hover .copy-code-button {
   opacity: 1;
   transform: scale(1);
