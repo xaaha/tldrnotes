@@ -505,6 +505,17 @@ button {
   z-index: 0;
 }
 
+/* backtick inline code */
+.content :not(pre) > code {
+  background: hsl(var(--txt) / 0.07);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  /* Make it slightly smaller than the surrounding text */
+  font-size: 0.88em;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: lighter;
+}
+
 .card {
   --accent: var(--txt);
 }
