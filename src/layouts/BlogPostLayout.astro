@@ -31,7 +31,7 @@ const { category, date, description, image, title } =
             copyButton.textContent = copyButtonLabel;
 
             // Wrap the code block with the new div
-            codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+            codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
             wrapper.appendChild(codeBlock);
 
             // FIX: Append the button to the wrapper, not the code block
