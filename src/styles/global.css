@@ -783,7 +783,7 @@ header {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  /* Initially hidden, appears on hover of the parent */
+  /* Initially hidden */
   opacity: 0;
   transform: scale(0.9);
 }
