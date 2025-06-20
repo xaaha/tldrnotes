@@ -759,10 +759,9 @@ header {
   --callout-color-hue: 145; /* Green */
 }
 
-/* CORRECTED COPY CODE BUTTON STYLES */
+/* COPY CODE */
 .copy-code-button {
   position: absolute;
-  /* Use space variables for positioning */
   top: var(--space-2xs);
   right: var(--space-2xs);
   padding: var(--space-2xs) var(--space-sm);
@@ -772,9 +771,12 @@ header {
   border-radius: var(--radius-sm);
   font-size: var(--fs-sm);
   font-family: inherit;
-  min-width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min-content;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: var(--transition-ease-fast);
   background-color: hsl(var(--accent--dark));
 }
 
