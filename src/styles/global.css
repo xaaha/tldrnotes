@@ -454,28 +454,6 @@ button {
   gap: var(--space-lg);
 }
 
-.badge {
-  padding: 4px 10px;
-  background-color: hsl(var(--accent));
-  border-radius: var(--radius-sm);
-  color: hsl(var(--muted));
-  text-decoration: none;
-  letter-spacing: 0.054em;
-  text-transform: uppercase;
-  font-size: var(--fs-sm);
-
-  &:hover {
-    color: hsl(var(--muted));
-    opacity: 0.8;
-  }
-
-  &:focus-visible {
-    box-shadow:
-      0 0 0 0.2em hsl(var(--bkg)),
-      0 0 0 0.4em hsl(var(--accent));
-  }
-}
-
 /* cards */
 .card {
   position: relative;
@@ -485,10 +463,6 @@ button {
   padding: var(--space-md);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-
-  & .badge {
-    --accent: var(--txt);
-  }
 
   & [aria-hidden="true"] {
     margin-inline: calc(var(--space-md) * -1);
@@ -512,7 +486,7 @@ button {
 
 /* Make other links/buttons clickable on top of the stretched link  
  * for blog post card*/
-.card .badge,
+.card,
 .card .content small a {
   position: relative;
   z-index: 1;
@@ -529,7 +503,7 @@ button {
   z-index: 0;
 }
 
-.card .badge {
+.card {
   --accent: var(--txt);
 }
 
@@ -557,51 +531,9 @@ header {
   margin-inline: auto;
   width: 100%;
   max-width: 1500px;
-
   & div {
     display: grid;
     gap: var(--space-sm);
-  }
-
-  & .sidebar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: var(--space-lg);
-    margin-block-start: var(--space-xl);
-
-    @media (--md) {
-      margin: 0;
-    }
-
-    & aside {
-      display: grid;
-      gap: var(--space-2xs);
-      padding: 0;
-
-      @media (--sm) {
-        flex: 1 1 40%;
-      }
-
-      @media (--md) {
-        text-align: left;
-        justify-content: start;
-        justify-items: start;
-        & .categories {
-          justify-content: start;
-        }
-      }
-    }
-  }
-
-  @media (--md) {
-    grid-template-columns: 1fr minmax(auto, 220px);
-    gap: var(--space-lg);
-    align-items: start;
-  }
-
-  @media (--lg) {
-    grid-template-columns: 1fr minmax(auto, 300px);
   }
 }
 
@@ -654,10 +586,6 @@ header {
 
 :where([aria-label="Blog categories"]) {
   margin-block-end: var(--space-lg);
-}
-
-.sidebar [aria-label="Blog categories"] {
-  margin-block: 0;
 }
 
 /* code block in markdown file */
