@@ -25,10 +25,6 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<!-- 
-  We pass the post's frontmatter (entry.data) to the layout, and then we render the post's actual 
-  Markdown content using the <Content /> component.
--->
 <BlogPostLayout frontmatter={entry.data}>
   <Content />
 </BlogPostLayout>
