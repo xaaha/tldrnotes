@@ -661,9 +661,10 @@ header {
 }
 
 /* code block in markdown file */
-.astro-code,
 .astro-code {
   padding: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 /* ================================================================== */
