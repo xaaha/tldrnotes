@@ -813,9 +813,7 @@ header {
   stroke-width: 2;
 }
 
-/* Style for the visual feedback after clicking */
+/* after copying  */
 .copy-code-button.copied {
-  /* Use a success green color */
-  background-color: hsl(145 63% 42% / 0.8);
   color: #fff;
 }
