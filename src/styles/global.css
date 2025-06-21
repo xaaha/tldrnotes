@@ -33,7 +33,7 @@ h6 {
 /* CSS variables inspired by https://open-props.style/ */
 :root {
   /* colors */
-  --_hue: 234;
+  --_hue: 214;
 
   /* Light Mode */
   --bkg--light: var(--_hue) 25% 96%;
@@ -44,7 +44,7 @@ h6 {
   --bkg--dark: var(--_hue) 21% 19%;
   --txt--dark: var(--_hue) 20% 85%;
   --accent--dark: var(--_hue) 50% 50%;
-  --muted--dark: var(--_hue) 20% 10%;
+  --muted--dark: var(--_hue) 20% 15%;
 
   --bkg: var(--bkg--light);
   --txt: var(--txt--light);
