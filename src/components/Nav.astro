@@ -3,7 +3,7 @@
 import { Icon } from "astro-icon/components";
 import Link from "./Link.astro";
 import { navData } from "../data/navData";
-// import ThemeIcon from "@components/ThemeIcon.astro";
+import ThemeIcon from "@components/ThemeIcon.astro";
 ---
 
 <nav aria-label="Primary">
@@ -25,9 +25,10 @@ import { navData } from "../data/navData";
         ))
       }
     </ul>
+    <ThemeIcon />
   </div>
-</nav>
 
-<script>
-  import "../scripts/nav.ts";
-</script>
+  <script>
+    import "../scripts/nav.ts";
+  </script>
+</nav>

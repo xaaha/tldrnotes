@@ -129,17 +129,15 @@ h6 {
   --transition-squish-fast: var(--_tspeed_fast) var(--_ttiming_squish);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bkg: var(--bkg--dark);
-    --txt: var(--txt--dark);
-    --accent: var(--accent--dark);
-    --muted: var(--muted--dark);
-    color-scheme: dark;
-    --_shadow-strength: 0.75;
-    --_shadow-saturation: 75%;
-    --_shadow-lightness: 6%;
-  }
+:root.dark {
+  --bkg: var(--bkg--dark);
+  --txt: var(--txt--dark);
+  --accent: var(--accent--dark);
+  --muted: var(--muted--dark);
+  color-scheme: dark;
+  --_shadow-strength: 0.75;
+  --_shadow-saturation: 75%;
+  --_shadow-lightness: 6%;
 }
 
 /* prefers reduced motion */
@@ -679,10 +677,8 @@ header {
 }
 
 /* Darkmode override for the strong element */
-@media (prefers-color-scheme: dark) {
-  .content strong {
-    color: hsl(var(--_hue), 70%, 80%);
-  }
+:root.dark .content strong {
+  color: hsl(var(--_hue), 70%, 80%);
 }
 
 /* Style for <em> tags inside post content */
