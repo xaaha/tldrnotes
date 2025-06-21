@@ -552,8 +552,10 @@ header {
 
 .hero-image {
   box-shadow: var(--shadow-md);
+  width: 100%;
+  height: auto;
   object-fit: cover;
-
+  object-position: center;
   @media (--lg) {
     border-radius: var(--radius-md);
   }
