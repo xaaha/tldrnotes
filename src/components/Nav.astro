@@ -1,5 +1,4 @@
 ---
-// library imports
 import { Icon } from "astro-icon/components";
 import Link from "./Link.astro";
 import { navData } from "../data/navData";
@@ -24,10 +23,51 @@ import ThemeIcon from "@components/ThemeIcon.astro";
         ))
       }
     </ul>
-    <ThemeIcon />
+    <div class="navbar-actions">
+      <ThemeIcon />
+      <a
+        href="https://github.com/xaaha/"
+        class="action-icon"
+        aria-label="View GitHub profile"
+      >
+        <Icon name="tabler:brand-github" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/pthapa1"
+        class="action-icon"
+        aria-label="View GitHub profile"
+      >
+        <Icon name="tabler:brand-linkedin" />
+      </a>
+    </div>
   </div>
-
-  <script>
-    import "../scripts/nav.ts";
-  </script>
 </nav>
+
+<style>
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .action-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    color: hsl(var(--txt));
+    border-radius: var(--radius-md);
+  }
+
+  .action-icon:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--bkg)),
+      0 0 0 4px hsl(var(--accent));
+  }
+
+  .action-icon :global(svg) {
+    width: 27px;
+    height: 27px;
+  }
+</style>
