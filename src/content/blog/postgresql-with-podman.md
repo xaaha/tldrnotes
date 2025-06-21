@@ -52,7 +52,7 @@ podman run --name postgresql \
   docker.io/library/postgres:17.4
 ```
 
-This is not practical to run the command above all the time from a shell. So, the solution is to use a compose file. Docker has `docker-compose.yaml` file. Likewise, Podman has `podmancompose.yaml` file.
+This is not practical to run this command regularly from the shell. So, the solution is to use a compose file. Docker has `docker-compose.yaml` file. Likewise, Podman has `podmancompose.yaml` file.
 
 ### 1.4. Use Podman Compose for Simplification
 
