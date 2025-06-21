@@ -39,6 +39,12 @@ import { Icon } from "astro-icon/components";
   .moon-icon {
     display: none;
   }
+  .moon-icon:hover {
+    color: hsl(var(--accent));
+  }
+  .sun-icon:hover {
+    color: hsl(45, 55%, 50%);
+  }
 
   /* When the .dark class is on the html tag... */
   :global(.dark) .moon-icon {
