@@ -20,6 +20,7 @@ picture {
 }
 
 p,
+li,
 h1,
 h2,
 h3,
@@ -238,7 +239,7 @@ small {
 }
 
 .content :is(ul, ol) {
-  margin-left: 1.5em;
+  padding-left: 1.5em;
 }
 
 a,
@@ -694,11 +695,21 @@ header {
   border: 1px solid hsl(var(--txt) / 0.15);
 }
 
+/*
+  prevent li from overflowing their parent container.
+*/
+.content ul li,
+.content ol li {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
 /* Specific Callout Types
 /* Override the --callout-color-hue for each type.
 /* ================================================================== */
 
-/* INFO - Already defaults to blue, but we can be explicit */
+/* INFO - Already defaults to blue, let's be explicit */
 .content [data-callout-type="info"] {
   --callout-color-hue: 200; /* Blue */
 }
