@@ -33,15 +33,15 @@ h6 {
 /* CSS variables inspired by https://open-props.style/ */
 :root {
   /* colors */
-  --_hue: 235;
+  --_hue: 234;
 
   /* Light Mode */
-  --bkg--light: var(--_hue) 25% 97%;
+  --bkg--light: var(--_hue) 25% 96%;
   --txt--light: var(--_hue) 40% 5%;
   --accent--light: var(--_hue) 55% 50%;
   --muted--light: var(--_hue) 30% 99%;
   /* Dark Mode */
-  --bkg--dark: var(--_hue) 15% 10%;
+  --bkg--dark: var(--_hue) 21% 19%;
   --txt--dark: var(--_hue) 20% 85%;
   --accent--dark: var(--_hue) 50% 50%;
   --muted--dark: var(--_hue) 20% 2%;
@@ -681,7 +681,7 @@ header {
 /* Darkmode override for the strong element */
 @media (prefers-color-scheme: dark) {
   .content strong {
-    color: hsl(var(--_hue), 50%, 75%);
+    color: hsl(var(--_hue), 70%, 80%);
   }
 }
 

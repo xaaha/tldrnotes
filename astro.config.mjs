@@ -9,7 +9,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkCallout],
     shikiConfig: {
-      theme: "one-dark-pro",
+      theme: "tokyo-night",
       // wrap: true,
     },
   },
