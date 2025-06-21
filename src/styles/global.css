@@ -39,12 +39,12 @@ h6 {
   --bkg--light: var(--_hue) 25% 96%;
   --txt--light: var(--_hue) 40% 5%;
   --accent--light: var(--_hue) 55% 50%;
-  --muted--light: var(--_hue) 30% 99%;
+  --muted--light: var(--_hue) 30% 97%;
   /* Dark Mode */
   --bkg--dark: var(--_hue) 21% 19%;
   --txt--dark: var(--_hue) 20% 85%;
   --accent--dark: var(--_hue) 50% 50%;
-  --muted--dark: var(--_hue) 20% 2%;
+  --muted--dark: var(--_hue) 20% 10%;
 
   --bkg: var(--bkg--light);
   --txt: var(--txt--light);
