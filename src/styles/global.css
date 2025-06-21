@@ -540,8 +540,6 @@ header {
   display: grid;
   justify-content: center;
   padding: var(--space-md);
-  margin-block: var(--space-lg);
-  margin-inline: auto;
   width: 100%;
   max-width: 1500px;
   & div {
