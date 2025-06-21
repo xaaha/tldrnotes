@@ -11,11 +11,28 @@ import { Icon } from "astro-icon/components";
   #themeToggle {
     border: 0;
     background: none;
+    box-shadow: none;
     cursor: pointer;
     padding: 0;
-    width: 30px;
-    height: 30px;
+    width: 40;
+    height: 40;
     color: hsl(var(--txt));
+    display: grid;
+    place-items: center;
+  }
+
+  /* Add a visible focus style for keyboard navigation */
+  #themeToggle:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--bkg)),
+      0 0 0 4px hsl(var(--accent));
+  }
+
+  .sun-icon,
+  .moon-icon {
+    width: 27px;
+    height: 27px;
   }
 
   /* Hide the moon icon by default (in light mode) */
