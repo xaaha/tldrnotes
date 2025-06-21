@@ -1,10 +1,9 @@
 ---
 // library imports
 import { Icon } from "astro-icon/components";
-// component imports
 import Link from "./Link.astro";
-// data imports
 import { navData } from "../data/navData";
+// import ThemeIcon from "@components/ThemeIcon.astro";
 ---
 
 <nav aria-label="Primary">
@@ -12,6 +11,7 @@ import { navData } from "../data/navData";
     <a href="/" class="logomark" aria-label="Go home">
       <Icon name="logomark" width="40" height="40" />
     </a>
+    <!-- <ThemeIcon /> -->
     <ul>
       {
         navData.map((item) => (
