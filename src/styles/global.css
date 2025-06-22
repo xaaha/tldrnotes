@@ -365,6 +365,7 @@ button {
   display: grid;
   place-items: center;
   padding: var(--space-2xs);
+  filter: drop-shadow(0 2px 2px hsl(var(--_shadow) / 0.5));
 }
 
 [aria-label="Blog pages"] {
