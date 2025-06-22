@@ -403,12 +403,6 @@ button {
   }
 }
 
-.about-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
 /* center the button horizontally within the content cell */
 .center-contact {
   display: flex;
