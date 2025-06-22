@@ -14,9 +14,16 @@ import Link from "@components/Link.astro";
       />
     </div>
     <div class="about-content">
-      <h1 class="h1">About Me</h1>
+      <h1 class="h1">
+        About <br />
+        <code
+          >fmt.<span class="func">Println</span>("<span class="string"
+            >this handsome guy</span
+          >")</code
+        >
+      </h1>
+
       <p>
-        Hey, I’m Pratik. I build software (and character) using Neovim
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -38,14 +45,14 @@ import Link from "@components/Link.astro";
             style="opacity:.2;fill:#ffffff"
             d="m20 4l-9.609 8 0.004 0.004v0.002l-2.395 1.994v1l2.395-1.994v-0.002l-0.004-0.004 9.609-8 24 34.275v-1l-24-34.275zm24 0v1l12 10v-1l-12-10z"
           ></path>
-        </svg>.
+        </svg>
+        I build software and character using Neovim.
         <br />
-        I’m a Mechanical Engineer by degree ⚙️, but Statics broke me. Now I build
-        software full-time. This also gives me a chance to tinker my dot files endlessly.<br
-        />
-        This is my personal reference notebook 📒 — built with the help of AI, but
-        double-checked by yours truly. I write things down here so I don’t have to
-        keep asking the robot the same question every week.
+        ⚙️ I’m a Mechanical Engineer by degree, but Statics broke me. Now I change
+        my nvim config full time and build software tools on the side.
+        <br />
+        📒 This is my personal reference notebook. I write things down here so I
+        don’t have to keep asking AI the same question every week.
       </p>
     </div>
     <div class="center-contact">
@@ -57,3 +64,21 @@ import Link from "@components/Link.astro";
     </div>
   </section>
 </Mainlayout>
+
+<style>
+  code {
+    background: hsl(var(--txt) / 0.07);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+    font-size: 0.5em;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: lighter;
+  }
+  code .func {
+    color: #7aa2f7; /* For Println */
+  }
+
+  code .string {
+    color: #9ece6a; /* For "This handsome Guy" */
+  }
+</style>
