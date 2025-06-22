@@ -154,6 +154,15 @@ import ThemeIcon from "@components/ThemeIcon.astro";
     padding: 0;
     cursor: pointer;
     z-index: 2;
+    box-shadow: none;
+    border-radius: var(--radius-md);
+  }
+
+  .menu-toggle:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--bkg)),
+      0 0 0 4px hsl(var(--accent));
   }
 
   .menu-icon-line {
