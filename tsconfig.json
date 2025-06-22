@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "ES6",
+    "target": "ES6",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
@@ -19,9 +21,7 @@
     },
     "verbatimModuleSyntax": true,
     "strict": true,
-    "module": "esnext",
     "moduleResolution": "node16",
-    "target": "ES2020",
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist",
@@ -29,7 +29,11 @@
     "declaration": true,
     "declarationDir": "dist/types",
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "types": [
+      "astro/client",
+      "react"
+    ]
   },
   "include": [
     ".astro/types.d.ts",
@@ -38,5 +42,5 @@
   "exclude": [
     "dist"
   ],
-  "extends": "astro/tsconfigs/base"
+  "extends": "astro/tsconfigs/strict"
 }
