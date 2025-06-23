@@ -8,7 +8,7 @@ const allPosts = await getCollection("blog", ({ data }) => {
   return data.draft !== true;
 });
 
-// 2. Sort the posts by date, newest first.
+// newest first
 const sortedPosts = allPosts.sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
