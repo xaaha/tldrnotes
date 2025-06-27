@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { FC } from "react";
 import PostCard from "./PostCard";
 
@@ -9,13 +9,16 @@ interface PostListProps {
   }[];
 }
 
-const POSTS_PER_PAGE = 3;
+const POSTS_PER_PAGE = 6;
 
 const PostList: FC<PostListProps> = ({ posts }) => {
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
 
   const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + POSTS_PER_PAGE);
+    setVisibleCount((prevCount) => {
+      const newCount = prevCount + POSTS_PER_PAGE;
+      return Math.min(newCount, posts.length);
+    });
   };
 
   const hasMorePosts = visibleCount < posts.length;
@@ -57,4 +60,5 @@ const PostList: FC<PostListProps> = ({ posts }) => {
     </>
   );
 };
+
 export default PostList;
