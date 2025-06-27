@@ -780,3 +780,48 @@ header {
 .copy-code-button.copied {
   color: #fff;
 }
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-2xl);
+}
+
+.load-more-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: inherit;
+  font-size: var(--fs-md);
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-lg);
+  color: hsl(var(--txt));
+  background-color: transparent;
+  border: 2px solid hsl(var(--txt) / 0.2);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.load-more-button:hover {
+  background-color: hsl(var(--txt) / 0.05);
+  border-color: hsl(var(--txt) / 0.5);
+}
+
+.load-more-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--bkg)),
+    0 0 0 4px hsl(var(--accent));
+}
+
+.load-more-button svg {
+  width: 1.2em;
+  height: 1.2em;
+  transform: rotate(90deg); /* Rotate plus icon to downward arrow */
+  transition: transform 0.3s ease;
+}
+
+.load-more-button:hover svg {
+  transform: rotate(90deg) translateY(2px);
+}
