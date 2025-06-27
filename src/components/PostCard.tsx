@@ -1,39 +1,49 @@
 import type { FC } from "react";
 import { formatDate, slugify } from "@scripts/utils";
 
+// Define the shape of your frontmatter
+interface Frontmatter {
+  title: string;
+  date: Date;
+  description: string;
+  image?: { src: string; alt: string };
+  category?: string;
+}
+
 // shape of the props this component expects
 interface PostCardProps {
   post: {
-    slug: string;
-    frontmatter: Frontmatter;
+    id: string;
+    data: Frontmatter;
   };
 }
 
 const PostCard: FC<PostCardProps> = ({ post }) => {
-  const { slug, frontmatter } = post;
-  const { title, date, description, image, category } = frontmatter;
+  // Destructure `data` directly, as it now matches the Frontmatter shape
+  const { id, data } = post;
+  const { title, date, description, image, category } = data;
   const tags = category
     ? category.split(" ").filter((tag) => tag.trim() !== "")
     : [];
 
   return (
-    <article>
+    <article className="postcard">
       {image?.src && (
         <a
-          href={`/blog/${slug}`}
+          href={`/blog/${id}`}
           className="postcard__image-link"
           aria-label={`Read the note: ${title}`}
         >
           <img
             src={image.src}
-            alt={image.alt ?? `Thumbnain for ${title}`}
+            alt={image.alt ?? `Thumbnail for ${title}`}
             loading="lazy"
           />
         </a>
       )}
       <div className="postcard__content">
         <h2 className="postcard__title">
-          <a href={`/blog/${slug}`}>{title}</a>
+          <a href={`/blog/${id}`}>{title}</a>
         </h2>
         <div className="postcard__metadata">
           {date && (
