@@ -1,19 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { FC } from "react";
 import PostCard from "./PostCard";
 
-interface PostCardProps {
-  post: {
-    slug: string;
-    frontmatter: Frontmatter;
-  };
-}
-
 interface PostListProps {
-  posts: PostCardProps[];
+  posts: {
+    id: string;
+    data: Frontmatter;
+  }[];
 }
 
-const POSTS_PER_PAGE = 6; // random number
+const POSTS_PER_PAGE = 3;
 
 const PostList: FC<PostListProps> = ({ posts }) => {
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
@@ -38,6 +34,7 @@ const PostList: FC<PostListProps> = ({ posts }) => {
             onClick={handleLoadMore}
             className="load-more-button"
             type="button"
+            title="Load More"
           >
             <span>Load More</span>
             <svg
