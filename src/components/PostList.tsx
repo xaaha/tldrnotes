@@ -34,11 +34,10 @@ const PostList: FC<PostListProps> = ({ posts }) => {
             onClick={handleLoadMore}
             className="load-more-button"
             type="button"
-            title="Load More"
           >
             <span>Load More</span>
             <svg
-              xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
+              xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -58,5 +57,4 @@ const PostList: FC<PostListProps> = ({ posts }) => {
     </>
   );
 };
-
 export default PostList;
