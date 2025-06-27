@@ -28,7 +28,7 @@ const PostList: FC<PostListProps> = ({ posts }) => {
     <>
       <div className="post-container">
         {posts.slice(0, visibleCount).map((post) => (
-          <PostCard key={post.slug} post={post} />
+          <PostCard key={post.id} post={post} />
         ))}
       </div>
 
