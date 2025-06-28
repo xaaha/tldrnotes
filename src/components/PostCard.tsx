@@ -1,15 +1,6 @@
 import type { FC } from "react";
 import { formatDate, slugify } from "@scripts/utils";
 
-// Define the shape of your frontmatter
-interface Frontmatter {
-  title: string;
-  date: Date;
-  description: string;
-  image?: { src: string; alt: string };
-  category?: string;
-}
-
 // shape of the props this component expects
 interface PostCardProps {
   post: {
