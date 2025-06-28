@@ -801,6 +801,7 @@ header {
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all 0.2s ease;
+  min-width: fit-content;
 }
 
 .load-more-button:hover {
@@ -818,12 +819,12 @@ header {
 .load-more-button svg {
   width: 1.2em;
   height: 1.2em;
-  transform: rotate(90deg); /* Rotate plus icon to downward arrow */
+  transform: rotate(270deg);
   transition: transform 0.3s ease;
 }
 
 .load-more-button:hover svg {
-  transform: rotate(90deg) translateY(2px);
+  transform: rotate(360deg) translateY(2px);
 }
 
 /* ======================================== */
