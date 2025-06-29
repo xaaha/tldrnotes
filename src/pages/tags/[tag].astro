@@ -2,7 +2,8 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { slugify } from "@scripts/utils";
 import Mainlayout from "@layouts/Mainlayout.astro";
-import PostCard from "@components/PostCard.astro";
+
+import PostList from "@components/PostList.tsx";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog", ({ data }) => {
@@ -18,17 +19,18 @@ export async function getStaticPaths() {
       .category!.split(" ")
       .filter((tag) => tag.trim() !== "");
     for (const tag of postTags) {
-      // If the map doesn't have the tag yet, add it with this post
-      if (!allTags.has(tag)) {
-        allTags.set(tag, [post]);
+      const loserCasedTag = tag.toLocaleLowerCase();
+      // does not exist: add it with this post
+      if (!allTags.has(loserCasedTag)) {
+        allTags.set(loserCasedTag, [post]);
       } else {
-        // If the tag already exists, push this post to its array
-        allTags.get(tag)!.push(post);
+        // exists: push this post to its array
+        allTags.get(loserCasedTag)!.push(post);
       }
     }
   }
 
-  // Convert the map into the format getStaticPaths expects
+  // Array for getStaticPaths
   return Array.from(allTags.entries()).map(([tag, posts]) => {
     return {
       params: { tag: slugify(tag) },
@@ -53,15 +55,7 @@ const sortedPosts = posts.sort(
     </h1>
 
     <div class="post-container">
-      {
-        sortedPosts.map((post) => (
-          <PostCard
-            frontmatter={post.data}
-            url={`/blog/${post.id}`}
-            tagType="h2"
-          />
-        ))
-      }
+      <PostList client:load posts={sortedPosts} />
     </div>
   </section>
 </Mainlayout>
