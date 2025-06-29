@@ -32,8 +32,8 @@ h6 {
 
 /* CSS variables inspired by https://open-props.style/ */
 :root {
-  /* colors */
-  --_hue: 214;
+  /* colors hue of 214 is good as well but a bit blueish*/
+  --_hue: 222;
 
   /* Light Mode */
   --bkg--light: var(--_hue) 25% 96%;
