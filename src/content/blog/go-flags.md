@@ -3,7 +3,7 @@ title: Using CLI Flags in Go
 date: 2024-05-01
 description: Go Flags Basics
 draft: false
-category: go
+category: Go
 ---
 
 # Working with flags in Go

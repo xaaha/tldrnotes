@@ -19,17 +19,18 @@ export async function getStaticPaths() {
       .category!.split(" ")
       .filter((tag) => tag.trim() !== "");
     for (const tag of postTags) {
-      // If the map doesn't have the tag yet, add it with this post
-      if (!allTags.has(tag)) {
-        allTags.set(tag, [post]);
+      const loserCasedTag = tag.toLocaleLowerCase();
+      // does not exist: add it with this post
+      if (!allTags.has(loserCasedTag)) {
+        allTags.set(loserCasedTag, [post]);
       } else {
-        // If the tag already exists, push this post to its array
-        allTags.get(tag)!.push(post);
+        // exists: push this post to its array
+        allTags.get(loserCasedTag)!.push(post);
       }
     }
   }
 
-  // Convert the map into the format getStaticPaths expects
+  // Array for getStaticPaths
   return Array.from(allTags.entries()).map(([tag, posts]) => {
     return {
       params: { tag: slugify(tag) },
