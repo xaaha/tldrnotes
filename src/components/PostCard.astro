@@ -49,7 +49,7 @@ const { title, date, description, image, category } = frontmatter;
       {
         date && (
           <>
-            <Icon name="tabler:calendar-week" class="postcard__icon" />
+            <Icon name="calendar" class="postcard__icon" />
             <time datetime={date.toString()}>{formatDate(date)}</time>
           </>
         )
