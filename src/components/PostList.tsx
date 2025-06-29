@@ -9,7 +9,8 @@ interface PostListProps {
   }[];
 }
 
-const POSTS_PER_PAGE = 6;
+// totally random number
+const POSTS_PER_PAGE = 10;
 
 const PostList: FC<PostListProps> = ({ posts }) => {
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
