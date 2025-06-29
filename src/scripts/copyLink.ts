@@ -15,5 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
       />
     </svg>`;
   const copiedIconSVG: string = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l10 -10"></path></svg>`;
-  const allHeadings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+  const allHeadings: NodeListOf<Element> = document.querySelectorAll(
+    "h1, h2, h3, h4, h5, h6",
+  );
+
+  const aElem = document.createElement("a");
+  aElem.className = "anchor";
+  aElem.ariaLabel = "Permalink:";
+  // id of the heading. Strip out the special chraracters wtih regex
+  // need to check how we are going work when there is special char
+  // see astro
 });
