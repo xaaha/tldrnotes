@@ -628,7 +628,7 @@ header {
   border-left: 4px solid;
   border-radius: var(--radius-md);
   padding: var(--space-md);
-  /* margin-block: 2em; */ /* add spce around the callouts */
+  margin-block: 1em;
 
   /* local variables to generate theme-aware colors */
   background-color: hsl(
@@ -641,21 +641,19 @@ header {
   );
 }
 
-/* Style the callout title */
 .content [data-callout-title] {
   display: flex;
   align-items: center;
   gap: 0.5em;
   font-weight: 700;
   font-size: 1.1em;
-  /* Use the local variable for the title color */
   color: hsl(
     var(--callout-color-hue) var(--callout-color-saturation)
       var(--callout-color-lightness)
   );
 }
 
-/* Style the callout body to manage paragraph spacing */
+/* callout body to manage paragraph spacing */
 .content [data-callout-body] > :first-child {
   margin-top: 0em;
 }
@@ -696,7 +694,6 @@ header {
   max-width: 100%;
 }
 
-/* Specific Callout Types
 /* Override the --callout-color-hue for each type.
 /* ================================================================== */
 
@@ -718,6 +715,54 @@ header {
 /* IMPORTANT */
 .content [data-callout-type="important"] {
   --callout-color-hue: 145; /* Green */
+}
+
+.content [data-callout-type="note"] {
+  --callout-color-hue: 220;
+  --callout-color-saturation: 15%;
+}
+
+/* Add icons for each callout type 
+/* ================================================================== */
+
+.content [data-callout-title]::before {
+  content: "";
+  display: inline-block;
+  width: 1.2em; /* Set icon size relative to font size */
+  height: 1.2em;
+  background-color: currentColor;
+  /* Default mask properties */
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='currentColor' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M10 10a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v14.055a9 9 0 0 1 2 .457V10a4 4 0 0 0-4-4H12a4 4 0 0 0-4 4v24a4 4 0 0 0 4 4h11.516a9 9 0 0 1-1.004-2H12a2 2 0 0 1-2-2z'/%3E%3Cpath d='M12 14a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H13a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H13a1 1 0 0 1-1-1m1 4a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2zm-1 6a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2h-5a1 1 0 0 1-1-1m19 11a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 2a9 9 0 1 0 0-18a9 9 0 0 0 0 18'/%3E%3Cpath d='M34.997 29.028a1 1 0 0 0-1.414 0l-.79.79l1.413 1.415l.791-.791a1 1 0 0 0 0-1.414M33.5 31.94l-1.414-1.414l-5.069 5.069v1.414h1.414z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* icon mask for each callout type */
+
+/* INFO Icon (Circle with "i") */
+.content [data-callout-type="info"] [data-callout-title]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='16' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* WARN Icon (Triangle with "!") */
+.content [data-callout-type="warn"] [data-callout-title]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 22h20L12 2z'%3E%3C/path%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* ERROR Icon (Circle with "X") */
+.content [data-callout-type="error"] [data-callout-title]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='15' y1='9' x2='9' y2='15'%3E%3C/line%3E%3Cline x1='9' y1='9' x2='15' y2='15'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* IMPORTANT Icon (Flame/Lightbulb) */
+.content [data-callout-type="important"] [data-callout-title]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M12 23a7.5 7.5 0 0 0 7.5-7.5c0-.866-.23-1.697-.5-2.47q-2.5 2.47-3.8 2.47c3.995-7 1.8-10-4.2-14c.5 5-2.796 7.274-4.138 8.537A7.5 7.5 0 0 0 12 23m.71-17.765c3.241 2.75 3.257 4.887.753 9.274c-.761 1.333.202 2.991 1.737 2.991c.688 0 1.384-.2 2.119-.595a5.5 5.5 0 1 1-9.087-5.412c.126-.118.765-.685.793-.71c.424-.38.773-.717 1.118-1.086c1.23-1.318 2.114-2.78 2.566-4.462Z'/%3E%3C/svg%3E");
+}
+
+/* NOTE Icon (Pencil) */
+.content [data-callout-type="note"] [data-callout-title]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z'%3E%3C/path%3E%3Cpath d='m15 5 4 4'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .code-block-wrapper {

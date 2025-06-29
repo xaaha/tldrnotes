@@ -8,6 +8,9 @@ category: go
 
 # Working with flags in Go
 
+> [!Note]
+> This is just a basic example
+
 ```go
 package main
 
