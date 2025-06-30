@@ -1047,3 +1047,7 @@ header {
 .heading-link-copy-button.copied {
   color: hsl(145, 63%, 42%);
 }
+
+.heading-link-copy-button.copied::after {
+  opacity: 0;
+}
