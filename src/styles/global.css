@@ -1029,9 +1029,9 @@ header {
 }
 
 .heading-link-copy-button::after {
-  content: "Copy link";
+  content: "Copy Link";
   position: absolute;
-  color: hsl(var(--txt) / 0.8);
+  color: hsl(var(--txt));
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: var(--fs-sm);
@@ -1046,7 +1046,6 @@ header {
   transform: translate(10%, -100%);
 }
 
-/* 6. Style for the "Copied!" feedback state */
 .heading-link-copy-button.copied {
   color: hsl(145, 63%, 42%);
 }
