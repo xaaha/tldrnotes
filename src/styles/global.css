@@ -986,3 +986,69 @@ header {
   background-color: hsl(var(--accent) / 0.2);
   color: hsl(var(--txt));
 }
+
+/* ======================================== */
+/* STYLES FOR HEADING COPY LINK BUTTON      */
+/* ======================================== */
+.heading-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.heading-link-copy-button {
+  margin-left: var(--space-xs);
+
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: hsl(var(--txt) / 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.heading-wrapper:hover .heading-link-copy-button {
+  opacity: 1;
+}
+
+.heading-link-copy-button:hover {
+  color: hsl(var(--accent));
+  background-color: hsl(var(--muted));
+}
+
+.heading-link-copy-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.heading-link-copy-button::after {
+  content: "Copy link";
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: hsl(var(--txt));
+  color: hsl(var(--bkg));
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.heading-link-copy-button:hover::after {
+  opacity: 1;
+  top: -2.5rem;
+}
+
+.heading-link-copy-button.copied {
+  color: hsl(145, 63%, 42%);
+}
