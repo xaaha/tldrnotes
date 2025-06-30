@@ -5,36 +5,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const allHeadings = document.querySelectorAll(
     ".content h1, .content h2, .content h3, .content h4, .content h5, .content h6",
   );
-
-  allHeadings.forEach((heading) => {
-    const headingId = heading.id;
-    if (!headingId) return;
-
-    heading.classList.add("heading-with-link");
-    const copyLink = document.createElement("a");
-    copyLink.className = "heading-link-copy-button";
-    copyLink.setAttribute(
-      "aria-label",
-      `Copy link to heading: ${heading.textContent}`,
-    );
-    copyLink.innerHTML = linkIconSVG;
-    heading.appendChild(copyLink);
-    copyLink.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const urlToCopy = `${window.location.origin}${window.location.pathname}#${headingId}`;
-
-      try {
-        await navigator.clipboard.writeText(urlToCopy);
-        copyLink.innerHTML = copiedIconSVG;
-        copyLink.classList.add("copied");
-
-        setTimeout(() => {
-          copyLink.innerHTML = linkIconSVG;
-          copyLink.classList.remove("copied");
-        }, 700);
-      } catch (err) {
-        console.error("Failed to copy URL: ", err);
-      }
-    });
-  });
+  for (const heading of allHeadings) {
+    {
+      const headingId = heading.id;
+      if (!headingId) return;
+      heading.classList.add("heading-with-link");
+      const copyLink = document.createElement("a");
+      copyLink.className = "heading-link-copy-button";
+      copyLink.setAttribute(
+        "aria-label",
+        `Copy link to heading: ${heading.textContent}`,
+      );
+      copyLink.innerHTML = linkIconSVG;
+      heading.appendChild(copyLink);
+      copyLink.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const urlToCopy = `${window.location.origin}${window.location.pathname}#${headingId}`;
+        try {
+          await navigator.clipboard.writeText(urlToCopy);
+          copyLink.innerHTML = copiedIconSVG;
+          copyLink.classList.add("copied");
+          setTimeout(() => {
+            copyLink.innerHTML = linkIconSVG;
+            copyLink.classList.remove("copied");
+          }, 700);
+        } catch (err) {
+          console.error("Failed to copy URL: ", err);
+        }
+      });
+    }
+  }
 });

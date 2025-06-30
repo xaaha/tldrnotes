@@ -1013,7 +1013,6 @@ header {
   opacity: 0;
 }
 
-/* display on hover */
 .heading-with-link:hover .heading-link-copy-button {
   opacity: 1;
 }
@@ -1022,7 +1021,6 @@ header {
   color: hsl(var(--txt));
 }
 
-/* 4. Style the SVG icon inside the button */
 .heading-link-copy-button svg {
   width: 1.25rem;
   height: 1.25rem;
