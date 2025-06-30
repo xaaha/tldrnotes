@@ -986,3 +986,68 @@ header {
   background-color: hsl(var(--accent) / 0.2);
   color: hsl(var(--txt));
 }
+
+/* ======================================== */
+/* STYLES FOR HEADING COPY LINK BUTTON      */
+/* ======================================== */
+
+.heading-with-link {
+  /* needed to change heading to flex container otherwise I couldn't figure out how to put both of them together */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.heading-link-copy-button {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: hsl(var(--txt) / 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.heading-with-link:hover .heading-link-copy-button {
+  opacity: 1;
+}
+
+.heading-link-copy-button:hover {
+  color: hsl(var(--txt));
+}
+
+.heading-link-copy-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.heading-link-copy-button::after {
+  content: "Copy Link";
+  position: absolute;
+  color: hsl(var(--txt));
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.heading-link-copy-button:hover::after {
+  opacity: 1;
+  transform: translate(10%, -100%);
+}
+
+.heading-link-copy-button.copied {
+  color: hsl(145, 63%, 42%);
+}
+
+.heading-link-copy-button.copied::after {
+  opacity: 0;
+}
