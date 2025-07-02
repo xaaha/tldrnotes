@@ -481,7 +481,7 @@ button {
 }
 
 /* Make other links/buttons clickable on top of the stretched link  
- * for blog post card*/
+ * for notes card*/
 .card,
 .card .content small a {
   position: relative;
