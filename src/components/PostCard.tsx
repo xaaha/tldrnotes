@@ -21,7 +21,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
     <article className="postcard">
       {image?.src && (
         <a
-          href={`/blog/${id}`}
+          href={`/notes/${id}`}
           className="postcard__image-link"
           aria-label={`Read the note: ${title}`}
         >
@@ -34,7 +34,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
       )}
       <div className="postcard__content">
         <h2 className="postcard__title">
-          <a href={`/blog/${id}`}>{title}</a>
+          <a href={`/notes/${id}`}>{title}</a>
         </h2>
         <div className="postcard__metadata">
           {date && (
