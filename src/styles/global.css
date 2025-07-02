@@ -368,12 +368,6 @@ button {
   filter: drop-shadow(0 2px 2px hsl(var(--_shadow) / 0.5));
 }
 
-[aria-label="Blog pages"] {
-  display: flex;
-  gap: var(--space-sm);
-  justify-content: center;
-}
-
 /* footer */
 
 :where(footer) {
@@ -571,7 +565,6 @@ header {
   }
 }
 
-[aria-label="Blog categories"],
 [aria-label="Related posts"] {
   padding: 0;
   text-align: center;
@@ -591,10 +584,6 @@ header {
       text-decoration: none;
     }
   }
-}
-
-:where([aria-label="Blog categories"]) {
-  margin-block-end: var(--space-lg);
 }
 
 /* ================================================================== */
