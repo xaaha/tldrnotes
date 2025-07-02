@@ -12,7 +12,7 @@ export function slugify(text: string): string {
 
 export function formatDate(date: Date | null) {
   if (date === null) {
-    throw new Error("Blog post must contain date frontmatter");
+    throw new Error("Notes must contain date frontmatter");
   }
 
   return new Date(date).toLocaleDateString("en-US", { timeZone: "UTC" });
