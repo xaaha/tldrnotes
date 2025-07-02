@@ -2,15 +2,15 @@
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
-import BlogPostLayout from "@layouts/BlogPostLayout.astro";
+import NotesLayout from "@layouts/NotesLayout.astro";
 
-// get blog's static paths
+// get notes static paths
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog", ({ data }) => {
+  const notesEntries = await getCollection("notes", ({ data }) => {
     return data.draft !== true;
   });
 
-  return blogEntries.map((entry) => ({
+  return notesEntries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
@@ -18,13 +18,13 @@ export async function getStaticPaths() {
 
 // Type assertion for the props coming from getStaticPaths
 interface Props {
-  entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<"notes">;
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<BlogPostLayout frontmatter={entry.data}>
+<NotesLayout frontmatter={entry.data}>
   <Content />
-</BlogPostLayout>
+</NotesLayout>
