@@ -766,6 +766,7 @@ header {
   padding: 0.5rem;
   display: flex;
   align-items: center;
+  border-radius: var(--radius-md);
 }
 
 /* The button is placed in the SAME grid cell and aligned */

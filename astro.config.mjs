@@ -11,7 +11,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkCallout],
     shikiConfig: {
-      theme: "tokyo-night",
+      theme: "night-owl",
       // wrap: true,
     },
   },
