@@ -149,7 +149,7 @@ puts manipulated
 ## Class
 
 > [!IMPORTANT]
-> Ruby is OOP. So, class is important
+> Ruby is OOP. So, class is it's first class citizen.
 
 - Using `attr_accessor` and manually defining getter and setter methods.
 
