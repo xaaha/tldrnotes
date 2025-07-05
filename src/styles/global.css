@@ -1072,9 +1072,9 @@ header {
 /* The search input field */
 .search-input {
   width: 100%;
-  font-size: var(--fs-xl);
+  font-size: var(--fs-lg);
   font-weight: 500;
-  padding: var(--space-md);
+  padding: var(--space-sm);
   background-color: hsl(var(--muted));
   border: 2px solid transparent;
   border-radius: var(--radius-md);

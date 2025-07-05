@@ -21,7 +21,7 @@ const Search: FC<SearchProps> = ({ searchList }) => {
   const posts = fuse
     .search(query)
     .map((result) => result.item)
-    .slice(0, 10);
+    .slice(0, 5);
 
   function handleOnSearch(event: ChangeEvent<HTMLInputElement>) {
     const { value } = event.target;
