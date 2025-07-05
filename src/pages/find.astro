@@ -1,8 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import Mainlayout from "@layouts/Mainlayout.astro";
 import Search from "@components/Search";
-import { getNotes } from "@scripts/utils";
-const sortedPosts = await getNotes();
+
+const allPosts = await getCollection("notes", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 ---
 
 <Mainlayout>
