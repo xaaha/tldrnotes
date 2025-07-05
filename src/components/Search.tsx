@@ -39,7 +39,7 @@ const Search: FC<SearchProps> = ({ searchList }) => {
         type="text"
         value={query}
         onChange={handleOnSearch}
-        placeholder="Search notes ..."
+        placeholder="Search notes and ..."
         autoComplete="off"
       />
 
