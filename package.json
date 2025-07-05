@@ -20,7 +20,6 @@
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.3.0",
     "@astrojs/ts-plugin": "^1.10.4",
-    "@iconify-json/tabler": "^1.2.19",
     "@r4ai/remark-callout": "^0.6.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

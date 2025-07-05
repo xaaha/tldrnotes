@@ -17,9 +17,6 @@ importers:
       '@astrojs/ts-plugin':
         specifier: ^1.10.4
         version: 1.10.4
-      '@iconify-json/tabler':
-        specifier: ^1.2.19
-        version: 1.2.19
       '@r4ai/remark-callout':
         specifier: ^0.6.2
         version: 0.6.2
@@ -615,9 +612,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@iconify-json/tabler@1.2.19':
-    resolution: {integrity: sha512-JDeQTQxHD8KE12pAbPVHX1WFVOPq8D0XfRb/LwYHwGwYE0HP9OIjJ//TKxS1Gt++RirYu6Xsx+Jm5LA5KbykoA==}
 
   '@iconify/tools@4.1.2':
     resolution: {integrity: sha512-q6NzLQYEN9zkDfcyBqD3vItHcZw97w/s++3H3TBxUORr57EfHxj6tOW6fyufDjMq+Vl56WXWaPx1csBPYlI5CA==}
@@ -3280,10 +3274,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.5':
     optional: true
-
-  '@iconify-json/tabler@1.2.19':
-    dependencies:
-      '@iconify/types': 2.0.0
 
   '@iconify/tools@4.1.2':
     dependencies:
