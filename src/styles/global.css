@@ -34,6 +34,7 @@ h6 {
 :root {
   /* colors hue of 214 is good as well but a bit blueish*/
   --_hue: 222;
+  --hue-dark-accent: 36;
 
   /* Light Mode */
   --bkg--light: var(--_hue) 25% 96%;
@@ -43,7 +44,8 @@ h6 {
   /* Dark Mode */
   --bkg--dark: var(--_hue) 21% 19%;
   --txt--dark: var(--_hue) 20% 85%;
-  --accent--dark: var(--_hue) 50% 50%;
+  /* --accent--dark: var(--_hue) 50% 50%; */
+  --accent--dark: var(--hue-dark-accent) 100% 56%;
   --muted--dark: var(--_hue) 20% 15%;
 
   --bkg: var(--bkg--light);
@@ -660,7 +662,7 @@ header {
 
 /* Darkmode override for the strong element */
 :root.dark .content strong {
-  color: hsl(var(--_hue), 70%, 80%);
+  color: hsl(var(--accent--dark));
 }
 
 /* Style for <em> tags inside post content */
