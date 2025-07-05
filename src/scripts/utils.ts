@@ -1,3 +1,5 @@
+import { getCollection } from "astro:content";
+
 // Make string url friendly
 export function slugify(text: string): string {
   return text
@@ -17,3 +19,14 @@ export function formatDate(date: Date | null) {
 
   return new Date(date).toLocaleDateString("en-US", { timeZone: "UTC" });
 }
+
+/**
+ * @description: Get all notes, currently sorted by recent time only
+ * */
+export const getNotes = async () => {
+  const allPosts = await getCollection("notes", ({ data }) => {
+    return data.draft !== true;
+  });
+
+  return allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+};
