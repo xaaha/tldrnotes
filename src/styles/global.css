@@ -1043,3 +1043,95 @@ header {
 .heading-link-copy-button.copied::after {
   opacity: 0;
 }
+
+/* ======================================== */
+/* STYLES FOR SEARCH PAGE                   */
+/* ======================================== */
+
+/* The main container for the search form and results */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-block: var(--space-lg);
+}
+
+/* Visually hidden label for accessibility */
+.search-label.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* The search input field */
+.search-input {
+  width: 100%;
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  padding: var(--space-md);
+  background-color: hsl(var(--muted));
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  color: hsl(var(--txt));
+  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: hsl(var(--txt) / 0.5);
+  font-weight: 400;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: hsl(var(--bkg));
+  border-color: hsl(var(--accent));
+  box-shadow: 0 0 0 4px hsl(var(--accent) / 0.1);
+}
+
+/* The "Found X results" text */
+.search-results-meta {
+  margin-top: var(--space-md);
+  color: hsl(var(--txt) / 0.7);
+  text-align: center;
+}
+
+/* The list of search results */
+.search-results-list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-lg);
+}
+
+/* Each individual result item */
+.search-result-item a {
+  display: block;
+  text-decoration: none;
+  padding: var(--space-lg) var(--space-sm);
+  border-radius: var(--radius-lg);
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item a:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+/* The title of a search result */
+.search-result-title {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  color: hsl(var(--accent));
+  margin-bottom: var(--space-2xs);
+}
+
+/* The description of a search result */
+.search-result-description {
+  color: hsl(var(--txt) / 0.85);
+  font-size: var(--fs-md);
+  line-height: var(--lh-1-4);
+}
