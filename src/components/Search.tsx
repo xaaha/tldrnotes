@@ -38,7 +38,7 @@ const Search: FC<SearchProps> = ({ searchList }) => {
         type="text"
         value={query}
         onChange={handleOnSearch}
-        placeholder="Search posts"
+        placeholder="Search Notes"
       />
 
       {query.length > 1 && (
