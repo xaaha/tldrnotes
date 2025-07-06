@@ -33,9 +33,9 @@ const Search: FC<SearchProps> = ({ searchList }) => {
       if (isMobile) {
         setPlaceHolder("Go...");
       } else if (isMac) {
-        setPlaceHolder("⌘ + K");
+        setPlaceHolder("⌘ + k");
       } else {
-        setPlaceHolder("Ctrl + K");
+        setPlaceHolder("Ctrl + k");
       }
 
       // Check for Command+K on Mac or Ctrl+K on Windows/Linux
