@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { FC, ChangeEvent } from "react";
 import type { CollectionEntry } from "astro:content";
 import Fuse from "fuse.js";
@@ -17,6 +17,24 @@ interface SearchProps {
 const Search: FC<SearchProps> = ({ searchList }) => {
   const [query, setQuery] = useState("");
   const fuse = new Fuse(searchList, options);
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check for Command+K on Mac or Ctrl+K on Windows/Linux
+      if (event.key === "k" && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const posts = fuse
     .search(query)
@@ -34,6 +52,7 @@ const Search: FC<SearchProps> = ({ searchList }) => {
         Search
       </label>
       <input
+        ref={inputRef}
         id="search"
         className="search-input"
         type="text"
