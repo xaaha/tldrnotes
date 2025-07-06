@@ -1057,7 +1057,6 @@ header {
   align-items: center;
 }
 
-/* Visually hidden label for accessibility */
 .search-label.sr-only {
   position: absolute;
   width: 1px;
