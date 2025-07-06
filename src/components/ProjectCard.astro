@@ -1,0 +1,97 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  title: string;
+  description: string;
+  githubUrl: string;
+}
+
+const { title, description, githubUrl } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-card__content">
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__description">{description}</p>
+  </div>
+  <footer class="project-card__footer">
+    <a
+      href={githubUrl}
+      class="project-card__link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="github" class="project-card__icon" />
+      <span>View on GitHub</span>
+    </a>
+  </footer>
+</article>
+
+<style>
+  .project-card {
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--txt) / 0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: var(--space-lg);
+    transition:
+      transform 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .project-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .project-card__title {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: hsl(var(--txt));
+    line-height: var(--lh-1-1);
+  }
+
+  .project-card__description {
+    font-size: var(--fs-md);
+    color: hsl(var(--txt) / 0.85);
+    line-height: var(--lh-1-4);
+    flex-grow: 1;
+  }
+
+  .project-card__footer {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid hsl(var(--txt) / 0.1);
+  }
+
+  .project-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+    color: hsl(var(--accent));
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .project-card__link:hover {
+    color: hsl(var(--txt));
+    text-decoration: underline;
+  }
+
+  .project-card__icon {
+    width: 1.25em;
+    height: 1.25em;
+  }
+</style>

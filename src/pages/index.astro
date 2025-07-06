@@ -1,6 +1,7 @@
 ---
 import Mainlayout from "@layouts/Mainlayout.astro";
 import Link from "@components/Link.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 ---
 
 <Mainlayout title="About Xaaha">
@@ -45,7 +46,9 @@ import Link from "@components/Link.astro";
             d="m20 4l-9.609 8 0.004 0.004v0.002l-2.395 1.994v1l2.395-1.994v-0.002l-0.004-0.004 9.609-8 24 34.275v-1l-24-34.275zm24 0v1l12 10v-1l-12-10z"
           ></path>
         </svg>
-        <span>I solve problems using Neovim.</span>
+        <span
+          >I solve problems using Neovim. Most of the time, it's software.</span
+        >
       </div>
       <p>
         ⚙️ I’m a Mechanical Engineer by degree, but Statics broke me. Now I
@@ -56,6 +59,11 @@ import Link from "@components/Link.astro";
         keep asking AI the same question every week.
       </p>
     </div>
+    <ProjectCard
+      title="Hulak"
+      description="Miniman dependency API client"
+      githubUrl="https://github.com/xaaha/hulak"
+    />
   </section>
   <div class="center-contact">
     <Link
