@@ -16,13 +16,28 @@ interface SearchProps {
 
 const Search: FC<SearchProps> = ({ searchList }) => {
   const [query, setQuery] = useState("");
+  const [placeHolder, setPlaceHolder] = useState("");
   const fuse = new Fuse(searchList, options);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // autofocus on page load
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      const isMac = navigator.userAgent.includes("Mac");
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        setPlaceHolder("Go...");
+      } else if (isMac) {
+        setPlaceHolder("Search notes... (⌘ + K)");
+      } else {
+        setPlaceHolder("Search notes... (Ctrl + K)");
+      }
+
       // Check for Command+K on Mac or Ctrl+K on Windows/Linux
       if (event.key === "k" && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
@@ -58,7 +73,7 @@ const Search: FC<SearchProps> = ({ searchList }) => {
         type="text"
         value={query}
         onChange={handleOnSearch}
-        placeholder="Go ..."
+        placeholder={placeHolder}
         autoComplete="off"
       />
 
