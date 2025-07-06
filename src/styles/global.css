@@ -1070,7 +1070,6 @@ header {
   border-width: 0;
 }
 
-/* The search input field */
 .search-input {
   width: 100%;
   max-width: var(--content-lg);
@@ -1096,21 +1095,18 @@ header {
   box-shadow: 0 0 0 4px hsl(var(--accent) / 0.1);
 }
 
-/* The "Found X results" text */
 .search-results-meta {
   margin-top: var(--space-md);
   color: hsl(var(--txt) / 0.7);
   text-align: center;
 }
 
-/* The list of search results */
 .search-results-list {
   list-style: none;
   padding: 0;
   margin-top: var(--space-lg);
 }
 
-/* Each individual result item */
 .search-result-item a {
   display: block;
   text-decoration: none;
@@ -1123,7 +1119,6 @@ header {
   background-color: hsl(var(--muted) / 0.5);
 }
 
-/* The title of a search result */
 .search-result-title {
   font-size: var(--fs-lg);
   font-weight: 500;
@@ -1131,7 +1126,6 @@ header {
   margin-bottom: var(--space-2xs);
 }
 
-/* The description of a search result */
 .search-result-description {
   color: hsl(var(--txt) / 0.85);
   font-size: var(--fs-md);
