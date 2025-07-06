@@ -11,7 +11,7 @@ interface Props {
   description?: string;
 }
 
-const { title = "Tldr Notes", description = "To the point tech notes" } =
+const { title = "xaaha.dev", description = "Xaaha's Personal Space" } =
   Astro.props as Props;
 ---
 
@@ -20,7 +20,7 @@ const { title = "Tldr Notes", description = "To the point tech notes" } =
   <body>
     <Nav />
     <main>
-      <slot>Welcome to Tldr Notes!</slot>
+      <slot>How did you end up here? Anyway, Welcome!</slot>
     </main>
     <Footer />
   </body>

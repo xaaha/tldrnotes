@@ -34,6 +34,7 @@ h6 {
 :root {
   /* colors hue of 214 is good as well but a bit blueish*/
   --_hue: 222;
+  --hue-dark-accent: 36;
 
   /* Light Mode */
   --bkg--light: var(--_hue) 25% 96%;
@@ -43,7 +44,8 @@ h6 {
   /* Dark Mode */
   --bkg--dark: var(--_hue) 21% 19%;
   --txt--dark: var(--_hue) 20% 85%;
-  --accent--dark: var(--_hue) 50% 50%;
+  /* --accent--dark: var(--_hue) 50% 50%; */
+  --accent--dark: var(--hue-dark-accent) 100% 56%;
   --muted--dark: var(--_hue) 20% 15%;
 
   --bkg: var(--bkg--light);
@@ -368,12 +370,6 @@ button {
   filter: drop-shadow(0 2px 2px hsl(var(--_shadow) / 0.5));
 }
 
-[aria-label="Blog pages"] {
-  display: flex;
-  gap: var(--space-sm);
-  justify-content: center;
-}
-
 /* footer */
 
 :where(footer) {
@@ -481,7 +477,7 @@ button {
 }
 
 /* Make other links/buttons clickable on top of the stretched link  
- * for blog post card*/
+ * for notes card*/
 .card,
 .card .content small a {
   position: relative;
@@ -571,7 +567,6 @@ header {
   }
 }
 
-[aria-label="Blog categories"],
 [aria-label="Related posts"] {
   padding: 0;
   text-align: center;
@@ -591,10 +586,6 @@ header {
       text-decoration: none;
     }
   }
-}
-
-:where([aria-label="Blog categories"]) {
-  margin-block-end: var(--space-lg);
 }
 
 /* ================================================================== */
@@ -671,7 +662,7 @@ header {
 
 /* Darkmode override for the strong element */
 :root.dark .content strong {
-  color: hsl(var(--_hue), 70%, 80%);
+  color: hsl(var(--accent--dark));
 }
 
 /* Style for <em> tags inside post content */
@@ -777,6 +768,7 @@ header {
   padding: 0.5rem;
   display: flex;
   align-items: center;
+  border-radius: var(--radius-md);
 }
 
 /* The button is placed in the SAME grid cell and aligned */
@@ -1050,4 +1042,89 @@ header {
 
 .heading-link-copy-button.copied::after {
   opacity: 0;
+}
+
+/* ======================================== */
+/* STYLES FOR SEARCH PAGE                   */
+/* ======================================== */
+
+/* The main container for the search form and results */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.search-label.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.search-input {
+  width: 400px; /* Set a  fixed wideth, otherwise it adjusts with search content */
+  max-width: 400px; /* prevents it from getting too wide on large screens */
+  min-width: 250px; /* ensures it doesn’t get too small */
+  padding: 0.75em 1.25em;
+  border-radius: 100px;
+  border: 1px solid hsl(var(--txt) / 0.15);
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  background: hsl(var(--muted));
+  transition: border-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: hsl(var(--txt) / 0.5);
+  font-weight: 400;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: hsl(var(--bkg));
+  border-color: hsl(var(--accent));
+  box-shadow: 0 0 0 4px hsl(var(--accent) / 0.1);
+}
+
+.search-results-meta {
+  margin-top: var(--space-md);
+  color: hsl(var(--txt) / 0.7);
+  text-align: center;
+}
+
+.search-results-list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-lg);
+}
+
+.search-result-item a {
+  display: block;
+  text-decoration: none;
+  padding: var(--space-lg) var(--space-sm);
+  border-radius: var(--radius-lg);
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item a:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.search-result-title {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  color: hsl(var(--accent));
+  margin-bottom: var(--space-2xs);
+}
+
+.search-result-description {
+  color: hsl(var(--txt) / 0.85);
+  font-size: var(--fs-md);
+  line-height: var(--lh-1-4);
 }

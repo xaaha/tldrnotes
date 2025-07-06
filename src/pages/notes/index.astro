@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Mainlayout from "@layouts/Mainlayout.astro";
 import PostList from "@components/PostList.tsx";
 
-const allPosts = await getCollection("blog", ({ data }) => {
+const allPosts = await getCollection("notes", ({ data }) => {
   return data.draft !== true;
 });
 
@@ -13,8 +13,8 @@ const sortedPosts = allPosts.sort(
 ---
 
 <Mainlayout>
-  <section class="container" aria-label="New Blog Posts">
-    <h1 class="h1">Recent Posts</h1>
+  <section class="container" aria-label="New Notes">
+    <h1 class="h1">Recent Notes</h1>
     <PostList client:load posts={sortedPosts} />
   </section>
 </Mainlayout>

@@ -7,7 +7,7 @@ export const navData: {
     path: "/about/",
   },
   {
-    name: "Blog",
-    path: "/blog/",
+    name: "Notes",
+    path: "/notes/",
   },
 ];

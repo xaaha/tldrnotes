@@ -21,7 +21,7 @@
     },
     "verbatimModuleSyntax": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist",

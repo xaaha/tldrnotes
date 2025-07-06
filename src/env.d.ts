@@ -1,7 +1,7 @@
 declare let myString: string;
 declare function myFunction(): boolean;
 
-// blog's frontmatter
+// notes frontmatter
 interface Frontmatter {
   title: string;
   date: Date;

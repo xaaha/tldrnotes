@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import Mainlayout from "@layouts/Mainlayout.astro";
+import Search from "@components/Search";
+
+const allPosts = await getCollection("notes", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Mainlayout>
+  <section class="search-page-wrapper">
+    <h1 class="h2">Search Notes</h1>
+    <Search client:load searchList={sortedPosts} />
+  </section>
+</Mainlayout>
+
+<style>
+  .search-page-wrapper {
+    width: 100%;
+    max-width: var(--content-lg);
+    margin-inline: auto;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .h2 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+</style>

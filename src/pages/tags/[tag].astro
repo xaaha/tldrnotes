@@ -6,13 +6,13 @@ import Mainlayout from "@layouts/Mainlayout.astro";
 import PostList from "@components/PostList.tsx";
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog", ({ data }) => {
-    // filter out draft and posts with missing categories
+  const allPosts = await getCollection("notes", ({ data }) => {
+    // filter out draft notes with missing categories
     return data.draft !== true && data.category;
   });
 
   // A map for each tag and the list of posts associated with it
-  const allTags = new Map<string, CollectionEntry<"blog">[]>();
+  const allTags = new Map<string, CollectionEntry<"notes">[]>();
 
   for (const post of allPosts) {
     const postTags = post.data
