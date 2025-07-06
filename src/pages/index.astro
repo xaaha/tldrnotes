@@ -1,5 +1,106 @@
 ---
 import Mainlayout from "@layouts/Mainlayout.astro";
+import Link from "@components/Link.astro";
 ---
 
-<Mainlayout />
+<Mainlayout title="About Xaaha">
+  <section class="container about" aria-label="About Xaaha">
+    <div class="center-contact">
+      <img
+        src="../../images/hi.jpg"
+        alt="Animated Hi"
+        width="200"
+        height="330"
+      />
+    </div>
+    <div class="about-content">
+      <h1 class="h1">
+        About <br />
+        <code
+          >fmt.<span class="func">Println</span>("<span class="string"
+            >this handsome guy</span
+          >")</code
+        >
+      </h1>
+      <div class="about-inline">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 64 64"
+          style="vertical-align: middle; margin-left: 4px;"
+        >
+          <path
+            style="opacity:.2"
+            d="m20 5-9.6094 8 0.0039 0.0039v0.002l-2.395 1.994v36l12 10v-34.275l24 34.275 9.6094-8-0.0039-0.0039v-0.002l2.394-1.994v-36l-12-10v34.275z"
+          ></path>
+          <path style="fill:#6ba63f" d="m56 14-12-10v56l12-10z"></path>
+          <path style="fill:#42afe6" d="m8 14 12-10v56l-12-10z"></path>
+          <path style="fill:#96ca6b" d="m20 4 33.61 48-9.61 8-33.61-48z"></path>
+          <path style="fill:#569e41" d="m44 38.277v21.723l9.6055-8.0039z"
+          ></path>
+          <path style="fill:#70be63" d="m20 4-9.605 8.004 9.605 13.719z"></path>
+          <path
+            style="opacity:.2;fill:#ffffff"
+            d="m20 4l-9.609 8 0.004 0.004v0.002l-2.395 1.994v1l2.395-1.994v-0.002l-0.004-0.004 9.609-8 24 34.275v-1l-24-34.275zm24 0v1l12 10v-1l-12-10z"
+          ></path>
+        </svg>
+        <span>I solve problems using Neovim.</span>
+      </div>
+      <p>
+        ⚙️ I’m a Mechanical Engineer by degree, but Statics broke me. Now I
+        change my nvim config full time and build software tools on the side.
+      </p>
+      <p>
+        📒 This is my personal space where write things down so I don’t have to
+        keep asking AI the same question every week.
+      </p>
+    </div>
+  </section>
+  <div class="center-contact">
+    <Link
+      href="mailto:pratik@tldrnotes.net"
+      style="primary"
+      text="Send an Email"
+    />
+  </div>
+</Mainlayout>
+
+<style>
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  .about-line {
+    display: flex;
+    align-items: center;
+  }
+  .about-line svg {
+    flex-shrink: 0;
+  }
+  code {
+    --func-color: hsl(220, 90%, 35%); /* Darker, saturated blue */
+    --string-color: hsl(89, 56%, 25%); /* Darker, saturated green */
+
+    background: hsl(var(--txt) / 0.07);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+    font-size: 0.5em;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: lighter;
+  }
+
+  :global(.dark) code {
+    --func-color: hsl(220, 87%, 72%);
+    --string-color: hsl(89, 53%, 68%);
+  }
+
+  code .func {
+    color: var(--func-color);
+  }
+
+  code .string {
+    color: var(--string-color);
+  }
+</style>
