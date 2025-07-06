@@ -1052,11 +1052,9 @@ header {
 .search-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  margin-block: var(--space-lg);
   align-items: center;
+  width: 100%;
 }
-
 .search-label.sr-only {
   position: absolute;
   width: 1px;
@@ -1070,16 +1068,16 @@ header {
 }
 
 .search-input {
-  width: 100%;
-  max-width: var(--content-lg);
-  font-size: var(--fs-md);
-  font-weight: 500;
-  padding: var(--space-xs);
-  background-color: hsl(var(--muted));
-  border: 2px solid transparent;
-  border-radius: var(--radius-md);
-  color: hsl(var(--txt));
-  transition: all 0.2s ease;
+  width: 400px; /* Set a  fixed wideth, otherwise it adjusts with search content */
+  max-width: 400px; /* prevents it from getting too wide on large screens */
+  min-width: 250px; /* ensures it doesn’t get too small */
+  padding: 0.75em 1.25em;
+  border-radius: 100px;
+  border: 1px solid hsl(var(--txt) / 0.15);
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  background: hsl(var(--muted));
+  transition: border-color 0.2s;
 }
 
 .search-input::placeholder {
