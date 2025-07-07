@@ -40,7 +40,7 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
     }
   </div>
 
-  <footer class="project-card__footer">
+  <div class="project-card__footer">
     {
       webUrl && (
         <a
@@ -67,7 +67,7 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
         </a>
       )
     }
-  </footer>
+  </div>
 </article>
 
 <style>
@@ -167,11 +167,9 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
 
   .project-card__footer {
     margin-top: var(--space-lg);
-    padding-top: var(--space-md);
-    border-top: 1px solid hsl(var(--txt) / 0.1);
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-lg);
+    gap: var(--space-sm);
   }
 
   .project-card__link {
@@ -179,14 +177,21 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
     align-items: center;
     gap: var(--space-xs);
     text-decoration: none;
-    color: hsl(var(--accent));
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--accent) / 0.1);
+    color: hsl(var(--accent));
+    border: 1px solid transparent;
   }
 
   .project-card__link:hover {
-    color: hsl(var(--txt));
-    text-decoration: underline;
+    background-color: hsl(var(--accent));
+    color: hsl(var(--bkg));
+    border-color: hsl(var(--accent));
+    text-decoration: none;
   }
 
   .project-card__icon {
