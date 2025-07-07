@@ -4,119 +4,145 @@ import Link from "@components/Link.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 ---
 
-<Mainlayout title="About Xaaha">
-  <section class="container about" aria-label="About Xaaha">
-    <div class="center-contact">
+<Mainlayout title="Pratik Thapa | Software Engineer & Problem Solver">
+  <section class="container about" aria-label="About Me">
+    <div class="about__image-container">
       <img
-        src="../../images/hi.jpg"
-        alt="Animated Hi"
+        src="/images/hi.jpg"
+        alt="A portrait of Pratik Thapa"
         width="200"
         height="330"
       />
     </div>
-    <div class="about-content">
-      <h1 class="h1">
-        Pratik Thapa<br />
-        <code
-          >fmt.<span class="func">Println</span>("<span class="string"
-            >Problem solver</span
-          >")</code
-        >
-      </h1>
-      <div class="about-inline">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 64 64"
-          style="vertical-align: middle; margin-left: 4px;"
-        >
-          <path
-            style="opacity:.2"
-            d="m20 5-9.6094 8 0.0039 0.0039v0.002l-2.395 1.994v36l12 10v-34.275l24 34.275 9.6094-8-0.0039-0.0039v-0.002l2.394-1.994v-36l-12-10v34.275z"
-          ></path>
-          <path style="fill:#6ba63f" d="m56 14-12-10v56l12-10z"></path>
-          <path style="fill:#42afe6" d="m8 14 12-10v56l-12-10z"></path>
-          <path style="fill:#96ca6b" d="m20 4 33.61 48-9.61 8-33.61-48z"></path>
-          <path style="fill:#569e41" d="m44 38.277v21.723l9.6055-8.0039z"
-          ></path>
-          <path style="fill:#70be63" d="m20 4-9.605 8.004 9.605 13.719z"></path>
-          <path
-            style="opacity:.2;fill:#ffffff"
-            d="m20 4l-9.609 8 0.004 0.004v0.002l-2.395 1.994v1l2.395-1.994v-0.002l-0.004-0.004 9.609-8 24 34.275v-1l-24-34.275zm24 0v1l12 10v-1l-12-10z"
-          ></path>
-        </svg>
-        <span>Most of the time, it's software.</span>
+    <div class="about__content">
+      <h1 class="h1">Software Engineer & Problem Solver</h1>
+      <p class="hero__subtitle">
+        I build elegant, efficient software tools to solve complex challenges.
+        From streamlining API testing to crafting digital portfolios, I thrive
+        on turning ideas into reality.
+      </p>
+      <div class="hero__cta">
+        <Link
+          href="mailto:pratik@tldrnotes.net"
+          style="primary"
+          text="Get in Touch"
+        />
       </div>
-      <p>
-        ⚙️ I’m a Mechanical Engineer by degree, but Statics broke me. Now I
-        change my nvim config full time and build software tools on the side.
-      </p>
-      <p>
-        📒 This is my personal space where write things down so I don’t have to
-        keep asking AI the same question every week.
-      </p>
     </div>
-    <ProjectCard
-      title="Hulak"
-      description="Miniman dependency API client"
-      githubUrl="https://github.com/xaaha/hulak"
-      tags="Go CLI-APP"
-      status="Active"
-    />
-    <ProjectCard
-      title="Pratik Picture"
-      description="Gallery View of My Photography Portfolio"
-      webUrl="https://pratikpicture.com/"
-      githubUrl="https://github.com/xaaha/hulak"
-      tags="HTML CSS JS"
-      status="Complete"
-    />
   </section>
-  <div class="center-contact">
-    <Link
-      href="mailto:pratik@tldrnotes.net"
-      style="primary"
-      text="Send an Email"
-    />
-  </div>
+
+  <section class="projects container">
+    <h2 class="section-title">A Few Problems I've Solved</h2>
+    <div class="project-grid">
+      <ProjectCard
+        title="Hulak"
+        description="Problem: Developers need a lightweight, dependency-free way to test APIs directly from the command line. Solution: A CLI tool written in Go that provides a fast and minimal API client."
+        githubUrl="https://github.com/xaaha/hulak"
+        tags="Go CLI-APP Tooling"
+        status="Active"
+      />
+      <ProjectCard
+        title="Pratik Picture"
+        description="Problem: Photographers need a clean, fast, and visually appealing online portfolio. Solution: A custom-built static site that showcases photography with a focus on performance and aesthetics."
+        webUrl="https://pratikpicture.com/"
+        githubUrl="https://github.com/xaaha/pratikpicture"
+        tags="HTML CSS JS Photography"
+        status="Complete"
+      />
+      <ProjectCard
+        title="This Website"
+        description="Problem: I needed a personal space to document my learning and showcase my work. Solution: This site, built with Astro for performance and designed to be a clean, readable, and ever-evolving digital notebook."
+        githubUrl="https://github.com/xaaha/your-portfolio-repo"
+        tags="Astro TypeScript CSS"
+        status="Active"
+      />
+
+      <ProjectCard
+        title="Another Project"
+        description="Problem: A description of the problem this project addresses. Solution: A summary of how your project solves that specific problem, showcasing your skills."
+        githubUrl="https://github.com/xaaha/another-repo"
+        tags="Tech-Stack"
+        status="Archived"
+      />
+    </div>
+  </section>
 </Mainlayout>
 
 <style>
-  .about-content {
+  .about {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--space-2xl);
+    padding-block: var(--space-2xl);
+  }
+
+  @media (min-width: 768px) {
+    .about {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  .about__image-container {
+    display: grid;
+    place-items: center;
+  }
+
+  .about__image-container img {
+    width: 200px;
+    height: 330px;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (min-width: 768px) {
+    .about__image-container {
+      order: 2;
+    }
+  }
+
+  .about__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-  }
-  .about-line {
-    display: flex;
-    align-items: center;
-  }
-  .about-line svg {
-    flex-shrink: 0;
-  }
-  code {
-    --func-color: hsl(220, 90%, 35%); /* Darker, saturated blue */
-    --string-color: hsl(89, 56%, 25%); /* Darker, saturated green */
-
-    background: hsl(var(--txt) / 0.07);
-    padding: 0.2em 0.4em;
-    border-radius: var(--radius-sm);
-    font-size: 0.5em;
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: lighter;
+    align-items: flex-start;
+    gap: var(--space-lg);
   }
 
-  :global(.dark) code {
-    --func-color: hsl(220, 87%, 72%);
-    --string-color: hsl(89, 53%, 68%);
+  .about__content .h1 {
+    max-width: 100%;
   }
 
-  code .func {
-    color: var(--func-color);
+  .hero__subtitle {
+    font-size: var(--fs-lg);
+    color: hsl(var(--txt) / 0.8);
+    max-width: 60ch;
   }
 
-  code .string {
-    color: var(--string-color);
+  .hero__cta {
+    margin-top: var(--space-md);
+  }
+
+  .projects {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid hsl(var(--txt) / 0.1);
+  }
+
+  .section-title {
+    font-size: var(--fs-xl);
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
