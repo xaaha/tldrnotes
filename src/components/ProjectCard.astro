@@ -179,12 +179,10 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
-
     padding: var(--space-2xs) var(--space-sm);
     border-radius: var(--radius-full);
     background-color: hsl(var(--accent) / 0.1);
-    color: hsl(var(--accent));
-    border: 1px solid transparent;
+    border: 1px solid hsl(var(--accent));
   }
 
   .project-card__link:hover {
