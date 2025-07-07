@@ -73,19 +73,19 @@ import ProjectCard from "@components/ProjectCard.astro";
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
-    gap: var(--space-2xl);
-    padding-block: var(--space-2xl);
+    gap: var(--space-lg);
   }
 
   @media (min-width: 768px) {
     .about {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
   .about__image-container {
     display: grid;
     place-items: center;
+    justify-content: center;
   }
 
   .about__image-container img {
@@ -98,7 +98,11 @@ import ProjectCard from "@components/ProjectCard.astro";
 
   @media (min-width: 768px) {
     .about__image-container {
-      order: 2;
+      order: 1;
+    }
+    .about__image-container img {
+      width: 300px;
+      height: 495px;
     }
   }
 
@@ -116,7 +120,7 @@ import ProjectCard from "@components/ProjectCard.astro";
   .hero__subtitle {
     font-size: var(--fs-lg);
     color: hsl(var(--txt) / 0.8);
-    max-width: 60ch;
+    max-width: 80ch;
   }
 
   .hero__cta {
@@ -124,7 +128,6 @@ import ProjectCard from "@components/ProjectCard.astro";
   }
 
   .projects {
-    padding-block: var(--space-2xl);
     border-top: 1px solid hsl(var(--txt) / 0.1);
   }
 
@@ -137,7 +140,7 @@ import ProjectCard from "@components/ProjectCard.astro";
   .project-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-2xl);
   }
 
   @media (min-width: 768px) {
