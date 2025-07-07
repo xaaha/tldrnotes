@@ -100,10 +100,15 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
   }
 
   .status--active {
-    color: hsl(145, 63%, 42%);
+    color: hsl(145, 63%, 30%);
     border-color: hsl(145, 63%, 42% / 0.5);
     background-color: hsl(145, 63%, 42% / 0.1);
   }
+
+  :global(.dark) .status--active {
+    color: hsl(145, 63%, 42%);
+  }
+
   .status--complete {
     color: hsl(var(--accent));
     border-color: hsl(var(--accent) / 0.5);
