@@ -4,12 +4,13 @@ import { Icon } from "astro-icon/components";
 export interface Props {
   title: string;
   description: string;
-  githubUrl: string;
+  githubUrl?: string;
+  webUrl?: string;
   tags?: string;
   status?: "Active" | "Complete" | "Archived";
 }
 
-const { title, description, githubUrl, tags, status } = Astro.props;
+const { title, description, githubUrl, webUrl, tags, status } = Astro.props;
 const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
 ---
 
@@ -40,15 +41,32 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
   </div>
 
   <footer class="project-card__footer">
-    <a
-      href={githubUrl}
-      class="project-card__link"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon name="github" class="project-card__icon" />
-      <span>View on GitHub</span>
-    </a>
+    {
+      webUrl && (
+        <a
+          href={webUrl}
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="web" class="project-card__icon" />
+          <span>View Live</span>
+        </a>
+      )
+    }
+    {
+      githubUrl && (
+        <a
+          href={githubUrl}
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="github" class="project-card__icon" />
+          <span>View on GitHub</span>
+        </a>
+      )
+    }
   </footer>
 </article>
 
@@ -151,6 +169,9 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
     margin-top: var(--space-lg);
     padding-top: var(--space-md);
     border-top: 1px solid hsl(var(--txt) / 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
   }
 
   .project-card__link {
