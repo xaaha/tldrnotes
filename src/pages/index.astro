@@ -4,7 +4,7 @@ import Link from "@components/Link.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 ---
 
-<Mainlayout title="Pratik Thapa | Software Engineer & Problem Solver">
+<Mainlayout title="Pratik Thapa | Software Engineer">
   <section class="container about" aria-label="About Me">
     <div class="about__image-container">
       <img
@@ -15,12 +15,12 @@ import ProjectCard from "@components/ProjectCard.astro";
       />
     </div>
     <div class="about__content">
-      <h1 class="h1">Software Engineer & Problem Solver</h1>
+      <h1 class="h2">Hey, I'm Pratik.</h1>
+      <h2 class="h3">Professional Bug Fixer</h2>
       <p class="hero__subtitle">
-        I build elegant, efficient software tools to solve complex challenges.
-        From streamlining API testing to crafting digital portfolios, I thrive
-        on turning ideas into reality.
+        To stay sane, I work on side projects that solves real-world problems.
       </p>
+      <p class="neovim-line">And I use Neovim, by the way.</p>
       <div class="hero__cta">
         <Link
           href="mailto:pratik@tldrnotes.net"
@@ -146,5 +146,10 @@ import ProjectCard from "@components/ProjectCard.astro";
     .project-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+  .neovim-line {
+    font-size: var(--fs-sm);
+    color: hsl(var(--txt) / 0.7);
+    font-style: italic;
   }
 </style>
