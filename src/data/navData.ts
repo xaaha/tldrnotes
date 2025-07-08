@@ -3,10 +3,6 @@ export const navData: {
   path: string;
 }[] = [
   {
-    name: "About",
-    path: "/about/",
-  },
-  {
     name: "Notes",
     path: "/notes/",
   },
