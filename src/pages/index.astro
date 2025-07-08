@@ -84,7 +84,7 @@ import ProjectCard from "@components/ProjectCard.astro";
   .about__image-container {
     display: grid;
     place-items: center;
-    /* justify-content: center; */
+    justify-self: center;
   }
 
   .about__image-container img {
@@ -130,7 +130,7 @@ import ProjectCard from "@components/ProjectCard.astro";
   .hero-subtitle {
     font-size: var(--fs-lg);
     color: hsl(var(--txt) / 0.8);
-    max-width: 65ch; /* Optimal reading length */
+    max-width: 65ch;
     line-height: var(--lh-1-4);
     margin-bottom: var(--space-lg);
   }
@@ -145,16 +145,6 @@ import ProjectCard from "@components/ProjectCard.astro";
 
   .hero-cta {
     margin-top: var(--space-xl);
-  }
-
-  .hero__subtitle {
-    font-size: var(--fs-lg);
-    color: hsl(var(--txt) / 0.8);
-    max-width: 100ch;
-  }
-
-  .hero__cta {
-    margin-top: var(--space-md);
   }
 
   .projects {
@@ -177,10 +167,5 @@ import ProjectCard from "@components/ProjectCard.astro";
     .project-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-  }
-  .neovim-line {
-    font-size: var(--fs-sm);
-    color: hsl(var(--txt) / 0.7);
-    font-style: italic;
   }
 </style>
