@@ -2,14 +2,15 @@
 import Mainlayout from "@layouts/Mainlayout.astro";
 import Link from "@components/Link.astro";
 import ProjectCard from "@components/ProjectCard.astro";
+import { hero, projectInfo } from "../../src/data/indexData";
 ---
 
-<Mainlayout title="Pratik Thapa | Software Engineer">
+<Mainlayout title={hero.title}>
   <section class="container about" aria-label="About Me">
     <div class="about__image-container">
       <img
         src="/images/hi.jpg"
-        alt="A portrait of Pratik Thapa"
+        alt="A portrait of Pratik"
         width="200"
         height="330"
       />
@@ -18,9 +19,9 @@ import ProjectCard from "@components/ProjectCard.astro";
       <h1 class="hero-greeting">Hey, I'm Pratik.</h1>
       <h2 class="hero-title">Professional Bug Fixer</h2>
       <p class="hero-subtitle">
-        To stay sane, I work on side projects that add value to my life.
+        {hero.subtitle}
       </p>
-      <p class="hero-aside">And I use Neovim, by the way.</p>
+      <p class="hero-aside">{hero.aside}</p>
       <div class="hero-cta">
         <Link
           href="mailto:pratik@tldrnotes.net"
@@ -34,35 +35,18 @@ import ProjectCard from "@components/ProjectCard.astro";
   <section class="projects container">
     <h2 class="section-title">Side Hustle</h2>
     <div class="project-grid">
-      <ProjectCard
-        title="Hulak"
-        description="I needed a lightweight, dependency-free API client for my terminal. So, I built Hulak - a CLI tool written in Go that provides a fast and minimal API client that can be defined in yaml file."
-        githubUrl="https://github.com/xaaha/hulak"
-        tags="Go CLI-APP Tooling"
-        status="Active"
-      />
-      <ProjectCard
-        title="This Website"
-        description="This is a personal space to document my learning and showcase my work. I built this with Astro for performance and designed to be a clean, readable, and ever-evolving digital notebook."
-        githubUrl="https://github.com/xaaha/tldrnotes"
-        tags="Astro TypeScript CSS JS"
-        status="Active"
-      />
-      <ProjectCard
-        title="Pratik Picture"
-        description="I needed a clean, fast, and visually appealing online portfolio for my pictures. So, I built this custom static site that showcases photography with a focus on performance and aesthetics. Built purely on basic web technology."
-        webUrl="https://pratikpicture.com/"
-        githubUrl="https://github.com/xaaha/pratikpicture"
-        tags="HTML CSS JS Photography"
-        status="Complete"
-      />
-      <ProjectCard
-        title="Address API"
-        description="I built this API for internationalization testing that delivers five complete, valid, and randomly selected addresses—including phone numbers — based on a given country code. It draws from a dataset of over 40,000 real-world addresses across the globe, making it ideal for testing localization and global user scenarios."
-        webUrl="https://api.tldrnotes.net/docs"
-        tags="Go"
-        status="Archived"
-      />
+      {
+        projectInfo.map((project) => (
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            githubUrl={project.githubUrl}
+            webUrl={project.webUrl}
+            tags={project.tags}
+            status={project.status}
+          />
+        ))
+      }
     </div>
   </section>
 </Mainlayout>
