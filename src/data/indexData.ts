@@ -3,6 +3,15 @@ const hero = {
   aside: "And I use Neovim, by the way.",
 };
 
+interface ProjectDetails {
+  title: string;
+  description: string;
+  githubUrl?: string;
+  webUrl?: string;
+  tags?: string;
+  status?: "Active" | "Complete" | "Archived";
+}
+
 const projectInfo = {
   title: "Hulak",
   description:
