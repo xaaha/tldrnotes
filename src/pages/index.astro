@@ -14,14 +14,14 @@ import ProjectCard from "@components/ProjectCard.astro";
         height="330"
       />
     </div>
-    <div class="about__content">
-      <h1 class="h2">Hey, I'm Pratik.</h1>
-      <h2 class="h3">Professional Bug Fixer</h2>
-      <p class="hero__subtitle">
+    <div class="hero-content">
+      <h1 class="hero-greeting">Hey, I'm Pratik.</h1>
+      <h2 class="hero-title">Professional Bug Fixer</h2>
+      <p class="hero-subtitle">
         To stay sane, I work on side projects that adds value to my life.
       </p>
-      <p class="neovim-line">And I use Neovim, by the way.</p>
-      <div class="hero__cta">
+      <p class="hero-aside">And I use Neovim, by the way.</p>
+      <div class="hero-cta">
         <Link
           href="mailto:pratik@tldrnotes.net"
           style="primary"
@@ -43,9 +43,9 @@ import ProjectCard from "@components/ProjectCard.astro";
       />
       <ProjectCard
         title="This Website"
-        description="I needed a personal space to document my learning and showcase my work. Solution: This site, built with Astro for performance and designed to be a clean, readable, and ever-evolving digital notebook."
-        githubUrl="https://github.com/xaaha/your-portfolio-repo"
-        tags="Astro TypeScript CSS"
+        description="This is a personal space to document my learning and showcase my work. I built this with Astro for performance and designed to be a clean, readable, and ever-evolving digital notebook."
+        githubUrl="https://github.com/xaaha/tldrnotes"
+        tags="Astro TypeScript CSS JS"
         status="Active"
       />
       <ProjectCard
@@ -105,15 +105,46 @@ import ProjectCard from "@components/ProjectCard.astro";
     }
   }
 
-  .about__content {
+  .hero-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-lg);
   }
 
-  .about__content .h1 {
-    max-width: 100%;
+  .hero-greeting {
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    color: hsl(var(--accent));
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-title {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: hsl(var(--txt));
+    line-height: var(--lh-1-1);
+    max-width: 20ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-subtitle {
+    font-size: var(--fs-lg);
+    color: hsl(var(--txt) / 0.8);
+    max-width: 65ch; /* Optimal reading length */
+    line-height: var(--lh-1-4);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-aside {
+    font-size: var(--fs-md);
+    color: hsl(var(--txt) / 0.6);
+    font-style: italic;
+    border-left: 3px solid hsl(var(--muted));
+    padding-left: var(--space-sm);
+  }
+
+  .hero-cta {
+    margin-top: var(--space-xl);
   }
 
   .hero__subtitle {
