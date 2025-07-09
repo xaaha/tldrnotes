@@ -14,7 +14,9 @@ const { title, description, githubUrl, webUrl, tags, status } = Astro.props;
 const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
 ---
 
-<article class="project-card">
+<article
+  class:list={["project-card", status && `status--${status.toLowerCase()}`]}
+>
   <div class="project-card__content">
     <header class="project-card__header">
       <h3 class="project-card__title">{title}</h3>
@@ -84,7 +86,19 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
     transition:
       transform 0.2s ease-out,
       box-shadow 0.2s ease-out;
-    border-left: 2px solid;
+    border-left: 2px solid hsl(var(--txt) / 0.2);
+  }
+
+  .project-card.status--active {
+    border-left-color: hsl(145, 63%, 42%);
+  }
+
+  .project-card.status--complete {
+    border-left-color: hsl(var(--accent));
+  }
+
+  .project-card.status--archived {
+    border-left-color: hsl(var(--txt) / 0.6);
   }
 
   .project-card:hover {
@@ -118,22 +132,23 @@ const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
     border: 1px solid;
   }
 
-  .status--active {
+  .status-badge.status--active {
     color: hsl(145, 63%, 30%);
     border-color: hsl(145, 63%, 42% / 0.5);
     background-color: hsl(145, 63%, 42% / 0.1);
   }
 
-  :global(.dark) .status--active {
+  :global(.dark) .status-badge.status--active {
     color: hsl(145, 63%, 42%);
   }
 
-  .status--complete {
+  .status-badge.status--complete {
     color: hsl(var(--accent));
     border-color: hsl(var(--accent) / 0.5);
     background-color: hsl(var(--accent) / 0.1);
   }
-  .status--archived {
+
+  .status-badge.status--archived {
     color: hsl(var(--txt) / 0.6);
     border-color: hsl(var(--txt) / 0.2);
     background-color: hsl(var(--txt) / 0.05);
