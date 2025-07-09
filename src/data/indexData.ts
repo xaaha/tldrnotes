@@ -1,4 +1,6 @@
 export const email = "contact@xaaha.dev";
+export const github = "https://github.com/xaaha/";
+export const linkedin = "https://www.linkedin.com/in/pthapa1";
 
 export const hero = {
   title: "Pratik | Software Engineer",
