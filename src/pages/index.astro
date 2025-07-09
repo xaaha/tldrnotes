@@ -1,5 +1,152 @@
 ---
 import Mainlayout from "@layouts/Mainlayout.astro";
+import Link from "@components/Link.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import { hero, projectInfo, email } from "../../src/data/indexData";
+const mailTo = `mailto:${email}`;
 ---
 
-<Mainlayout />
+<Mainlayout title={hero.title}>
+  <section class="container about" aria-label="About Me">
+    <div class="about__image-container">
+      <img
+        src="/images/hi.jpg"
+        alt="A portrait of Pratik"
+        width="200"
+        height="330"
+      />
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-greeting">Hey, I'm Pratik.</h1>
+      <h2 class="hero-title">{hero.visibleTitle}</h2>
+      <p class="hero-subtitle">
+        {hero.subtitle}
+      </p>
+      <p class="hero-aside">{hero.aside}</p>
+      <div class="hero-cta">
+        <Link href={mailTo} style="primary" text={email} />
+      </div>
+    </div>
+  </section>
+
+  <section class="projects container">
+    <h2 class="section-title">Side Hustle</h2>
+    <div class="project-grid">
+      {
+        projectInfo.map((project) => (
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            githubUrl={project.githubUrl}
+            webUrl={project.webUrl}
+            tags={project.tags}
+            status={project.status}
+          />
+        ))
+      }
+    </div>
+  </section>
+</Mainlayout>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .about {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .about__image-container {
+    display: grid;
+    place-items: center;
+    justify-self: center;
+  }
+
+  .about__image-container img {
+    width: 200px;
+    height: 330px;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (min-width: 768px) {
+    .about__image-container {
+      order: 1;
+    }
+    .about__image-container img {
+      width: 300px;
+      height: 495px;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-greeting {
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    color: hsl(var(--accent));
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-title {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: hsl(var(--txt));
+    line-height: var(--lh-1-1);
+    max-width: 20ch;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-subtitle {
+    font-size: var(--fs-lg);
+    color: hsl(var(--txt) / 0.8);
+    max-width: 65ch;
+    line-height: var(--lh-1-4);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-aside {
+    font-size: var(--fs-md);
+    color: hsl(var(--txt) / 0.6);
+    font-style: italic;
+    border-left: 3px solid hsl(var(--accent) / 0.3);
+    padding-left: var(--space-sm);
+  }
+
+  .hero-cta {
+    margin-top: var(--space-xl);
+  }
+
+  .projects {
+    border-top: 1px solid hsl(var(--txt) / 0.1);
+  }
+
+  .section-title {
+    font-size: var(--fs-xl);
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  @media (min-width: 768px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,215 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  title: string;
+  description: string;
+  githubUrl?: string;
+  webUrl?: string;
+  tags?: string;
+  status?: "Active" | "Complete" | "Archived";
+}
+
+const { title, description, githubUrl, webUrl, tags, status } = Astro.props;
+const tagList = tags ? tags.split(" ").filter((tag) => tag.trim() !== "") : [];
+---
+
+<article
+  class:list={["project-card", status && `status--${status.toLowerCase()}`]}
+>
+  <div class="project-card__content">
+    <header class="project-card__header">
+      <h3 class="project-card__title">{title}</h3>
+      {
+        status && (
+          <span
+            class:list={["status-badge", `status--${status.toLowerCase()}`]}
+          >
+            {status}
+          </span>
+        )
+      }
+    </header>
+    <p class="project-card__description">{description}</p>
+    {
+      tagList.length > 0 && (
+        <div class="project-card__tags">
+          {tagList.map((tag) => (
+            <span class="tag-badge">{tag}</span>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="project-card__footer">
+    {
+      webUrl && (
+        <a
+          href={webUrl}
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="web" class="project-card__icon" />
+          <span>View Live</span>
+        </a>
+      )
+    }
+    {
+      githubUrl && (
+        <a
+          href={githubUrl}
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="github" class="project-card__icon" />
+          <span>View on GitHub</span>
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .project-card {
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--txt) / 0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: var(--space-lg);
+    transition:
+      transform 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+    border-left: 2px solid hsl(var(--txt) / 0.2);
+  }
+
+  .project-card.status--active {
+    border-left-color: hsl(145, 63%, 42%);
+  }
+
+  .project-card.status--complete {
+    border-left-color: hsl(var(--accent));
+  }
+
+  .project-card.status--archived {
+    border-left-color: hsl(var(--txt) / 0.6);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .project-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .project-card__title {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: hsl(var(--txt));
+    line-height: var(--lh-1-1);
+    margin-right: auto;
+  }
+
+  .status-badge {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25em 0.75em;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid;
+  }
+
+  .status-badge.status--active {
+    color: hsl(145, 63%, 30%);
+    border-color: hsl(145, 63%, 42% / 0.5);
+    background-color: hsl(145, 63%, 42% / 0.1);
+  }
+
+  :global(.dark) .status-badge.status--active {
+    color: hsl(145, 63%, 42%);
+  }
+
+  .status-badge.status--complete {
+    color: hsl(var(--accent));
+    border-color: hsl(var(--accent) / 0.5);
+    background-color: hsl(var(--accent) / 0.1);
+  }
+
+  .status-badge.status--archived {
+    color: hsl(var(--txt) / 0.6);
+    border-color: hsl(var(--txt) / 0.2);
+    background-color: hsl(var(--txt) / 0.05);
+  }
+
+  .project-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    flex-grow: 1;
+  }
+
+  .project-card__description {
+    font-size: var(--fs-md);
+    color: hsl(var(--txt) / 0.85);
+    line-height: var(--lh-1-4);
+    flex-grow: 1;
+  }
+  .project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+
+  .tag-badge {
+    font-size: 0.8rem;
+    padding: 0.2em 0.6em;
+    background-color: hsl(var(--txt) / 0.07);
+    color: hsl(var(--txt) / 0.8);
+    border-radius: var(--radius-sm);
+  }
+
+  .project-card__footer {
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .project-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--accent) / 0.1);
+    border: 1px solid hsl(var(--accent));
+  }
+
+  .project-card__link:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--bkg));
+    border-color: hsl(var(--accent));
+    text-decoration: none;
+  }
+
+  .project-card__icon {
+    width: 1.25em;
+    height: 1.25em;
+  }
+</style>

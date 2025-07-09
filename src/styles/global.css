@@ -407,7 +407,6 @@ button {
   margin-top: var(--space-md);
 }
 
-/* about */
 .about {
   display: grid;
   gap: var(--space-lg);
@@ -417,6 +416,7 @@ button {
   @media (--md) {
     grid-template-columns: 1fr 2fr;
     place-content: center;
+    margin-block: var(--space-xl);
   }
 
   & img {
@@ -439,7 +439,6 @@ button {
   }
 }
 
-/* POST CONTAINER - Make it a single column */
 .post-container {
   margin-block: var(--space-md);
   display: grid;

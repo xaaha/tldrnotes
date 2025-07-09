@@ -1,8 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
 import Link from "./Link.astro";
-import { navData } from "../data/navData";
 import ThemeIcon from "@components/ThemeIcon.astro";
+
+const navData: {
+  name: string;
+  path: string;
+}[] = [
+  {
+    name: "Notes",
+    path: "/notes/",
+  },
+];
 ---
 
 <nav aria-label="Primary">
