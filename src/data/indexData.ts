@@ -1,6 +1,10 @@
+export const email = "pratik@tldrnotes.net";
+
 export const hero = {
   title: "Pratik | Software Engineer",
-  subtitle: "To stay sane, I work on side projects that add value to my life.",
+  visibleTitle: "Turning Problems Into Pull Requests Since 2019",
+  subtitle:
+    "I build thoughtful software, fix bugs, and occasionally name things well",
   aside: "And I use Neovim, by the way.",
 };
 

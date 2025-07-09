@@ -2,7 +2,8 @@
 import Mainlayout from "@layouts/Mainlayout.astro";
 import Link from "@components/Link.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import { hero, projectInfo } from "../../src/data/indexData";
+import { hero, projectInfo, email } from "../../src/data/indexData";
+const mailTo = `mailto:${email}`;
 ---
 
 <Mainlayout title={hero.title}>
@@ -17,17 +18,13 @@ import { hero, projectInfo } from "../../src/data/indexData";
     </div>
     <div class="hero-content">
       <h1 class="hero-greeting">Hey, I'm Pratik.</h1>
-      <h2 class="hero-title">Professional Bug Fixer</h2>
+      <h2 class="hero-title">{hero.visibleTitle}</h2>
       <p class="hero-subtitle">
         {hero.subtitle}
       </p>
       <p class="hero-aside">{hero.aside}</p>
       <div class="hero-cta">
-        <Link
-          href="mailto:pratik@tldrnotes.net"
-          style="primary"
-          text="Get in Touch"
-        />
+        <Link href={mailTo} style="primary" text="Get in Touch" />
       </div>
     </div>
   </section>
