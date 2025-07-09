@@ -39,7 +39,6 @@ export const projectInfo: ProjectDetails[] = [
     description:
       "I wanted a simple, fast, and good-looking home for my photography. So I made one. A custom static site built with just HTML, CSS, and JS. No frameworks, just vibes.",
     webUrl: "https://pratikpicture.com/",
-    githubUrl: "https://github.com/xaaha/pratikpicture",
     tags: "HTML CSS JS Photography",
     status: "Complete",
   },
