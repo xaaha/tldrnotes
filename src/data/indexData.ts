@@ -1,4 +1,4 @@
-export const email = "pratik@tldrnotes.net";
+export const email = "contact@xaaha.dev";
 
 export const hero = {
   title: "Pratik | Software Engineer",
