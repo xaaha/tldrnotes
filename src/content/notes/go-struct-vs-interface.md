@@ -1,5 +1,9 @@
 ---
 title: Struct and Interfaces in Go
+date: 2024-06-01
+description: Struct vs Interface in Go
+draft: false
+category: go
 ---
 
 ## Go Structs
@@ -7,8 +11,9 @@ title: Struct and Interfaces in Go
 A Go struct is similar to a TypeScript class in terms of representing data with fields and methods. It’s used to define concrete types that hold data.
 
 Struct in Go:
-• A struct groups fields (variables) together, similar to a TypeScript class’s properties.
-• You can define methods on a struct in Go, much like methods in a TypeScript class.
+
+- A struct groups fields (variables) together, similar to a TypeScript class’s properties.
+- You can define methods on a struct in Go, much like methods in a TypeScript class.
 
 Example of a Go struct:
 
@@ -46,8 +51,8 @@ So, Go struct is a way to define a concrete type with fields and methods, just l
 
 A Go interface is conceptually similar to a TypeScript interface, but Go interfaces are more flexible and implicit.
 
-• In Go, an interface defines a set of methods that a type (usually a struct) must implement, but it doesn’t define fields (like in TypeScript).
-• Important difference: In Go, you don’t have to explicitly say `a type implements an interface`. If the type has all the methods that the interface requires, it automatically satisfies the interface.
+- In Go, an interface defines a set of methods that a type (usually a struct) must implement, but it doesn’t define fields (like in TypeScript).
+- Important difference: In Go, you don’t have to explicitly say `a type implements an interface`. If the type has all the methods that the interface requires, it automatically satisfies the interface.
 
 Example of a Go interface:
 
@@ -104,15 +109,15 @@ startWork(emp); // Output: John is working
 
 ## When to Use Struct vs Interface in Go?
 
-• Use struct when you need to define concrete data types with fields and methods. It’s like a blueprint for objects.
-• For example, Employee, Car, Person—where you need to store specific data and perform actions on it.
-• Use interface when you want to define behavior (methods) that can be shared across different types. Interfaces let you work with different concrete types as long as they satisfy the behavior defined by the interface.
-• For example, Worker—which can be implemented by many types like Employee, Contractor, etc.
+- Use struct when you need to define concrete data types with fields and methods. It’s like a blueprint for objects.
+- For example, Employee, Car, Person—where you need to store specific data and perform actions on it.
+- Use interface when you want to define behavior (methods) that can be shared across different types. Interfaces let you work with different concrete types as long as they satisfy the behavior defined by the interface.
+- For example, Worker—which can be implemented by many types like Employee, Contractor, etc.
 
 ## Key Differences:
 
-• Go structs are like TS classes (they hold data and can have methods).
-• Go interfaces define behavior (methods) without defining data, similar to TS interfaces, but Go interfaces are implicitly implemented.
+- Go structs are like TS classes (they hold data and can have methods).
+- Go interfaces define behavior (methods) without defining data, similar to TS interfaces, but Go interfaces are implicitly implemented.
 
 ## Important Discussion
 

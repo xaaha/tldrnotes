@@ -1,5 +1,9 @@
 ---
 title: Connect Multiple GitHub Accounts to your Machine
+date: 2024-04-01
+description: How to connect multiple GitHub Accounts in your machine
+draft: false
+category: GitHub CI/CD
 ---
 
 # Connect to Multiple Github Accounts With SSH from One Computer

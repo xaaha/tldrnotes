@@ -1,5 +1,9 @@
 ---
 title: Run Cypress in Parallel
+date: 2025-02-01
+description: Running Cypress in Parallel without paying for Cypress Cloud
+draft: false
+category: Cypress Testing
 ---
 
 Recently, I was looking for a way to run all my cypress tests in parallel in GitHub actions. The tests were running one after the other and it was taking too long.
@@ -56,15 +60,14 @@ process.stdout.write(`${JSON.stringify(specs)}\n`);
 ```
 
 > [!NOTE]
-> Pleaes note: You can't use .ts file extension here even if you are using typescript for your cypress because we need to run this file directly with node.
+> You can't use .ts file extension here even if you are using typescript for your cypress because we need to run this file directly with node.
 
 Inside the `getAllFiles()` I have put cypress/e2e path where all my tests are located. Modify this as needed.
 
 If you run this file with the command node locateCypressSpecsToRun.js you should see,
 
-//pretty version
-
 ```js
+//pretty version
 specs = [
   "cypress/e2e/test1.cy.ts",
   "cypress/e2e/test2.cy.ts",

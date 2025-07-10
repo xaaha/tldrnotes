@@ -1,0 +1,27 @@
+---
+import Footer from "@components/Footer.astro";
+import MainHead from "./MainHead.astro";
+import Nav from "@components/Nav.astro";
+
+// style import
+import "src/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "xaaha.dev", description = "Xaaha's Personal Space" } =
+  Astro.props as Props;
+---
+
+<html lang="en">
+  <MainHead {title} {description} />
+  <body>
+    <Nav />
+    <main>
+      <slot>How did you end up here? Anyway, Welcome!</slot>
+    </main>
+    <Footer />
+  </body>
+</html>

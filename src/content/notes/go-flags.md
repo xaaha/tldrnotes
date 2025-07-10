@@ -1,8 +1,15 @@
 ---
 title: Using CLI Flags in Go
+date: 2024-05-01
+description: Go Flags Basics
+draft: false
+category: Go
 ---
 
 # Working with flags in Go
+
+> [!Note]
+> This is just a basic example
 
 ```go
 package main

@@ -1,0 +1,9 @@
+---
+import Tags from "@components/Tags.astro";
+
+const { category } = Astro.props as Frontmatter;
+---
+
+<div class="container">
+  <Tags {category} />
+</div>

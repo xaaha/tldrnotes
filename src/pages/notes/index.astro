@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import Mainlayout from "@layouts/Mainlayout.astro";
+import PostList from "@components/PostList.tsx";
+
+const allPosts = await getCollection("notes", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Mainlayout>
+  <section class="container" aria-label="New Notes">
+    <h1 class="h1">Recent Notes</h1>
+    <PostList client:load posts={sortedPosts} />
+  </section>
+</Mainlayout>

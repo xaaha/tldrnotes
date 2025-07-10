@@ -1,5 +1,10 @@
 ---
 title: Go Union Types
+date: 2024-07-01
+image: { src: "/images/gopher.png", alt: "Go ABC" }
+description: A way to implement Union Type in Go
+draft: false
+category: go
 ---
 
 Go does not support union types. But, I found a unique way to do somewhat similar things

@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button class="theme-toggle-button" title="Toggle theme">
+  <Icon name="sun" class="sun-icon" />
+  <Icon name="moon" class="moon-icon" />
+</button>
+
+<style>
+  .theme-toggle-button {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    color: hsl(var(--txt));
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-md);
+  }
+
+  .theme-toggle-button:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--bkg)),
+      0 0 0 4px hsl(var(--accent));
+  }
+
+  .sun-icon,
+  .moon-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Hide the moon icon by default (in dark mode) */
+  .sun-icon {
+    display: none;
+  }
+  .moon-icon:hover {
+    color: hsl(var(--accent));
+  }
+  .sun-icon:hover {
+    color: hsl(45, 55%, 50%);
+  }
+
+  /* hide  moon on .dark class ... */
+  :global(.dark) .moon-icon {
+    display: none;
+  }
+
+  /* show sun on dark */
+  :global(.dark) .sun-icon {
+    display: block;
+  }
+</style>

@@ -1,5 +1,10 @@
 ---
 title: Ruby Cheetsheet
+date: 2024-08-01
+image: { src: "/images/ruby.png", alt: "Ruby programming language" }
+description: Ruby for experienced dev
+draft: false
+category: Ruby
 ---
 
 # Ruby
@@ -144,7 +149,7 @@ puts manipulated
 ## Class
 
 > [!IMPORTANT]
-> Ruby is OOP. So, class is important
+> Ruby is OOP. So, class is its first-class citizen.
 
 - Using `attr_accessor` and manually defining getter and setter methods.
 

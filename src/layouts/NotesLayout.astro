@@ -1,0 +1,46 @@
+---
+import Mainlayout from "@layouts/Mainlayout.astro";
+import PostHeader from "@components/PostHeader.astro";
+import PostFooter from "@components/PostFooter.astro";
+
+const { frontmatter } = Astro.props;
+const { category, date, description, image, title } =
+  frontmatter as Frontmatter;
+---
+
+<Mainlayout {title} {description}>
+  <PostHeader {title} {date} {category} {image} />
+  <div class="post-content">
+    <div class="content">
+      <script src="../../src/scripts/copyCode.ts"></script>
+      <script src="../../src/scripts/copyLink.ts"></script>
+      <slot />
+    </div>
+  </div>
+  <PostFooter {category} />
+</Mainlayout>
+
+<style>
+  :global(table) {
+    border-collapse: collapse;
+    max-width: var(--content-lg);
+    margin-block: 1.5em;
+  }
+
+  :global(table caption) {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-block-end: 1em;
+  }
+
+  :global(table td),
+  :global(table th) {
+    border: 1px solid hsl(var(--txt) / 0.25);
+    padding: 0.5em 1em;
+    text-align: left;
+  }
+
+  :global(table th) {
+    background-color: hsl(var(--muted) / 0.5);
+  }
+</style>

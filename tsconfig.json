@@ -1,27 +1,46 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ES6",
+    "target": "ES6",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
       }
     ],
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@scripts/*": [
+        "src/scripts/*"
+      ]
     },
     "verbatimModuleSyntax": true,
     "strict": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2020",
+    "moduleResolution": "bundler",
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist",
     "esModuleInterop": true,
     "declaration": true,
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "types": [
+      "astro/client",
+      "react"
+    ]
   },
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
-  "extends": "astro/tsconfigs/base"
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
+  "extends": "astro/tsconfigs/strict"
 }

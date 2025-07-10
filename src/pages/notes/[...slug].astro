@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+import NotesLayout from "@layouts/NotesLayout.astro";
+
+// get notes static paths
+export async function getStaticPaths() {
+  const notesEntries = await getCollection("notes", ({ data }) => {
+    return data.draft !== true;
+  });
+
+  return notesEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+// Type assertion for the props coming from getStaticPaths
+interface Props {
+  entry: CollectionEntry<"notes">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<NotesLayout frontmatter={entry.data}>
+  <Content />
+</NotesLayout>

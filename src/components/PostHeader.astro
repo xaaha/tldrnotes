@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import { formatDate } from "@scripts/utils";
+
+const { title, date, image } = Astro.props as Frontmatter;
+---
+
+<header>
+  <div class="container">
+    <h1 class="h1">{title}</h1>
+    <p>
+      {formatDate(date)}
+    </p>
+  </div>
+  {
+    image?.src && image?.alt && (
+      <Image
+        src={image?.src}
+        alt={image?.alt}
+        width="1200"
+        height="600"
+        format="avif"
+        quality={80}
+        class="hero-image"
+        loading="eager"
+      />
+    )
+  }
+</header>

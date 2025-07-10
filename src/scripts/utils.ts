@@ -1,0 +1,19 @@
+// Make string url friendly
+export function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+}
+
+export function formatDate(date: Date | null) {
+  if (date === null) {
+    throw new Error("Notes must contain date frontmatter");
+  }
+
+  return new Date(date).toLocaleDateString("en-US", { timeZone: "UTC" });
+}
