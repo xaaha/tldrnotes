@@ -1,7 +1,7 @@
 ---
 title: Ruby Cheetsheet
 date: 2024-08-01
-image: { src: "src/images/ruby.png", alt: "Ruby programming language" }
+image: { src: "/images/ruby.png", alt: "Ruby programming language" }
 description: Ruby for experienced dev
 draft: false
 category: Ruby
