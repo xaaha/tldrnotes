@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   for (const heading of allHeadings) {
     {
       const headingId = heading.id;
-      if (!headingId) return;
+      if (!headingId) continue;
       heading.classList.add("heading-with-link");
       const copyLink = document.createElement("a");
       copyLink.className = "heading-link-copy-button";

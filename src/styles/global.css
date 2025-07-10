@@ -1067,7 +1067,7 @@ header {
 }
 
 .search-input {
-  width: 400px; /* Set a  fixed wideth, otherwise it adjusts with search content */
+  width: 400px; /* Set a fixed width, otherwise it adjusts with search content */
   max-width: 400px; /* prevents it from getting too wide on large screens */
   min-width: 250px; /* ensures it doesn’t get too small */
   padding: 0.75em 1.25em;
