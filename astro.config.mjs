@@ -6,8 +6,11 @@ import mdx from "@astrojs/mdx";
 
 import react from "@astrojs/react";
 
+import netlify from "@astrojs/netlify";
+
 export default defineConfig({
   integrations: [icon(), mdx(), react()],
+
   markdown: {
     remarkPlugins: [remarkCallout],
     shikiConfig: {
@@ -15,4 +18,6 @@ export default defineConfig({
       // wrap: true,
     },
   },
+
+  adapter: netlify(),
 });

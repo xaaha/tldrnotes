@@ -18,6 +18,7 @@
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
+    "@astrojs/netlify": "^6.4.1",
     "@astrojs/react": "^4.3.0",
     "@astrojs/ts-plugin": "^1.10.4",
     "@r4ai/remark-callout": "^0.6.2",
