@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "xaaha.dev",
+  "short_name": "xaaha",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -19,3 +19,4 @@
   "background_color": "#ffffff",
   "display": "standalone"
 }
+
