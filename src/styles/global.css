@@ -1133,3 +1133,19 @@ header {
   font-size: var(--fs-md);
   line-height: var(--lh-1-4);
 }
+
+/* ======================================== */
+/* UNIFIED CODE FONT STYLING                */
+/* For safari bug                           */
+/* ======================================== */
+
+.content pre,
+.content code {
+  font-size: var(--fs-md);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.content pre {
+  line-height: 1.5;
+}
