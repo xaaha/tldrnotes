@@ -1043,6 +1043,12 @@ header {
   opacity: 0;
 }
 
+@media (max-width: 768px) {
+  .heading-link-copy-button {
+    display: none;
+  }
+}
+
 /* ======================================== */
 /* STYLES FOR SEARCH PAGE                   */
 /* ======================================== */
